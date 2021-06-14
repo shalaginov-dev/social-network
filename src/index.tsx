@@ -2,9 +2,9 @@ import './index.css';
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
-import store from "./redux/state";
+import store, { StateType } from "./redux/state";
 
-function renderedEntireTree(state: any) {
+function renderedEntireTree(state: StateType) {
     ReactDOM.render(
         <BrowserRouter>
             <App state={store.getState()} dispatch={store.dispatch.bind(store)}/>

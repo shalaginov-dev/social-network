@@ -1,4 +1,7 @@
 import {v1} from "uuid";
+import { addMessageAC, dialogsReducer, updateNewMessageTextAC } from "./dialogs-reducer";
+import { navbarReducer } from "./navbar-reducer";
+import { addPostAC, profileReducer, updateNewTextAC } from "./profile-reducer";
 
 export type NavigationType = {
     id: string
@@ -19,9 +22,6 @@ export type PostType = {
     message: string
     likesCounter: number
 }
-export type StateNavbarType = {
-    navigation: Array<NavigationType>
-}
 export type StateProfileType = {
     posts: Array<PostType>
     newPostText: string
@@ -30,6 +30,9 @@ export type StateDialogsType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
     newMessageText: string
+}
+export type StateNavbarType = {
+    navigation: Array<NavigationType>
 }
 export type StateType = {
     profilePage: StateProfileType
@@ -46,22 +49,7 @@ export type StoreType = {
 export type ActionsType = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewTextAC> | ReturnType<typeof addMessageAC> | ReturnType<typeof updateNewMessageTextAC>
 
 
-export const addPostAC = (postText: string) => ({
-        type: "ADD-POST",
-        postText: postText
-    }) as const
-export const updateNewTextAC = (newText: string) => ({
-        type: "UPDATE-NEW-POST-TEXT",
-        newText: newText
-    }) as const
-export const addMessageAC = (messageText: string) => ({
-    type: "ADD-MESSAGE",
-    messageText: messageText
-}) as const
-export const updateNewMessageTextAC = (newMessage: string) => ({
-        type: "UPDATE-NEW-MESSAGE-TEXT",
-        newMessage: newMessage
-    }) as const
+
 
 
 const store: StoreType = {
@@ -74,15 +62,6 @@ const store: StoreType = {
             newPostText: ''
         },
         dialogsPage: {
-            messages: [
-                {id: v1(), message: 'Hi'},
-                {id: v1(), message: 'How is your IT?'},
-                {id: v1(), message: 'Yo'},
-                {id: v1(), message: 'Yoo'},
-                {id: v1(), message: 'Yooo'},
-                {id: v1(), message: 'Yoooo'}
-            ],
-            newMessageText: '',
             dialogs: [
                 {
                     id: v1(),
@@ -114,7 +93,17 @@ const store: StoreType = {
                     name: 'Valera',
                     img: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/09C5/production/_116210520_neo4_976.jpg'
                 }
-            ]
+            ],
+            messages: [
+                {id: v1(), message: 'Hi'},
+                {id: v1(), message: 'How is your IT?'},
+                {id: v1(), message: 'Yo'},
+                {id: v1(), message: 'Yoo'},
+                {id: v1(), message: 'Yooo'},
+                {id: v1(), message: 'Yoooo'}
+            ],
+            newMessageText: ''
+
         },
         navbarPage: {
             navigation: [
@@ -137,33 +126,12 @@ const store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: v1(),
-                message: action.postText,
-                likesCounter: 0
-            }
-            this._state.profilePage.posts.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._callback(this._state)
-        }
-        else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText
-            this._callback(this._state)
-        }
-        else if (action.type === 'ADD-MESSAGE') {
-            let newMessage = {
-                id: v1(),
-                message: action.messageText
-            }
-            this._state.dialogsPage.messages.push(newMessage)
-            this._state.dialogsPage.newMessageText = ''
-            this._callback(this._state)
-        }
-        else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
-            this._state.dialogsPage.newMessageText = action.newMessage
-            this._callback(this._state)
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.navbarPage = navbarReducer(this._state.navbarPage, action)
+
+        this._callback(this._state)
     }
 }
 
