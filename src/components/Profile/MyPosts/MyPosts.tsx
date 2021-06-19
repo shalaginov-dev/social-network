@@ -2,21 +2,22 @@ import React, {ChangeEvent} from "react";
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 import {ActionsType, PostType} from "../../../redux/state";
-import { addPostAC, updateNewTextAC } from "../../../redux/profile-reducer";
+import {addPostAC, updateNewTextAC} from "../../../redux/profile-reducer";
 
 type PostsType = {
     post: Array<PostType>
     newPostText: string
-    dispatch: (action: ActionsType) => void
+    addPost: () => void
+    updateNewPostText: (text: string) => void
 }
 
 function MyPosts(props: PostsType) {
 
-    let addPost = () => {
-        props.dispatch(addPostAC(props.newPostText))
+    let onAddPost = () => {
+        props.addPost()
     }
-    let onPostChange = (value: string) => {
-        props.dispatch(updateNewTextAC(value))
+    let onPostChange = (text: string) => {
+        props.updateNewPostText(text)
     }
 
     return (
@@ -32,7 +33,7 @@ function MyPosts(props: PostsType) {
                               }}/>
                 </div>
                 <div>
-                    <button onClick={addPost}>Add Post</button>
+                    <button onClick={onAddPost}>Add Post</button>
                 </div>
             </div>
             <div className={s.posts}>

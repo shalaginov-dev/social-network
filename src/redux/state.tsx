@@ -48,10 +48,6 @@ export type StoreType = {
 }
 export type ActionsType = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewTextAC> | ReturnType<typeof addMessageAC> | ReturnType<typeof updateNewMessageTextAC>
 
-
-
-
-
 const store: StoreType = {
     _state: {
         profilePage: {
