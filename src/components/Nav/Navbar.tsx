@@ -1,19 +1,22 @@
 import React from "react";
+import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
-import {DialogType, StateNavbarType, StoreType } from "../../redux/state";
+import {InitialDialogsType} from "../../redux/dialogs-reducer";
+import {StateType} from "../../redux/redux-store";
+import {InitialSidebarType} from "../../redux/sidebar-reducer";
 import s from "./Nav.module.css"
 
-type NavbarType = {
-    store: StoreType
+type PropsType = {
+    sidebar: InitialSidebarType
+    dialogsPage: InitialDialogsType
 }
 
-function Navbar(props: NavbarType) {
-    let state = props.store.getState().dialogsPage
+function Navbar(props: PropsType) {
 
     return (
         <nav className={s.nav}>
             {
-                props.store.getState().navbarPage.navigation.map(n => <div className={s.item}>
+                props.sidebar.navigation.map(n => <div className={s.item} key={n.id}>
                     <NavLink key={n.id} to={n.to} activeClassName={s.activeLink}>{n.title}</NavLink>
                 </div>)
             }
@@ -21,16 +24,16 @@ function Navbar(props: NavbarType) {
                 <span className={s.friendsTitle}>Friends</span>
                 <div className={s.friendsBlock}>
                     <div className={s.friendsItem}>
-                        <img src={state.dialogs[0].img} alt="q"/>
-                        <span className={s.friendsName}>{state.dialogs[0].name}</span>
+                        <img src={props.dialogsPage.dialogs[0].img} alt="q"/>
+                        <span className={s.friendsName}>{props.dialogsPage.dialogs[0].name}</span>
                     </div>
                     <div className={s.friendsItem}>
-                        <img src={state.dialogs[1].img} alt="q"/>
-                        <span className={s.friendsName}>{state.dialogs[1].name}</span>
+                        <img src={props.dialogsPage.dialogs[1].img} alt="q"/>
+                        <span className={s.friendsName}>{props.dialogsPage.dialogs[1].name}</span>
                     </div>
                     <div className={s.friendsItem}>
-                        <img src={state.dialogs[2].img} alt="q"/>
-                        <span className={s.friendsName}>{state.dialogs[2].name}</span>
+                        <img src={props.dialogsPage.dialogs[2].img} alt="q"/>
+                        <span className={s.friendsName}>{props.dialogsPage.dialogs[2].name}</span>
                     </div>
                 </div>
             </div>
@@ -38,5 +41,11 @@ function Navbar(props: NavbarType) {
     )
 }
 
+const mapStateToProps = (state: StateType) => {
+    return {
+        sidebar: state.sidebar,
+        dialogsPage: state.dialogsPage
+    }
+}
 
-export default Navbar
+export const NavbarContainer = connect(mapStateToProps)(Navbar)

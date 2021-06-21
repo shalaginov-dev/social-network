@@ -1,11 +1,10 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
-import {ActionsType, PostType} from "../../../redux/state";
-import {addPostAC, updateNewTextAC} from "../../../redux/profile-reducer";
+import {PostType} from "../../../redux/profile-reducer";
 
 type PostsType = {
-    post: Array<PostType>
+    posts: Array<PostType>
     newPostText: string
     addPost: () => void
     updateNewPostText: (text: string) => void
@@ -38,7 +37,7 @@ function MyPosts(props: PostsType) {
             </div>
             <div className={s.posts}>
                 {
-                    props.post.map(p => <Post message={p.message} likesCounter={p.likesCounter}/>)
+                    props.posts.map(p => <Post message={p.message} likesCounter={p.likesCounter}/>)
                 }
             </div>
         </div>

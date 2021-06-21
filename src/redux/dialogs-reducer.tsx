@@ -1,16 +1,22 @@
-import { v1 } from "uuid"
-import {ActionsType, StateDialogsType } from "./state"
+import {v1} from "uuid"
 
-export const addMessageAC = (messageText: string) => ({
-    type: "ADD-MESSAGE",
-    messageText: messageText
-}) as const
-export const updateNewMessageTextAC = (newMessage: string) => ({
-    type: "UPDATE-NEW-MESSAGE-TEXT",
-    newMessage: newMessage
-}) as const
+export type DialogType = {
+    id: string
+    name: string
+    img: string
+}
+export type MessageType = {
+    id: string
+    message: string
+}
+export type InitialDialogsType = {
+    dialogs: Array<DialogType>
+    messages: Array<MessageType>
+    newMessageText: string
+}
+type ActionsType = addMessageACType | updateNewMessageTextACType
 
-let initialState = {
+let initialState: InitialDialogsType = {
     dialogs: [
         {
             id: v1(),
@@ -54,21 +60,33 @@ let initialState = {
     newMessageText: ''
 }
 
-export const dialogsReducer = (state: StateDialogsType = initialState, action: ActionsType) => {
+export const dialogsReducer = (state: InitialDialogsType = initialState, action: ActionsType): InitialDialogsType => {
 
     switch (action.type) {
         case 'ADD-MESSAGE':
-            let newMessage = {
-                id: v1(),
-                message: action.messageText
+            let message = action.messageText
+            return  {
+                ...state,
+                messages: [...state.messages, {id: v1(), message: message}],
+                newMessageText: ''
             }
-            state.messages.push(newMessage)
-            state.newMessageText = ''
-            return state
         case 'UPDATE-NEW-MESSAGE-TEXT':
-            state.newMessageText = action.newMessage
-            return state
+            return {
+                ...state,
+                newMessageText: action.newMessage
+            }
         default:
             return state
     }
 }
+
+export type addMessageACType = ReturnType<typeof addMessageAC>
+export type updateNewMessageTextACType = ReturnType<typeof updateNewMessageTextAC>
+export const addMessageAC = (messageText: string) => ({
+    type: "ADD-MESSAGE",
+    messageText: messageText
+}) as const
+export const updateNewMessageTextAC = (newMessage: string) => ({
+    type: "UPDATE-NEW-MESSAGE-TEXT",
+    newMessage: newMessage
+}) as const

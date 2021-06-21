@@ -1,16 +1,17 @@
 import {v1} from "uuid"
-import {ActionsType, StateProfileType } from "./state"
 
-export const addPostAC = (postText: string) => ({
-    type: "ADD-POST",
-    postText: postText
-}) as const
-export const updateNewTextAC = (newText: string) => ({
-    type: "UPDATE-NEW-POST-TEXT",
-    newText: newText
-}) as const
+export type PostType = {
+    id: string
+    message: string
+    likesCounter: number
+}
+export type InitialProfileType = {
+    posts: Array<PostType>
+    newPostText: string
+}
+type ActionsType = AddPostACType | UpdateNewTextACType
 
-let initialState = {
+let initialState: InitialProfileType = {
     posts: [
         {id: v1(), message: 'Hi, how are you?', likesCounter: 2},
         {id: v1(), message: "It's my  first post", likesCounter: 5},
@@ -18,22 +19,30 @@ let initialState = {
     newPostText: ''
 }
 
-export const profileReducer = (state: StateProfileType = initialState, action: ActionsType) => {
-
+export const profileReducer = (state: InitialProfileType = initialState, action: ActionsType): InitialProfileType => {
     switch (action.type) {
         case 'ADD-POST':
-            let newPost = {
-                id: v1(),
-                message: action.postText,
-                likesCounter: 0
-            }
-            state.posts.push(newPost)
-            state.newPostText = ''
-            return state
+            let message = state.newPostText
+        return {
+            ...state,
+            posts: [...state.posts, {id: v1(), message: message, likesCounter: 0}],
+            newPostText: ''
+        }
         case 'UPDATE-NEW-POST-TEXT':
-            state.newPostText = action.newText
-            return state
+        return {
+            ...state,
+            newPostText: action.newText
+        }
         default:
             return state
     }
 }
+
+
+export type AddPostACType = ReturnType<typeof addPostAC>
+export type UpdateNewTextACType = ReturnType<typeof updateNewTextAC>
+export const addPostAC = () => ({type: "ADD-POST"}) as const
+export const updateNewTextAC = (newText: string) => ({
+    type: "UPDATE-NEW-POST-TEXT",
+    newText: newText
+}) as const
