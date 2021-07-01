@@ -37,7 +37,7 @@ function MyPosts(props: PostsType) {
             </div>
             <div className={s.posts}>
                 {
-                    props.posts.map(p => <Post message={p.message} likesCounter={p.likesCounter}/>)
+                    props.posts.map(p => <Post key={p.id} message={p.message} likesCounter={p.likesCounter}/>)
                 }
             </div>
         </div>

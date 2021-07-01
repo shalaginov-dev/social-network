@@ -5,9 +5,9 @@ import Message from "./Message/Message";
 import {InitialDialogsType} from "../../redux/dialogs-reducer";
 
 type DialogsType = {
-    addMessage: (newMessageText: string) => void
-    onSendMessageClick: (value: string) => void
     dialogsPage: InitialDialogsType
+    onSendMessageClick: (value: string) => void
+    addMessage: (newMessageText: string) => void
 }
 
 function Dialogs(props: DialogsType) {

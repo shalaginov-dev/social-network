@@ -16,6 +16,7 @@ let initialState: InitialSidebarType = {
         {id: v1(), to: '/news', title: 'News'},
         {id: v1(), to: '/music', title: 'Music'},
         {id: v1(), to: '/settings', title: 'Settings'},
+        {id: v1(), to: '/users', title: 'Users'},
     ]
 }
 
