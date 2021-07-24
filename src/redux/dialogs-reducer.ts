@@ -14,7 +14,7 @@ export type InitialDialogsType = {
     messages: Array<MessageType>
     newMessageText: string
 }
-type ActionsType = addMessageACType | updateNewMessageTextACType
+type ActionsType = AddMessageAT | UpdateNewMessageTextAT
 
 let initialState: InitialDialogsType = {
     dialogs: [
@@ -33,21 +33,21 @@ let initialState: InitialDialogsType = {
             name: 'Sveta',
             img: 'https://wlcat.ru/wp-content/uploads/2020/10/Cat-Wearing-COVID-19-Mask.jpg'
         },
-        {
-            id: v1(),
-            name: 'Sasha',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYABUeQR1dMoqDCZYEkRsntwM5kqnADmv3zUvuQD7eHMnBZ2SmsWuCS8R3TEOmcIW-BLM&usqp=CAU'
-        },
-        {
-            id: v1(),
-            name: 'Viktor',
-            img: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/41CF/production/_109474861_angrycat-index-getty3-3.jpg'
-        },
-        {
-            id: v1(),
-            name: 'Valera',
-            img: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/09C5/production/_116210520_neo4_976.jpg'
-        }
+        // {
+        //     id: v1(),
+        //     name: 'Sasha',
+        //     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYABUeQR1dMoqDCZYEkRsntwM5kqnADmv3zUvuQD7eHMnBZ2SmsWuCS8R3TEOmcIW-BLM&usqp=CAU'
+        // },
+        // {
+        //     id: v1(),
+        //     name: 'Viktor',
+        //     img: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/41CF/production/_109474861_angrycat-index-getty3-3.jpg'
+        // },
+        // {
+        //     id: v1(),
+        //     name: 'Valera',
+        //     img: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/09C5/production/_116210520_neo4_976.jpg'
+        // }
     ],
     messages: [
         {id: v1(), message: 'Hi'},
@@ -64,7 +64,7 @@ export const dialogsReducer = (state: InitialDialogsType = initialState, action:
 
     switch (action.type) {
         case 'ADD-MESSAGE':
-            let message = action.messageText
+            let message = action.payload.messageText
             return  {
                 ...state,
                 messages: [...state.messages, {id: v1(), message: message}],
@@ -73,20 +73,28 @@ export const dialogsReducer = (state: InitialDialogsType = initialState, action:
         case 'UPDATE-NEW-MESSAGE-TEXT':
             return {
                 ...state,
-                newMessageText: action.newMessage
+                newMessageText: action.payload.newMessage
             }
         default:
             return state
     }
 }
 
-export type addMessageACType = ReturnType<typeof addMessageAC>
-export type updateNewMessageTextACType = ReturnType<typeof updateNewMessageTextAC>
-export const addMessageAC = (messageText: string) => ({
-    type: "ADD-MESSAGE",
-    messageText: messageText
+
+export type AddMessageAT = {
+    type: 'ADD-MESSAGE'
+    payload: { messageText: string }
+}
+export type UpdateNewMessageTextAT = {
+    type: 'UPDATE-NEW-MESSAGE-TEXT'
+    payload: { newMessage: string }
+}
+
+export const AddMessageAC = (messageText: string): AddMessageAT => ({
+    type: 'ADD-MESSAGE',
+    payload: {messageText},
 }) as const
-export const updateNewMessageTextAC = (newMessage: string) => ({
-    type: "UPDATE-NEW-MESSAGE-TEXT",
-    newMessage: newMessage
+export const UpdateNewMessageTextAC = (newMessage: string): UpdateNewMessageTextAT => ({
+    type: 'UPDATE-NEW-MESSAGE-TEXT',
+    payload:{newMessage},
 }) as const

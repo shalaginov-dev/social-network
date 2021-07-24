@@ -8,7 +8,6 @@ import News from './components/News';
 import Music from './components/Music';
 import Settings from './components/Settings';
 import {DialogsContainer} from './components/Dialogs/DialogsContainer';
-import Users from './components/Users/Users';
 import { UsersContainer } from './components/Users/UsersContainer';
 
 

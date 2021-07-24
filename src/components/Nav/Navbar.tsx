@@ -14,29 +14,27 @@ type PropsType = {
 function Navbar(props: PropsType) {
 
     return (
-        <nav className={s.nav}>
-            {
-                props.sidebar.navigation.map(n => <div className={s.item} key={n.id}>
-                    <NavLink key={n.id} to={n.to} activeClassName={s.activeLink}>{n.title}</NavLink>
-                </div>)
-            }
+        <nav className={s.sidebar}>
+            <div className={s.nav}>
+                {
+                    props.sidebar.navigation.map(n => <div className={s.item} key={n.id}>
+                        <NavLink key={n.id} to={n.to} activeClassName={s.activeLink}>{n.title}</NavLink>
+                    </div>)
+                }
+            </div>
             <div className={s.friends}>
                 <span className={s.friendsTitle}>Friends</span>
                 <div className={s.friendsBlock}>
-                    <div className={s.friendsItem}>
-                        <img src={props.dialogsPage.dialogs[0].img} alt="q"/>
-                        <span className={s.friendsName}>{props.dialogsPage.dialogs[0].name}</span>
-                    </div>
-                    <div className={s.friendsItem}>
-                        <img src={props.dialogsPage.dialogs[1].img} alt="q"/>
-                        <span className={s.friendsName}>{props.dialogsPage.dialogs[1].name}</span>
-                    </div>
-                    <div className={s.friendsItem}>
-                        <img src={props.dialogsPage.dialogs[2].img} alt="q"/>
-                        <span className={s.friendsName}>{props.dialogsPage.dialogs[2].name}</span>
-                    </div>
+                    {
+                        props.dialogsPage.dialogs.map(d => <div className={s.friendsItem} key={d.id}>
+                                <img src={d.img} alt="q"/>
+                                <span className={s.friendsName}>{d.name}</span>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
+
         </nav>
     )
 }

@@ -13,10 +13,10 @@ let initialState: InitialSidebarType = {
     navigation: [
         {id: v1(), to: '/profile', title: 'Profile'},
         {id: v1(), to: '/dialogs', title: 'Messages'},
+        {id: v1(), to: '/users', title: 'Users'},
         {id: v1(), to: '/news', title: 'News'},
         {id: v1(), to: '/music', title: 'Music'},
         {id: v1(), to: '/settings', title: 'Settings'},
-        {id: v1(), to: '/users', title: 'Users'},
     ]
 }
 

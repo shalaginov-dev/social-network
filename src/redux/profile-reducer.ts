@@ -9,7 +9,7 @@ export type InitialProfileType = {
     posts: Array<PostType>
     newPostText: string
 }
-type ActionsType = AddPostACType | UpdateNewTextACType
+type ActionsType = AddPostAT | UpdateNewTextAT
 
 let initialState: InitialProfileType = {
     posts: [
@@ -23,26 +23,34 @@ export const profileReducer = (state: InitialProfileType = initialState, action:
     switch (action.type) {
         case 'ADD-POST':
             let message = state.newPostText
-        return {
-            ...state,
-            posts: [...state.posts, {id: v1(), message: message, likesCounter: 0}],
-            newPostText: ''
-        }
+            return {
+                ...state,
+                posts: [...state.posts, {id: v1(), message: message, likesCounter: 0}],
+                newPostText: ''
+            }
         case 'UPDATE-NEW-POST-TEXT':
-        return {
-            ...state,
-            newPostText: action.newText
-        }
+            return {
+                ...state,
+                newPostText: action.payload.newText
+            }
         default:
             return state
     }
 }
 
 
-export type AddPostACType = ReturnType<typeof addPostAC>
-export type UpdateNewTextACType = ReturnType<typeof updateNewTextAC>
-export const addPostAC = () => ({type: "ADD-POST"}) as const
-export const updateNewTextAC = (newText: string) => ({
-    type: "UPDATE-NEW-POST-TEXT",
-    newText: newText
+export type AddPostAT = {
+    type: 'ADD-POST'
+}
+export type UpdateNewTextAT = {
+    type: 'UPDATE-NEW-POST-TEXT'
+    payload: { newText: string }
+}
+
+export const AddPostAC = (): AddPostAT => ({
+    type: 'ADD-POST',
+}) as const
+export const UpdateNewTextAC = (newText: string): UpdateNewTextAT => ({
+    type: 'UPDATE-NEW-POST-TEXT',
+    payload: {newText},
 }) as const
