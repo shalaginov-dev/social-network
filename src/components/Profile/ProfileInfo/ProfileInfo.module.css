@@ -1,7 +1,16 @@
+.mainBlock {
+    display: flex;
+}
+
 .descriptionBlock {
     padding: 10px;
 }
 
 .mainImg {
     width: 960px;
+}
+
+.aboutMe {
+    margin-left: 50px;
+    margin-top: 10px;
 }

@@ -8,15 +8,17 @@ export type PostType = {
 export type InitialProfileType = {
     posts: Array<PostType>
     newPostText: string
+    profile: any
 }
-type ActionsType = AddPostAT | UpdateNewTextAT
+type ActionsType = AddPostAT | UpdateNewTextAT | SetUserProfileAT
 
 let initialState: InitialProfileType = {
     posts: [
         {id: v1(), message: 'Hi, how are you?', likesCounter: 2},
         {id: v1(), message: "It's my  first post", likesCounter: 5},
     ],
-    newPostText: ''
+    newPostText: '',
+    profile: null
 }
 
 export const profileReducer = (state: InitialProfileType = initialState, action: ActionsType): InitialProfileType => {
@@ -33,6 +35,8 @@ export const profileReducer = (state: InitialProfileType = initialState, action:
                 ...state,
                 newPostText: action.payload.newText
             }
+        case 'SET-USER-PROFILE':
+            return {...state, profile: action.payload.profile}
         default:
             return state
     }
@@ -46,11 +50,19 @@ export type UpdateNewTextAT = {
     type: 'UPDATE-NEW-POST-TEXT'
     payload: { newText: string }
 }
+export type SetUserProfileAT = {
+    type: 'SET-USER-PROFILE'
+    payload: { profile: any }
+}
 
-export const AddPostAC = (): AddPostAT => ({
+export const AddPost = (): AddPostAT => ({
     type: 'ADD-POST',
 }) as const
-export const UpdateNewTextAC = (newText: string): UpdateNewTextAT => ({
+export const UpdateNewText = (newText: string): UpdateNewTextAT => ({
     type: 'UPDATE-NEW-POST-TEXT',
     payload: {newText},
+}) as const
+export const SetUserProfile = (profile: any): SetUserProfileAT => ({
+    type: 'SET-USER-PROFILE',
+    payload: {profile},
 }) as const

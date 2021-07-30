@@ -12,12 +12,11 @@ type DialogsType = {
 
 function Dialogs(props: DialogsType) {
 
-
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {
-                    props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id} img={d.img}/>)
+                    props.dialogsPage.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id} img={d.img}/>)
                 }
             </div>
             <div className={s.messages}>

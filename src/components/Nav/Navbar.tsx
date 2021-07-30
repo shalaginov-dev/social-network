@@ -18,7 +18,7 @@ function Navbar(props: PropsType) {
             <div className={s.nav}>
                 {
                     props.sidebar.navigation.map(n => <div className={s.item} key={n.id}>
-                        <NavLink key={n.id} to={n.to} activeClassName={s.activeLink}>{n.title}</NavLink>
+                        <NavLink to={n.to} activeClassName={s.activeLink}>{n.title}</NavLink>
                     </div>)
                 }
             </div>
