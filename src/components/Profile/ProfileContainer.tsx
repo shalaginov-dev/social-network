@@ -33,7 +33,7 @@ export type PathParamsType = {
     userId: string
 }
 export type MapStateToPropsType = {
-    profile: ProfileType
+    profile: ProfileType | null
 }
 export type MapDispatchPropsType = {
     SetUserProfile: (profile: any) => void

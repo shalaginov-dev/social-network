@@ -1,4 +1,5 @@
 import {v1} from "uuid"
+import {ProfileType} from "../components/Profile/ProfileContainer";
 
 export type PostType = {
     id: string
@@ -8,7 +9,7 @@ export type PostType = {
 export type InitialProfileType = {
     posts: Array<PostType>
     newPostText: string
-    profile: any
+    profile: ProfileType | null
 }
 type ActionsType = AddPostAT | UpdateNewTextAT | SetUserProfileAT
 
@@ -52,7 +53,7 @@ export type UpdateNewTextAT = {
 }
 export type SetUserProfileAT = {
     type: 'SET-USER-PROFILE'
-    payload: { profile: any }
+    payload: { profile: ProfileType }
 }
 
 export const AddPost = (): AddPostAT => ({
@@ -62,7 +63,7 @@ export const UpdateNewText = (newText: string): UpdateNewTextAT => ({
     type: 'UPDATE-NEW-POST-TEXT',
     payload: {newText},
 }) as const
-export const SetUserProfile = (profile: any): SetUserProfileAT => ({
+export const SetUserProfile = (profile: ProfileType): SetUserProfileAT => ({
     type: 'SET-USER-PROFILE',
     payload: {profile},
 }) as const
