@@ -51,7 +51,7 @@ export const Users = (props: UsersPropsType) => {
                                         withCredentials: true,
                                         headers: {
                                             'API-KEY': 'f272445b-402b-4b0f-ba99-09cb5a98a4e4'
-                                        }
+                                        },
                                     })
                                         .then(response => {
                                             if (response.data.resultCode === 0) {
@@ -66,7 +66,7 @@ export const Users = (props: UsersPropsType) => {
                                         withCredentials: true,
                                         headers: {
                                             'API-KEY': 'f272445b-402b-4b0f-ba99-09cb5a98a4e4'
-                                        }
+                                        },
                                     })
                                         .then(response => {
                                             if (response.data.resultCode === 0) {
