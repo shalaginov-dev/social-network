@@ -19,15 +19,24 @@ export type InitialUsersType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
+    followingInProgress: Array<string>
 }
-type ActionsType = FollowAT | UnfollowAT | SetUsersAT | SetCurrentPageAT | SetTotalUsersCountAT | ToggleIsFetchingAT
+type ActionsType =
+    FollowAT
+    | UnfollowAT
+    | SetUsersAT
+    | SetCurrentPageAT
+    | SetTotalUsersCountAT
+    | ToggleIsFetchingAT
+    | ToggleIsFollowingProgressAT
 
 let initialState: InitialUsersType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
+    followingInProgress: [],
 }
 
 export const usersReducer = (state: InitialUsersType = initialState, action: ActionsType): InitialUsersType => {
@@ -66,6 +75,14 @@ export const usersReducer = (state: InitialUsersType = initialState, action: Act
         case 'TOGGLE-IS-FETCHING' :
             return {...state, isFetching: action.payload.isFetching}
 
+        case 'TOGGLE-IS-FOLLOWING-PROGRESS' :
+            return {
+                ...state,
+                followingInProgress: action.payload.isFetching
+                    ? [...state.followingInProgress, action.payload.userId]
+                    : state.followingInProgress.filter(id => id !== action.payload.userId)
+            }
+
         default:
             return state
     }
@@ -96,22 +113,29 @@ export type ToggleIsFetchingAT = {
     type: 'TOGGLE-IS-FETCHING'
     payload: { isFetching: boolean }
 }
+export type ToggleIsFollowingProgressAT = {
+    type: 'TOGGLE-IS-FOLLOWING-PROGRESS'
+    payload: {
+        isFetching: boolean
+        userId: string
+    }
+}
 
 export const Follow = (userId: string): FollowAT => ({
     type: 'FOLLOW',
-    payload:{ userId },
+    payload: {userId},
 }) as const
 export const Unfollow = (userId: string): UnfollowAT => ({
     type: 'UNFOLLOW',
-    payload: { userId },
+    payload: {userId},
 }) as const
 export const SetUsers = (users: Array<UsersType>): SetUsersAT => ({
     type: 'SET-USERS',
-    payload: { users },
+    payload: {users},
 }) as const
 export const SetCurrentPage = (currentPage: number): SetCurrentPageAT => ({
     type: 'SET-CURRENT-PAGE',
-    payload:{currentPage},
+    payload: {currentPage},
 }) as const
 export const SetTotalUsersCount = (totalCount: number): SetTotalUsersCountAT => ({
     type: 'SET-TOTAL-USERS-COUNT',
@@ -120,4 +144,8 @@ export const SetTotalUsersCount = (totalCount: number): SetTotalUsersCountAT => 
 export const ToggleIsFetching = (isFetching: boolean): ToggleIsFetchingAT => ({
     type: 'TOGGLE-IS-FETCHING',
     payload: {isFetching},
+}) as const
+export const ToggleFollowingProgress = (isFetching: boolean, userId: string): ToggleIsFollowingProgressAT => ({
+    type: 'TOGGLE-IS-FOLLOWING-PROGRESS',
+    payload: {isFetching, userId},
 }) as const
