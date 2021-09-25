@@ -1,5 +1,6 @@
 import {v1} from "uuid"
 import {ProfileType} from "../components/Profile/ProfileContainer";
+import {usersAPI} from "../api/api";
 
 export type PostType = {
     id: string
@@ -59,7 +60,7 @@ export type SetUserProfileAT = {
 export const AddPost = (): AddPostAT => ({
     type: 'ADD-POST',
 }) as const
-export const UpdateNewText = (newText: string): UpdateNewTextAT => ({
+export const UpdateNewPostText = (newText: string): UpdateNewTextAT => ({
     type: 'UPDATE-NEW-POST-TEXT',
     payload: {newText},
 }) as const
@@ -67,3 +68,15 @@ export const SetUserProfile = (profile: ProfileType): SetUserProfileAT => ({
     type: 'SET-USER-PROFILE',
     payload: {profile},
 }) as const
+
+export const GetProfile = (userId: string) => {
+    return (dispatch: any) => {
+        if (!userId) {
+            userId = '2'
+        }
+        usersAPI.getProfile(userId)
+            .then(data => {
+                dispatch(SetUserProfile(data))
+            })
+    }
+}

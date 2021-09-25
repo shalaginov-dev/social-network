@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 type LocationType = {
     city: string
     country: string
@@ -121,11 +123,11 @@ export type ToggleIsFollowingProgressAT = {
     }
 }
 
-export const Follow = (userId: string): FollowAT => ({
+export const FollowSuccess = (userId: string): FollowAT => ({
     type: 'FOLLOW',
     payload: {userId},
 }) as const
-export const Unfollow = (userId: string): UnfollowAT => ({
+export const UnfollowSuccess = (userId: string): UnfollowAT => ({
     type: 'UNFOLLOW',
     payload: {userId},
 }) as const
@@ -149,3 +151,41 @@ export const ToggleFollowingProgress = (isFetching: boolean, userId: string): To
     type: 'TOGGLE-IS-FOLLOWING-PROGRESS',
     payload: {isFetching, userId},
 }) as const
+
+
+export const GetUsers = (currentPage: number, pageSize: number) => {
+    return (dispatch: any) => {
+        dispatch(SetCurrentPage(currentPage))
+        dispatch(ToggleIsFetching(true))
+
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(ToggleIsFetching(false))
+            dispatch(SetUsers(data.items))
+            dispatch(SetTotalUsersCount(data.totalCount))
+        })
+    }
+}
+export const Follow = (userId: string) => {
+    return (dispatch: any) => {
+        dispatch(ToggleFollowingProgress(true, userId))
+        usersAPI.follow(userId)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(FollowSuccess(userId))
+                }
+                dispatch(ToggleFollowingProgress(false, userId))
+            })
+    }
+}
+export const Unfollow = (userId: string) => {
+    return (dispatch: any) => {
+        dispatch(ToggleFollowingProgress(true, userId))
+        usersAPI.unfollow(userId)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(UnfollowSuccess(userId))
+                }
+                dispatch(ToggleFollowingProgress(false, userId))
+            })
+    }
+}

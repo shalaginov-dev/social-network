@@ -4,6 +4,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {ProfileContainerPropsType} from "./ProfileContainer";
 
 function Profile(props: ProfileContainerPropsType) {
+
     return (
         <div>
             <ProfileInfo profile={props.profile}/>

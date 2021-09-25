@@ -90,11 +90,11 @@ export type UpdateNewMessageTextAT = {
     payload: { newMessage: string }
 }
 
-export const AddMessageAC = (messageText: string): AddMessageAT => ({
+export const AddMessage = (messageText: string): AddMessageAT => ({
     type: 'ADD-MESSAGE',
     payload: {messageText},
 }) as const
-export const UpdateNewMessageTextAC = (newMessage: string): UpdateNewMessageTextAT => ({
+export const UpdateNewMessageText = (newMessage: string): UpdateNewMessageTextAT => ({
     type: 'UPDATE-NEW-MESSAGE-TEXT',
     payload:{newMessage},
 }) as const

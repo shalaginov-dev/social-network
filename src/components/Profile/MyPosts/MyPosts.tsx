@@ -4,20 +4,13 @@ import Post from "./Post/Post";
 import {PostType} from "../../../redux/profile-reducer";
 
 type PostsType = {
-    posts: Array<PostType>
     newPostText: string
-    addPost: () => void
-    updateNewPostText: (text: string) => void
+    posts: Array<PostType>
+    AddPost: () => void
+    UpdateNewPostText: (text: string) => void
 }
 
 function MyPosts(props: PostsType) {
-
-    let onAddPost = () => {
-        props.addPost()
-    }
-    let onPostChange = (text: string) => {
-        props.updateNewPostText(text)
-    }
 
     return (
         <div className={s.postsBlock}>
@@ -28,11 +21,11 @@ function MyPosts(props: PostsType) {
                 <div>
                     <textarea value={props.newPostText}
                               onChange={(e) => {
-                                  onPostChange(e.currentTarget.value)
+                                  props.UpdateNewPostText(e.currentTarget.value)
                               }}/>
                 </div>
                 <div>
-                    <button onClick={onAddPost}>Add Post</button>
+                    <button onClick={() => {props.AddPost()}}>Add Post</button>
                 </div>
             </div>
             <div className={s.posts}>
