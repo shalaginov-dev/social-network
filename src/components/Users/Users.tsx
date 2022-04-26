@@ -1,7 +1,7 @@
 import s from "./Users.module.css";
 import cat from "../../assets/images/cat.png";
 import React from "react";
-import {UsersType} from "../../redux/users-reducer";
+import {UsersType} from "../../state/reducers/users-reducer";
 import {NavLink} from "react-router-dom";
 
 export type UsersPropsType = {

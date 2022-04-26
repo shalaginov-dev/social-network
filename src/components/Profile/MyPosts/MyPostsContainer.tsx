@@ -1,7 +1,8 @@
-import {AddPost, PostType, UpdateNewPostText} from "../../../redux/profile-reducer";
+import { PostType } from "../../../state/reducers/profile-reducer";
 import {connect} from "react-redux";
-import {StateType} from "../../../redux/redux-store";
+import {StateType} from "../../../state/store";
 import MyPosts from "./MyPosts";
+import {AddPost, UpdateNewPostText} from "../../../state/actions/profile-actions";
 
 type MapStatePropsType = {
     newPostText: string

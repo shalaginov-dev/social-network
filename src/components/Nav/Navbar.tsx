@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
-import {InitialDialogsType} from "../../redux/dialogs-reducer";
-import {StateType} from "../../redux/redux-store";
-import {InitialSidebarType} from "../../redux/sidebar-reducer";
+import {InitialDialogsType} from "../../state/reducers/dialogs-reducer";
+import {StateType} from "../../state/store";
+import {InitialSidebarType} from "../../state/reducers/sidebar-reducer";
 import s from "./Nav.module.css"
 
 type PropsType = {

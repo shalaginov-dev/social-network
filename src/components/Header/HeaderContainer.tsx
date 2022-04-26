@@ -1,8 +1,9 @@
 import React from 'react'
 import Header from "./Header"
 import {connect} from "react-redux"
-import {AuthType, GetAuthUserData, SetAuthUserData} from "../../redux/auth-reducer"
-import {StateType} from "../../redux/redux-store"
+import {AuthType} from "../../state/reducers/auth-reducer"
+import {StateType} from "../../state/store"
+import {GetAuthUserData, SetAuthUserData} from "../../state/actions/auth-actions";
 
 export type HeaderContainerPropsType = {
     isAuth: boolean

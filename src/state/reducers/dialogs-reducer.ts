@@ -1,4 +1,6 @@
 import {v1} from "uuid"
+import {ACTIONS_TYPE} from "../actions/auth-actions";
+import {DialogsActionsType} from "../actions/dialogs-actions";
 
 export type DialogType = {
     id: string
@@ -14,7 +16,6 @@ export type InitialDialogsType = {
     messages: Array<MessageType>
     newMessageText: string
 }
-type ActionsType = AddMessageAT | UpdateNewMessageTextAT
 
 let initialState: InitialDialogsType = {
     dialogs: [
@@ -31,7 +32,7 @@ let initialState: InitialDialogsType = {
         {
             id: v1(),
             name: 'Sveta',
-            img: 'https://wlcat.ru/wp-content/uploads/2020/10/Cat-Wearing-COVID-19-Mask.jpg'
+            img: 'https://c.ndtvimg.com/2020-08/h5mk7js_cat-generic_625x300_28_August_20.jpg?im=Resize=(1230,900)'
         },
         // {
         //     id: v1(),
@@ -60,17 +61,16 @@ let initialState: InitialDialogsType = {
     newMessageText: ''
 }
 
-export const dialogsReducer = (state: InitialDialogsType = initialState, action: ActionsType): InitialDialogsType => {
-
+export const dialogsReducer = (state: InitialDialogsType = initialState, action: DialogsActionsType): InitialDialogsType => {
     switch (action.type) {
-        case 'ADD-MESSAGE':
+        case ACTIONS_TYPE.ADD_MESSAGE :
             let message = action.payload.messageText
             return  {
                 ...state,
                 messages: [...state.messages, {id: v1(), message: message}],
                 newMessageText: ''
             }
-        case 'UPDATE-NEW-MESSAGE-TEXT':
+        case ACTIONS_TYPE.UPDATE_NEW_MESSAGE_TEXT:
             return {
                 ...state,
                 newMessageText: action.payload.newMessage
@@ -79,22 +79,3 @@ export const dialogsReducer = (state: InitialDialogsType = initialState, action:
             return state
     }
 }
-
-
-export type AddMessageAT = {
-    type: 'ADD-MESSAGE'
-    payload: { messageText: string }
-}
-export type UpdateNewMessageTextAT = {
-    type: 'UPDATE-NEW-MESSAGE-TEXT'
-    payload: { newMessage: string }
-}
-
-export const AddMessage = (messageText: string): AddMessageAT => ({
-    type: 'ADD-MESSAGE',
-    payload: {messageText},
-}) as const
-export const UpdateNewMessageText = (newMessage: string): UpdateNewMessageTextAT => ({
-    type: 'UPDATE-NEW-MESSAGE-TEXT',
-    payload:{newMessage},
-}) as const

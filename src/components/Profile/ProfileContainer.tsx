@@ -1,10 +1,9 @@
 import React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {StateType} from "../../redux/redux-store";
-import {GetProfile} from "../../redux/profile-reducer";
+import {StateType} from "../../state/store";
 import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
-import axios from "axios";
+import {GetProfile} from "../../state/actions/profile-actions";
 
 export type ContactsType = {
     facebook: string
@@ -45,20 +44,13 @@ export type ProfileContainerPropsType = RouteComponentProps<PathParamsType> & Ow
 export class ProfileContainer extends React.Component<ProfileContainerPropsType> {
 
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/profile/2')
-            .then(response => {
-                console.log(response)
-                console.log(response.data)
-            })
         this.props.GetProfile(this.props.match.params.userId)
     }
 
     render() {
-        if (!this.props.isAuth) return <Redirect to={'/login'} />
-
-        return (
-            <Profile {...this.props} profile={this.props.profile}/>
-        )
+        return !this.props.isAuth
+            ? <Redirect to={'/login'}/>
+            : <Profile {...this.props} profile={this.props.profile}/>
     }
 }
 

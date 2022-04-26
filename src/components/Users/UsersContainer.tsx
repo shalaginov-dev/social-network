@@ -1,14 +1,12 @@
 import {connect} from 'react-redux';
-import {StateType} from '../../redux/redux-store';
+import {StateType} from '../../state/store';
 import {
-    Follow,
-    GetUsers,
-    Unfollow,
     UsersType
-} from '../../redux/users-reducer';
+} from '../../state/reducers/users-reducer';
 import React from "react";
 import {Users} from "./Users";
 import {Preloader} from "../common/preloader/preloader";
+import {Follow, GetUsers, Unfollow} from "../../state/actions/users-actions";
 
 export type UsersContainerPropsType = {
     users: Array<UsersType>
