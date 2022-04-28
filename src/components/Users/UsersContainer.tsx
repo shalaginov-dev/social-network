@@ -21,7 +21,6 @@ export type UsersContainerPropsType = {
 }
 
 export class UsersContainer extends React.Component<UsersContainerPropsType> {
-
     componentDidMount() {
         this.props.GetUsers(this.props.currentPage, this.props.pageSize)
     }

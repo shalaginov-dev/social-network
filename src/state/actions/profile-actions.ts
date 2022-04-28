@@ -30,9 +30,6 @@ export const SetUserProfile = (profile: ProfileType): SetUserProfileAT => ({
 
 export const GetProfile = (userId: string = '2') => {
     return (dispatch: any) => {
-        usersAPI.getProfile(userId)
-            .then(data => {
-                dispatch(SetUserProfile(data))
-            })
+        usersAPI.getProfile(userId).then(data => dispatch(SetUserProfile(data)))
     }
 }

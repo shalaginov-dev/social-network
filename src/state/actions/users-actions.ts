@@ -75,39 +75,28 @@ export const ToggleFollowingProgress = (isFetching: boolean, userId: string): To
 
 
 export const GetUsers = (currentPage: number, pageSize: number) => {
-    return (dispatch: any) => {
+    return async (dispatch: any) => {
         dispatch(SetCurrentPage(currentPage))
         dispatch(ToggleIsFetching(true))
-
-        usersAPI.getUsers(currentPage, pageSize)
-            .then(data => {
-                dispatch(ToggleIsFetching(false))
-                dispatch(SetUsers(data.items))
-                dispatch(SetTotalUsersCount(data.totalCount))
-            })
+        const data = await usersAPI.getUsers(currentPage, pageSize)
+        dispatch(ToggleIsFetching(false))
+        dispatch(SetUsers(data.items))
+        dispatch(SetTotalUsersCount(data.totalCount))
     }
 }
 export const Follow = (userId: string) => {
-    return (dispatch: any) => {
+    return async (dispatch: any) => {
         dispatch(ToggleFollowingProgress(true, userId))
-        usersAPI.follow(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(FollowSuccess(userId))
-                }
-                dispatch(ToggleFollowingProgress(false, userId))
-            })
+        const data = await usersAPI.follow(userId)
+        data.resultCode === 0 && dispatch(FollowSuccess(userId))
+        dispatch(ToggleFollowingProgress(false, userId))
     }
 }
 export const Unfollow = (userId: string) => {
-    return (dispatch: any) => {
+    return async (dispatch: any) => {
         dispatch(ToggleFollowingProgress(true, userId))
-        usersAPI.unfollow(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(UnfollowSuccess(userId))
-                }
-                dispatch(ToggleFollowingProgress(false, userId))
-            })
+        const data = await usersAPI.unfollow(userId)
+        data.resultCode === 0 && dispatch(UnfollowSuccess(userId))
+        dispatch(ToggleFollowingProgress(false, userId))
     }
 }

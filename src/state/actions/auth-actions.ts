@@ -18,7 +18,6 @@ export enum ACTIONS_TYPE {
     SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT',
     TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING',
     TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS',
-
 }
 
 export type DataType = {
@@ -41,11 +40,6 @@ export const SetAuthUserData = (data: DataType): SetUserDataAT => ({
 
 export const GetAuthUserData = () => {
     return (dispatch: any) => {
-        authAPI.me()
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(SetAuthUserData(data.data))
-                }
-            })
+        authAPI.me().then(res => res.resultCode === 0 && dispatch(SetAuthUserData(res.data)))
     }
 }
