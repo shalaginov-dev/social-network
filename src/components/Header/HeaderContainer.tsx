@@ -4,6 +4,10 @@ import {connect} from "react-redux"
 import {AuthType} from "../../state/reducers/auth-reducer"
 import {StateType} from "../../state/store"
 import {GetAuthUserData, SetAuthUserData} from "../../state/actions/auth-actions";
+import {compose} from "redux";
+import {Follow, GetUsers, Unfollow} from "../../state/actions/users-actions";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {UsersContainer} from "../Users/UsersContainer";
 
 export type HeaderContainerPropsType = {
     isAuth: boolean
@@ -29,7 +33,7 @@ const mapStateToProps = (state: StateType) => ({
     login: state.auth.login,
 })
 
-export default connect(mapStateToProps, {
-    SetAuthUserData,
-    GetAuthUserData,
-})(HeaderContainer)
+
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {SetAuthUserData, GetAuthUserData,}),
+)(HeaderContainer)

@@ -7,6 +7,11 @@ import React from "react";
 import {Users} from "./Users";
 import {Preloader} from "../common/preloader/preloader";
 import {Follow, GetUsers, Unfollow} from "../../state/actions/users-actions";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {ProfileContainer} from "../Profile/ProfileContainer";
+import {compose} from "redux";
+import {AddMessage, UpdateNewMessageText} from "../../state/actions/dialogs-actions";
+import Dialogs from "../Dialogs/Dialogs";
 
 export type UsersContainerPropsType = {
     users: Array<UsersType>
@@ -57,8 +62,7 @@ const mapStateToProps = (state: StateType) => {
     }
 }
 
-export default connect(mapStateToProps, {
-    GetUsers,
-    Follow,
-    Unfollow,
-})(UsersContainer)
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {GetUsers, Follow, Unfollow,}),
+    withAuthRedirect,
+)(UsersContainer)

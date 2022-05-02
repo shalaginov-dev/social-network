@@ -3,7 +3,6 @@ import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {InitialDialogsType} from "../../state/reducers/dialogs-reducer";
-import {Redirect} from "react-router-dom";
 
 type DialogsType = {
     dialogsPage: InitialDialogsType
@@ -14,21 +13,18 @@ type DialogsType = {
 
 function Dialogs(props: DialogsType) {
 
-    return !props.isAuth
-        ? <Redirect to={'/login'}/>
-        : (
-            <div className={s.dialogs}>
-                <div className={s.dialogsItems}>
-                    {
-                        props.dialogsPage.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id} img={d.img}/>)
-                    }
-                </div>
-                <div className={s.messages}>
-                    {
-                        props.dialogsPage.messages.map(m => <Message key={m.id} message={m.message}/>)
-                    }
-                </div>
-                <div className={s.newMessage}>
+    return <div className={s.dialogs}>
+        <div className={s.dialogsItems}>
+            {
+                props.dialogsPage.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id} img={d.img}/>)
+            }
+        </div>
+        <div className={s.messages}>
+            {
+                props.dialogsPage.messages.map(m => <Message key={m.id} message={m.message}/>)
+            }
+        </div>
+        <div className={s.newMessage}>
                 <textarea
                     placeholder='Enter your message'
                     value={props.dialogsPage.newMessageText}
@@ -36,13 +32,12 @@ function Dialogs(props: DialogsType) {
                         props.UpdateNewMessageText(e.currentTarget.value)
                     }}
                 />
-                    <button onClick={() => {
-                        props.AddMessage(props.dialogsPage.newMessageText)
-                    }}>Send
-                    </button>
-                </div>
-            </div>
-        )
+            <button onClick={() => {
+                props.AddMessage(props.dialogsPage.newMessageText)
+            }}>Send
+            </button>
+        </div>
+    </div>
 }
 
 export default Dialogs
