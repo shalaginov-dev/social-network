@@ -23,8 +23,8 @@ export const Users = (props: UsersPropsType) => {
         pages.push(i)
     }
     return (
-        <div>
-            <div>
+        <div className={s.userWrapper}>
+            <div className={s.pageWrapper}>
                 {
                     pages.map(p => <span
                         key={p}
@@ -54,7 +54,7 @@ export const Users = (props: UsersPropsType) => {
                             }
                         </div>
                     </span>
-                    <span>
+                    <span className={s.userInfo}>
                         <span>
                             <div>{u.name}</div>
                             <div>{u.status}</div>

@@ -64,10 +64,9 @@ let initialState: InitialDialogsType = {
 export const dialogsReducer = (state: InitialDialogsType = initialState, action: DialogsActionsType): InitialDialogsType => {
     switch (action.type) {
         case ACTIONS_TYPE.ADD_MESSAGE :
-            let message = action.payload.messageText
             return  {
                 ...state,
-                messages: [...state.messages, {id: v1(), message: message}],
+                messages: [...state.messages, {id: v1(), message: action.payload.messageText}],
                 newMessageText: ''
             }
         case ACTIONS_TYPE.UPDATE_NEW_MESSAGE_TEXT:

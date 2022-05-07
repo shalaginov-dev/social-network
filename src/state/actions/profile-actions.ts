@@ -28,7 +28,7 @@ export const SetUserProfile = (profile: ProfileType): SetUserProfileAT => ({
     payload: {profile},
 })
 
-export const GetProfile = (userId: string = '2') => {
+export const GetProfile = (userId: string  = '2') => {
     return (dispatch: any) => {
         usersAPI.getProfile(userId).then(data => dispatch(SetUserProfile(data)))
     }

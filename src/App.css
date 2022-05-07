@@ -1,16 +1,21 @@
+
+
 .app-wrapper {
+    background-color: #363636;
     margin: 0 auto;
     display: grid;
-    width: 900px;
+    width: 800px;
     grid-template-areas:
             'h h'
             'n c';
-    grid-template-rows: 60px 1fr;
+    /*grid-template-rows: 60px 1fr;*/
     grid-template-columns: 2fr 10fr;
-    grid-gap: 10px;
 }
 
 .app-wrapper-content {
+    border: #000000 3px solid;
+    border-top: 0;
+    border-left: 0;
     grid-area: c;
-    background-color: darkseagreen;
+    background-color: #25252a;
 }

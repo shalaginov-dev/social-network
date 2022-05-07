@@ -4,13 +4,15 @@
 
 .descriptionBlock {
     padding: 10px;
+    color: white;
 }
 
 .mainImg {
     width: 100%;
 }
 
-.aboutMe {
+.name {
+    color: white;
     margin-left: 50px;
     margin-top: 10px;
 }

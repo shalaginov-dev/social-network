@@ -5,6 +5,7 @@ import {InitialDialogsType} from "../../state/reducers/dialogs-reducer";
 import {StateType} from "../../state/store";
 import {InitialSidebarType} from "../../state/reducers/sidebar-reducer";
 import s from "./Nav.module.css"
+import {compose} from "redux";
 
 type PropsType = {
     sidebar: InitialSidebarType
@@ -18,7 +19,7 @@ function Navbar(props: PropsType) {
             <div className={s.nav}>
                 {
                     props.sidebar.navigation.map(n => <div className={s.item} key={n.id}>
-                        <NavLink to={n.to} activeClassName={s.activeLink}>{n.title}</NavLink>
+                        <NavLink to={n.to}>{n.title}</NavLink>
                     </div>)
                 }
             </div>
@@ -46,4 +47,6 @@ const mapStateToProps = (state: StateType) => {
     }
 }
 
-export const NavbarContainer = connect(mapStateToProps)(Navbar)
+export default compose<React.ComponentType>(
+    connect(mapStateToProps)
+)(Navbar)

@@ -1,6 +1,8 @@
 .sidebar {
+    border: #000000 3px solid;
+    border-top: 0;
     grid-area: n;
-    background-color: darkseagreen;
+    background-color: #25252a;
     padding: 20px;
     height: 100vh;
 }

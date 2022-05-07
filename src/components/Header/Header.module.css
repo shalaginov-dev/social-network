@@ -1,6 +1,8 @@
 .header {
+    border: #000000 3px solid;
+    border-top-width: 0;
     grid-area: h;
-    background-color: darkgreen;
+    background-color: #25252a;
 }
 
 .header img {
@@ -12,5 +14,8 @@
 }
 
 .loginBlock a {
+    color: white;
+}
+.loginBlock {
     color: white;
 }

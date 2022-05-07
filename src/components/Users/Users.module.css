@@ -1,18 +1,32 @@
+.userWrapper {
+    margin: 10px;
+}
+
 .userPhoto {
     width: 40px;
     height: 40px;
     border-radius: 50px 50px;
 }
 
+.pageWrapper {
+    padding-bottom: 10px;
+}
+
 .page {
     cursor: pointer;
+    color: white;
 }
 
 .selectedPage {
     font-weight: bold;
     cursor: pointer;
+    color: #888787;
 }
 
 .preloader {
-    background-color: darkseagreen;
+    background-color: #25252a;
+}
+
+.userInfo {
+    color: white;
 }

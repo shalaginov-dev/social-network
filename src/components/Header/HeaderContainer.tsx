@@ -5,9 +5,6 @@ import {AuthType} from "../../state/reducers/auth-reducer"
 import {StateType} from "../../state/store"
 import {GetAuthUserData, SetAuthUserData} from "../../state/actions/auth-actions";
 import {compose} from "redux";
-import {Follow, GetUsers, Unfollow} from "../../state/actions/users-actions";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {UsersContainer} from "../Users/UsersContainer";
 
 export type HeaderContainerPropsType = {
     isAuth: boolean

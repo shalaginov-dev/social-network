@@ -8,10 +8,7 @@ import {Users} from "./Users";
 import {Preloader} from "../common/preloader/preloader";
 import {Follow, GetUsers, Unfollow} from "../../state/actions/users-actions";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {ProfileContainer} from "../Profile/ProfileContainer";
 import {compose} from "redux";
-import {AddMessage, UpdateNewMessageText} from "../../state/actions/dialogs-actions";
-import Dialogs from "../Dialogs/Dialogs";
 
 export type UsersContainerPropsType = {
     users: Array<UsersType>

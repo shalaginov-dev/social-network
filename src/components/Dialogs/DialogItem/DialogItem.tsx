@@ -8,7 +8,7 @@ function DialogItem(props: DialogType) {
     let path = '/dialogs/' + props.id
     return <div className={s.dialog}>
         <img src={props.img} alt="#" className={s.dialogImg}/>
-        <NavLink className={s.dialogName} activeClassName={s.active} to={path}>{props.name}</NavLink>
+        <NavLink className={s.dialogName} to={path}>{props.name}</NavLink>
     </div>
 }
 

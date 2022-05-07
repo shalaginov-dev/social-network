@@ -41,6 +41,6 @@
 }
 
 .newMessage {
-
+    padding-left: 18px;
     display: flex;
 }
