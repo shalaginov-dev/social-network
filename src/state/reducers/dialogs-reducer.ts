@@ -1,6 +1,6 @@
 import {v1} from "uuid"
-import {ACTIONS_TYPE} from "../actions/auth-actions";
 import {DialogsActionsType} from "../actions/dialogs-actions";
+import {ACTIONS_TYPE} from "../actions/action-types";
 
 export type DialogType = {
     id: string

@@ -1,6 +1,6 @@
 import {usersAPI} from "../../api/api";
 import {UsersType} from "../reducers/users-reducer";
-import {ACTIONS_TYPE} from "./auth-actions";
+import {ACTIONS_TYPE} from "./action-types";
 
 export type FollowAT = {
     type: ACTIONS_TYPE.FOLLOW

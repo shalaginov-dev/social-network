@@ -1,4 +1,5 @@
-import {ACTIONS_TYPE, AuthActionsType} from "../actions/auth-actions";
+import {AuthActionsType} from "../actions/auth-actions";
+import {ACTIONS_TYPE} from "../actions/action-types";
 
 export type AuthType = {
     id: number | null

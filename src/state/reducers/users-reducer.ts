@@ -1,5 +1,5 @@
-import {ACTIONS_TYPE} from "../actions/auth-actions";
 import {UsersActionsType} from "../actions/users-actions";
+import {ACTIONS_TYPE} from "../actions/action-types";
 
 type LocationType = {
     city: string

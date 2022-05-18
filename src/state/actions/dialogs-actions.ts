@@ -1,4 +1,4 @@
-import {ACTIONS_TYPE} from "./auth-actions";
+import {ACTIONS_TYPE} from "./action-types";
 
 export type AddMessageAT = {
     type: ACTIONS_TYPE.ADD_MESSAGE

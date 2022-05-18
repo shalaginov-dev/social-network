@@ -1,17 +1,29 @@
 import {v1} from "uuid"
-import {ProfileType} from "../../components/Profile/ProfileContainer";
-import {ACTIONS_TYPE} from "../actions/auth-actions";
+import {ContactsType, PhotosType} from "../../components/Profile/ProfileContainer";
 import {ProfileActionsType} from "../actions/profile-actions";
+import {ACTIONS_TYPE} from "../actions/action-types";
 
 export type PostType = {
     id: string
     message: string
     likesCounter: number
 }
+
+export type ProfileType = {
+    aboutMe: string
+    contacts: ContactsType
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    userId: number
+    photos: PhotosType
+}
+
 export type InitialProfileType = {
     posts: Array<PostType>
     newPostText: string
     profile: ProfileType | null
+    status: string
 }
 
 let initialState: InitialProfileType = {
@@ -20,7 +32,8 @@ let initialState: InitialProfileType = {
         {id: v1(), message: "It's my  first post", likesCounter: 5},
     ],
     newPostText: '',
-    profile: null
+    profile: null,
+    status: ''
 }
 
 export const profileReducer = (state: InitialProfileType = initialState, action: ProfileActionsType): InitialProfileType => {
@@ -33,12 +46,13 @@ export const profileReducer = (state: InitialProfileType = initialState, action:
                 newPostText: ''
             }
         case ACTIONS_TYPE.UPDATE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.payload.newText
-            }
+            return {...state, newPostText: action.payload.newText}
         case ACTIONS_TYPE.SET_USER_PROFILE:
             return {...state, profile: action.payload.profile}
+        case ACTIONS_TYPE.SET_USER_STATUS:
+            return {...state, status: action.payload.status}
+        case ACTIONS_TYPE.UPDATE_USER_STATUS:
+            return {...state, status: action.payload.status}
         default:
             return state
     }
