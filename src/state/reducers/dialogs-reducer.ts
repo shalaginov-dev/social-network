@@ -14,7 +14,6 @@ export type MessageType = {
 export type InitialDialogsType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
-    newMessageText: string
 }
 
 let initialState: InitialDialogsType = {
@@ -58,7 +57,6 @@ let initialState: InitialDialogsType = {
         {id: v1(), message: 'Yooo'},
         {id: v1(), message: 'Yoooo'}
     ],
-    newMessageText: ''
 }
 
 export const dialogsReducer = (state: InitialDialogsType = initialState, action: DialogsActionsType): InitialDialogsType => {
@@ -67,12 +65,6 @@ export const dialogsReducer = (state: InitialDialogsType = initialState, action:
             return  {
                 ...state,
                 messages: [...state.messages, {id: v1(), message: action.payload.messageText}],
-                newMessageText: ''
-            }
-        case ACTIONS_TYPE.UPDATE_NEW_MESSAGE_TEXT:
-            return {
-                ...state,
-                newMessageText: action.payload.newMessage
             }
         default:
             return state

@@ -4,7 +4,6 @@ import {
     useParams,
 } from "react-router-dom";
 import {ComponentType} from "react";
-import {OwnPropsType} from "../components/Profile/ProfileContainer";
 
 export type PathParamsType = {
     router: {

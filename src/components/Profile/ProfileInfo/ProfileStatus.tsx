@@ -10,6 +10,10 @@ export const ProfileStatus = React.memo((props: ProfileStatusType) => {
     const [editMode, setEditMode] = useState(false)
     const [title, setTitle] = useState(props.status)
 
+    useEffect(()=> {
+        setTitle(props.status)
+    },[props.status])
+
     const activateEditMode = () => {
         setEditMode(true)
         setTitle(title)
@@ -29,10 +33,6 @@ export const ProfileStatus = React.memo((props: ProfileStatusType) => {
         setTitle(e.currentTarget.value)
     }
 
-    useEffect(()=> {
-        setTitle(props.status)
-    },[props.status])
-
     return (
         editMode
             ? <input
@@ -42,6 +42,6 @@ export const ProfileStatus = React.memo((props: ProfileStatusType) => {
                 autoFocus
                 onKeyPress={onKeyPressHandler}
             />
-            : <span className={s.status} onDoubleClick={activateEditMode}>{title || '...'}</span>
+            : <span className={s.status} onDoubleClick={activateEditMode}>{title}</span>
     )
 })

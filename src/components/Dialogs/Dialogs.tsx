@@ -3,15 +3,17 @@ import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {InitialDialogsType} from "../../state/reducers/dialogs-reducer";
+import {AddMessageFormDataType, AddMessageReduxForm} from "../Login/AddMessageForm";
 
 type DialogsType = {
     dialogsPage: InitialDialogsType
-    isAuth: boolean
-    UpdateNewMessageText: (value: string) => void
     AddMessage: (newMessageText: string) => void
 }
 
 function Dialogs(props: DialogsType) {
+    const onSubmit = (formData: AddMessageFormDataType) => {
+        props.AddMessage(formData.newMessage)
+    }
 
     return <div className={s.dialogs}>
         <div className={s.dialogsItems}>
@@ -25,17 +27,7 @@ function Dialogs(props: DialogsType) {
             }
         </div>
         <div className={s.newMessage}>
-                <textarea
-                    placeholder='Enter your message'
-                    value={props.dialogsPage.newMessageText}
-                    onChange={(e) => {
-                        props.UpdateNewMessageText(e.currentTarget.value)
-                    }}
-                />
-            <button onClick={() => {
-                props.AddMessage(props.dialogsPage.newMessageText)
-            }}>Send
-            </button>
+            <AddMessageReduxForm onSubmit={onSubmit} />
         </div>
     </div>
 }

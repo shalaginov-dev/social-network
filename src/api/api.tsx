@@ -40,6 +40,3 @@ export const authAPI = {
       return instance.post(`auth/login`, {email, password, rememberMe, captcha})
     },
 }
-
-console.log(authAPI.login('bone023@mail.ru', 'iloveyou23', true, true))
-// console.log(authAPI.me())

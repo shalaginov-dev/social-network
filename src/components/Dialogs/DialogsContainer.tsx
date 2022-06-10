@@ -1,6 +1,6 @@
 import {StateType} from "../../state/store";
 import {connect} from "react-redux";
-import {AddMessage, UpdateNewMessageText} from "../../state/actions/dialogs-actions";
+import {AddMessage} from "../../state/actions/dialogs-actions";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import React from "react";
@@ -13,6 +13,6 @@ const mapStateToProps = (state: StateType) => {
 }
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {UpdateNewMessageText, AddMessage,}),
+    connect(mapStateToProps, {AddMessage,}),
     withAuthRedirect,
 )(Dialogs)
