@@ -21,7 +21,6 @@ export type ProfileType = {
 
 export type InitialProfileType = {
     posts: Array<PostType>
-    newPostText: string
     profile: ProfileType | null
     status: string
 }
@@ -31,7 +30,6 @@ let initialState: InitialProfileType = {
         {id: v1(), message: 'Hi, how are you?', likesCounter: 2},
         {id: v1(), message: "It's my  first post", likesCounter: 5},
     ],
-    newPostText: '',
     profile: null,
     status: ''
 }
@@ -39,14 +37,10 @@ let initialState: InitialProfileType = {
 export const profileReducer = (state: InitialProfileType = initialState, action: ProfileActionsType): InitialProfileType => {
     switch (action.type) {
         case ACTIONS_TYPE.ADD_POST:
-            let message = state.newPostText
             return {
                 ...state,
-                posts: [...state.posts, {id: v1(), message: message, likesCounter: 0}],
-                newPostText: ''
+                posts: [...state.posts, {id: v1(), message: action.payload.newText, likesCounter: 0}],
             }
-        case ACTIONS_TYPE.UPDATE_NEW_POST_TEXT:
-            return {...state, newPostText: action.payload.newText}
         case ACTIONS_TYPE.SET_USER_PROFILE:
             return {...state, profile: action.payload.profile}
         case ACTIONS_TYPE.SET_USER_STATUS:

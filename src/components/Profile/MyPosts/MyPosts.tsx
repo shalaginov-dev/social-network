@@ -2,31 +2,25 @@ import React from "react";
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 import {PostType} from "../../../state/reducers/profile-reducer";
+import {AddPostFormDataType, AddPostReduxForm} from "../../Login/AddPostForm";
+import {AddMessageFormDataType} from "../../Login/AddMessageForm";
 
 type PostsType = {
-    newPostText: string
     posts: Array<PostType>
-    AddPost: () => void
-    UpdateNewPostText: (text: string) => void
+    AddPost: (newText: string) => void
 }
 
 function MyPosts(props: PostsType) {
-
+    const onSubmit = (formData: AddPostFormDataType) => {
+        props.AddPost(formData.newPostMessage)
+    }
     return (
         <div className={s.postsBlock}>
             <h3>
                 my post
             </h3>
             <div>
-                <div>
-                    <textarea value={props.newPostText}
-                              onChange={(e) => {
-                                  props.UpdateNewPostText(e.currentTarget.value)
-                              }}/>
-                </div>
-                <div>
-                    <button onClick={() => {props.AddPost()}}>Add Post</button>
-                </div>
+                <AddPostReduxForm onSubmit={onSubmit}/>
             </div>
             <div className={s.posts}>
                 {

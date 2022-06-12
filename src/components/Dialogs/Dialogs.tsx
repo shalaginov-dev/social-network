@@ -12,7 +12,7 @@ type DialogsType = {
 
 function Dialogs(props: DialogsType) {
     const onSubmit = (formData: AddMessageFormDataType) => {
-        props.AddMessage(formData.newMessage)
+        props.AddMessage(formData.newDialogsMessage)
     }
 
     return <div className={s.dialogs}>

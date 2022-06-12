@@ -4,9 +4,6 @@ import {ACTIONS_TYPE} from "./action-types";
 
 export type AddPostAT = {
     type: ACTIONS_TYPE.ADD_POST
-}
-export type UpdateNewTextAT = {
-    type: ACTIONS_TYPE.UPDATE_NEW_POST_TEXT
     payload: { newText: string }
 }
 export type SetUserProfileAT = {
@@ -22,14 +19,11 @@ export type UpdateUserStatusAT = {
     payload: { status: string }
 }
 
-export type ProfileActionsType = AddPostAT | UpdateNewTextAT | SetUserProfileAT | SetUserStatusAT | UpdateUserStatusAT
+export type ProfileActionsType = AddPostAT  | SetUserProfileAT | SetUserStatusAT | UpdateUserStatusAT
 
-export const AddPost = (): AddPostAT => ({
+export const AddPost = (newText: string): AddPostAT => ({
     type: ACTIONS_TYPE.ADD_POST,
-})
-export const UpdateNewPostText = (newText: string): UpdateNewTextAT => ({
-    type: ACTIONS_TYPE.UPDATE_NEW_POST_TEXT,
-    payload: {newText},
+    payload: {newText, },
 })
 export const SetUserProfile = (profile: ProfileType): SetUserProfileAT => ({
     type: ACTIONS_TYPE.SET_USER_PROFILE,
