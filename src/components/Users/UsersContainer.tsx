@@ -5,7 +5,7 @@ import {
 } from '../../state/reducers/users-reducer';
 import React from "react";
 import {Users} from "./Users";
-import {Preloader} from "../common/preloader/preloader";
+import {Preloader} from "../common/Preloader/preloader";
 import {Follow, GetUsers, Unfollow} from "../../state/actions/users-actions";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";

@@ -1,6 +1,6 @@
 import React from "react";
 import s from './ProfileInfo.module.css'
-import {Preloader} from "../../common/preloader/preloader";
+import {Preloader} from "../../common/Preloader/preloader";
 import {ProfileStatus} from "./ProfileStatus";
 import {ProfileContainerPropsType} from "../ProfileContainer";
 
