@@ -1,8 +1,7 @@
-function News() {
+export const News = () => {
     return (
-     <div>
-         News
-     </div>
+        <div>
+            News
+        </div>
     )
 }
-export default News

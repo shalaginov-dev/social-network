@@ -6,7 +6,7 @@ export type NavigationType = {
     title: string
 }
 export type InitialSidebarType = {
-    navigation: Array<NavigationType>
+    navigation: NavigationType[]
 }
 
 let initialState: InitialSidebarType = {

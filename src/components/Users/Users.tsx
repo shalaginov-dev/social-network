@@ -3,6 +3,8 @@ import cat from "../../assets/images/cat.png";
 import React from "react";
 import {UsersType} from "../../state/reducers/users-reducer";
 import {NavLink} from "react-router-dom";
+import {Follow, Unfollow} from "../../state/actions/users-actions";
+import {useDispatch} from "react-redux";
 
 export type UsersPropsType = {
     users: Array<UsersType>
@@ -11,11 +13,10 @@ export type UsersPropsType = {
     currentPage: number
     followingInProgress: Array<string>
     onPageChanged: (pageNumber: number) => void
-    Follow: (userId: string) => void
-    Unfollow: (userId: string) => void
 }
 
 export const Users = (props: UsersPropsType) => {
+    const dispatch = useDispatch()
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let pages = []
@@ -46,10 +47,10 @@ export const Users = (props: UsersPropsType) => {
                         <div>
                             {u.followed
                                 ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                    props.Unfollow(u.id)
+                                    dispatch(Unfollow(u.id))
                                 }}>Unfollow</button>
                                 : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                    props.Follow(u.id)
+                                    dispatch(Follow(u.id))
                                 }}>Follow</button>
                             }
                         </div>

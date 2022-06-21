@@ -3,21 +3,33 @@ import s from './Login.module.css'
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
 import {requiredField} from "../../utils/validators/validators";
+import {Navigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {LogIn} from "../../state/actions/auth-actions";
 
 type FormDataType = {
-    login: string
+    email: string
     password: string
     rememberMe: boolean
 }
 
-export const Login = () => {
-    const onSubmit = (formData: FormDataType) => console.log(formData)
+type LoginPropsType = {
+    isAuth: boolean
+}
+
+export const Login = (props: LoginPropsType) => {
+    const dispatch = useDispatch()
+    const onSubmit = (formData: FormDataType) => {
+        dispatch(LogIn(formData.email, formData.password, formData.rememberMe))
+    }
 
     return (
-        <div>
-            <h1>LOGIN</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
-        </div>
+        props.isAuth
+            ? <Navigate replace to={'/profile'}/>
+            : <div>
+                <h1>LOGIN</h1>
+                <LoginReduxForm onSubmit={onSubmit}/>
+            </div>
     )
 }
 
@@ -28,10 +40,10 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                 <div>
                     <Field
                         component={Input}
-                        placeholder='Login'
-                        name='login'
+                        placeholder='Email'
+                        name='email'
                         validate={[requiredField]}
-                            />
+                    />
                 </div>
                 <div>
                     <Field

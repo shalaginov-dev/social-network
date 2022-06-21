@@ -1,18 +1,20 @@
-import {StateType} from "../../state/store";
-import {connect} from "react-redux";
-import {AddMessage} from "../../state/actions/dialogs-actions";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {compose} from "redux";
 import React from "react";
-import Dialogs from "./Dialogs";
+import { useSelector} from "react-redux";
+import {StateType} from "../../state/store";
+import {InitialDialogsType} from "../../state/reducers/dialogs-reducer";
+import {Dialogs} from "./Dialogs";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
-const mapStateToProps = (state: StateType) => {
-    return {
-        dialogsPage: state.dialogsPage,
-    }
+export const DialogsContainer = () => {
+    const dialogsPage = useSelector<StateType, InitialDialogsType>(state => state.dialogsPage)
+    //разбить dialogsPage на переменные
+
+    return (
+        <Dialogs dialogsPage={dialogsPage}  />
+    )
 }
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {AddMessage,}),
     withAuthRedirect,
-)(Dialogs)
+)(DialogsContainer)

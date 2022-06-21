@@ -12,8 +12,8 @@ export type MessageType = {
     message: string
 }
 export type InitialDialogsType = {
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
+    dialogs: DialogType[]
+    messages: MessageType[]
 }
 
 let initialState: InitialDialogsType = {

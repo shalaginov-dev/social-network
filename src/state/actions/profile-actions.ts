@@ -38,17 +38,17 @@ export const UpdateUserStatus = (status: string): UpdateUserStatusAT => ({
     payload: {status},
 })
 
-export const GetProfile = (userId: string = '2') => {
+export const GetProfile = (userId: string = '2'): any => {
     return (dispatch: any) => {
         profileAPI.getProfile(userId).then(res => dispatch(SetUserProfile(res)))
     }
 }
-export const GetStatus = (userId: string = '2') => {
+export const GetStatus = (userId: string = '2'): any => {
     return (dispatch: any) => {
         profileAPI.getStatus(userId).then(res => dispatch(SetUserStatus(res.data)))
     }
 }
-export const UpdateStatus = (status: string) => {
+export const UpdateStatus = (status: string): any => {
     return (dispatch: any) => {
         profileAPI.updateStatus(status).then(res => res.data.resultCode === 0 && dispatch(UpdateUserStatus(status)))
     }

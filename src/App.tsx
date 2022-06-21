@@ -1,26 +1,26 @@
 import React from 'react';
 import './App.css';
-import Navbar from "./components/Nav/Navbar";
 import {Route, Routes} from 'react-router-dom'
-import News from './components/News';
-import Music from './components/Music';
-import Settings from './components/Settings';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
+import {News} from './components/News';
+import {Music} from './components/Music';
+import {Settings} from './components/Settings';
+import {NavbarContainer} from "./components/Nav/NavbarContainer";
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import {Login} from "./components/Login/Login";
+import LoginContainer from "./components/Login/LoginContainer";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
     return (
         <div>
             <HeaderContainer/>
             <div className="app-wrapper">
-                <Navbar/>
+                <NavbarContainer/>
                 <div className="app-wrapper-content">
                     <Routes>
-                        <Route path='/login' element={<Login/>}/>
+                        <Route path='/login' element={<LoginContainer/>}/>
                         <Route path='/dialogs' element={<DialogsContainer/>}/>
                         <Route path='/profile' element={<ProfileContainer/>}>
                             <Route path='/profile/:userId' element={<ProfileContainer/>}/>
@@ -33,8 +33,5 @@ const App: React.FC = () => {
                 </div>
             </div>
         </div>
-
-    );
+    )
 }
-
-export default App;

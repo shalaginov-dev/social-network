@@ -1,18 +1,20 @@
 import React from "react";
 import s from "./MyPosts.module.css"
-import Post from "./Post/Post";
-import {PostType} from "../../../state/reducers/profile-reducer";
+import {Post} from "./Post/Post";
 import {AddPostFormDataType, AddPostReduxForm} from "../../Login/AddPostForm";
-import {AddMessageFormDataType} from "../../Login/AddMessageForm";
+import {useDispatch} from "react-redux";
+import {AddPost} from "../../../state/actions/profile-actions";
+import {PostType} from "../../../state/reducers/profile-reducer";
 
-type PostsType = {
-    posts: Array<PostType>
-    AddPost: (newText: string) => void
+type MyPostPropsType = {
+    posts: PostType[]
 }
 
-function MyPosts(props: PostsType) {
+export const MyPosts = (props: MyPostPropsType) => {
+    const dispatch = useDispatch()
+
     const onSubmit = (formData: AddPostFormDataType) => {
-        props.AddPost(formData.newPostMessage)
+        dispatch(AddPost(formData.newPostMessage))
     }
     return (
         <div className={s.postsBlock}>
@@ -30,6 +32,4 @@ function MyPosts(props: PostsType) {
         </div>
     )
 }
-
-export default MyPosts
 

@@ -9,18 +9,23 @@ export type DataType = {
 
 export type SetUserDataAT = {
     type: ACTIONS_TYPE.SET_USER_DATA
-    payload: { data: DataType }
+    payload: { data: DataType, isAuth: boolean }
 }
 
 export type AuthActionsType = SetUserDataAT
 
-export const SetAuthUserData = (data: DataType): SetUserDataAT => ({
+export const SetAuthUserData = (data: DataType, isAuth: boolean): SetUserDataAT => ({
     type: ACTIONS_TYPE.SET_USER_DATA,
-    payload: {data},
+    payload: {data, isAuth},
 })
-
-export const GetAuthUserData = () => {
-    return (dispatch: any) => {
-        authAPI.me().then(res => res.resultCode === 0 && dispatch(SetAuthUserData(res.data)))
-    }
+export const GetAuthUserData = (): any => (dispatch: any) => {
+    authAPI.me().then(res => res.resultCode === 0 && dispatch(SetAuthUserData(res.data, true)))
+}
+export const LogIn = (email: string, password: string, rememberMe: boolean = false): any => (dispatch: any) => {
+    authAPI.login(email, password, rememberMe)
+        .then(res => res.data.resultCode === 0 && dispatch(GetAuthUserData()))
+}
+export const LogOut = (): any => (dispatch: any) => {
+    authAPI.logout()
+        .then(res => res.data.resultCode === 0 && dispatch(SetAuthUserData( {id: null, email: null, login: null},false)))
 }

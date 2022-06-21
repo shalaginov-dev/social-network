@@ -1,6 +1,9 @@
 import {usersAPI} from "../../api/api";
 import {UsersType} from "../reducers/users-reducer";
 import {ACTIONS_TYPE} from "./action-types";
+import {Dispatch} from "redux";
+import {ThunkAction} from "redux-thunk";
+import {StateType} from "../store";
 
 export type FollowAT = {
     type: ACTIONS_TYPE.FOLLOW
@@ -73,9 +76,17 @@ export const ToggleFollowingProgress = (isFetching: boolean, userId: string): To
     payload: {isFetching, userId},
 })
 
+type ThunkType = ThunkAction<Promise<void>, StateType, unknown, UsersActionsType>
+type DispatchType = Dispatch<UsersActionsType>
+// export type AppThunk<ReturnType = void> = ThunkAction<
+//     Promise<ReturnType>,
+//     StateType,
+//     unknown,
+//     UsersActionsType
+//     >
 
-export const GetUsers = (currentPage: number, pageSize: number) => {
-    return async (dispatch: any) => {
+export const GetUsers = (currentPage: number, pageSize: number): any => {
+    return async (dispatch: DispatchType) => {
         dispatch(SetCurrentPage(currentPage))
         dispatch(ToggleIsFetching(true))
         const data = await usersAPI.getUsers(currentPage, pageSize)
@@ -84,16 +95,16 @@ export const GetUsers = (currentPage: number, pageSize: number) => {
         dispatch(SetTotalUsersCount(data.totalCount))
     }
 }
-export const Follow = (userId: string) => {
-    return async (dispatch: any) => {
+export const Follow = (userId: string): any => {
+    return async (dispatch: DispatchType) => {
         dispatch(ToggleFollowingProgress(true, userId))
         const data = await usersAPI.follow(userId)
         data.resultCode === 0 && dispatch(FollowSuccess(userId))
         dispatch(ToggleFollowingProgress(false, userId))
     }
 }
-export const Unfollow = (userId: string) => {
-    return async (dispatch: any) => {
+export const Unfollow = (userId: string): any => {
+    return async (dispatch: DispatchType) => {
         dispatch(ToggleFollowingProgress(true, userId))
         const data = await usersAPI.unfollow(userId)
         data.resultCode === 0 && dispatch(UnfollowSuccess(userId))

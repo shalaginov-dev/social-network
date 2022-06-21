@@ -2,9 +2,10 @@ import React from "react";
 import s from './ProfileInfo.module.css'
 import {Preloader} from "../../common/Preloader/preloader";
 import {ProfileStatus} from "./ProfileStatus";
-import {ProfileContainerPropsType} from "../ProfileContainer";
+import {ProfilePropsType} from "../Profile";
 
-function ProfileInfo(props: ProfileContainerPropsType) {
+export const ProfileInfo = (props: ProfilePropsType) => {
+
     return !props.profile
         ? <Preloader/>
         : <div>
@@ -22,4 +23,3 @@ function ProfileInfo(props: ProfileContainerPropsType) {
 
 }
 
-export default ProfileInfo

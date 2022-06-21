@@ -1,22 +1,20 @@
-import { PostType } from "../../../state/reducers/profile-reducer";
-import {connect} from "react-redux";
+import {InitialProfileType} from "../../../state/reducers/profile-reducer";
+import { useSelector} from "react-redux";
 import {StateType} from "../../../state/store";
-import MyPosts from "./MyPosts";
-import {AddPost} from "../../../state/actions/profile-actions";
+import {MyPosts} from "./MyPosts";
+import React from "react";
+import {compose} from "redux";
 
-type MapStatePropsType = {
-    posts: Array<PostType>
+export const MyPostContainer = () => {
+    const profilePage = useSelector<StateType, InitialProfileType>(state => state.profilePage)
+
+    return (
+        <MyPosts posts={profilePage.posts}/>
+    )
 }
 
-let mapStateToProps = (state: StateType): MapStatePropsType => {
-    return {
-        posts: state.profilePage.posts,
-    }
-}
-
-export const MyPostsContainer = connect(mapStateToProps, {
-    AddPost,
-})(MyPosts)
+export default compose<React.ComponentType>(
+)(MyPostContainer)
 
 
 

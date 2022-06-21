@@ -1,18 +1,21 @@
 import React from "react";
 import s from './Dialogs.module.css'
-import DialogItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
-import {InitialDialogsType} from "../../state/reducers/dialogs-reducer";
+import {DialogItem} from "./DialogItem/DialogItem";
+import {Message} from "./Message/Message";
 import {AddMessageFormDataType, AddMessageReduxForm} from "../Login/AddMessageForm";
+import {useDispatch, } from "react-redux";
+import {AddMessage} from "../../state/actions/dialogs-actions";
+import {InitialDialogsType} from "../../state/reducers/dialogs-reducer";
 
-type DialogsType = {
+type DialogsPropsType = {
     dialogsPage: InitialDialogsType
-    AddMessage: (newMessageText: string) => void
 }
 
-function Dialogs(props: DialogsType) {
+export const Dialogs = (props: DialogsPropsType) => {
+    const dispatch = useDispatch()
+
     const onSubmit = (formData: AddMessageFormDataType) => {
-        props.AddMessage(formData.newDialogsMessage)
+        dispatch(AddMessage(formData.newDialogsMessage))
     }
 
     return <div className={s.dialogs}>
@@ -27,9 +30,8 @@ function Dialogs(props: DialogsType) {
             }
         </div>
         <div className={s.newMessage}>
-            <AddMessageReduxForm onSubmit={onSubmit} />
+            <AddMessageReduxForm onSubmit={onSubmit}/>
         </div>
     </div>
 }
 
-export default Dialogs

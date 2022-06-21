@@ -17,7 +17,7 @@ export type PathParamsType = {
         params: {
             userId: string
         }
-        navigation: ()=> void
+        navigation: () => void
     }
 }
 
@@ -30,10 +30,9 @@ export function withRouter<T>(Component: ComponentType<T>) {
         return (
             <Component
                 {...props}
-                router={{ location, navigate, params }}
+                router={{location, navigate, params}}
             />
         );
     }
-
     return ComponentWithRouterProp;
 }
