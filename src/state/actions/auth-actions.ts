@@ -23,9 +23,9 @@ export const GetAuthUserData = (): any => (dispatch: any) => {
 }
 export const LogIn = (email: string, password: string, rememberMe: boolean = false): any => (dispatch: any) => {
     authAPI.login(email, password, rememberMe)
-        .then(res => res.data.resultCode === 0 && dispatch(GetAuthUserData()))
+        .then(res => res.resultCode === 0 && dispatch(GetAuthUserData()))
 }
 export const LogOut = (): any => (dispatch: any) => {
     authAPI.logout()
-        .then(res => res.data.resultCode === 0 && dispatch(SetAuthUserData( {id: null, email: null, login: null},false)))
+        .then(res => res.resultCode === 0 && dispatch(SetAuthUserData( {id: null, email: null, login: null},false)))
 }

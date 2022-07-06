@@ -45,11 +45,11 @@ export const GetProfile = (userId: string = '2'): any => {
 }
 export const GetStatus = (userId: string = '2'): any => {
     return (dispatch: any) => {
-        profileAPI.getStatus(userId).then(res => dispatch(SetUserStatus(res.data)))
+        profileAPI.getStatus(userId).then(res => dispatch(SetUserStatus(res)))
     }
 }
 export const UpdateStatus = (status: string): any => {
     return (dispatch: any) => {
-        profileAPI.updateStatus(status).then(res => res.data.resultCode === 0 && dispatch(UpdateUserStatus(status)))
+        profileAPI.updateStatus(status).then(res => res.resultCode === 0 && dispatch(UpdateUserStatus(status)))
     }
 }
