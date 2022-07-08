@@ -1,0 +1,14 @@
+.remember {
+    color: white;
+}
+
+h1 {
+    color: white;
+}
+
+.formError {
+    border: red 2px solid;
+    padding: 5px;
+    color: #ff3a3a;
+    width: 230px;
+}

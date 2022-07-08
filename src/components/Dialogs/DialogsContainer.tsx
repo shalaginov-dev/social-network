@@ -8,10 +8,9 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 export const DialogsContainer = () => {
     const dialogsPage = useSelector<StateType, InitialDialogsType>(state => state.dialogsPage)
-    //разбить dialogsPage на переменные
 
     return (
-        <Dialogs dialogsPage={dialogsPage}  />
+        <Dialogs dialogs={dialogsPage.dialogs} messages={dialogsPage.messages}  />
     )
 }
 

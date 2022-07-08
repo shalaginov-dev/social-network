@@ -13,6 +13,8 @@ export type ProfileContainerPropsType = RouteProps & PathParamsType
 
 export const ProfileContainer = (props: ProfileContainerPropsType) => {
     const profilePage = useSelector<StateType, InitialProfileType>(state => state.profilePage)
+    // const auth = useSelector<StateType, InitialAuthType>(state => state.auth)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -21,6 +23,8 @@ export const ProfileContainer = (props: ProfileContainerPropsType) => {
     }, [])
 
     return <Profile profile={profilePage.profile} status={profilePage.status}/>
+
+
 }
 
 export default compose<React.ComponentType>(

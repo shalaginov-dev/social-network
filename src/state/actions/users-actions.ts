@@ -1,7 +1,7 @@
 import {usersAPI} from "../../api/api";
 import {UsersType} from "../reducers/users-reducer";
 import {ACTIONS_TYPE} from "./action-types";
-import {Dispatch} from "redux";
+import {AnyAction, Dispatch} from "redux";
 import {ThunkAction} from "redux-thunk";
 import {StateType} from "../store";
 
@@ -76,14 +76,9 @@ export const ToggleFollowingProgress = (isFetching: boolean, userId: string): To
     payload: {isFetching, userId},
 })
 
-type ThunkType = ThunkAction<Promise<void>, StateType, unknown, UsersActionsType>
+// type ThunkType = ThunkAction<Promise<void>, StateType, unknown, UsersActionsType>
 type DispatchType = Dispatch<UsersActionsType>
-// export type AppThunk<ReturnType = void> = ThunkAction<
-//     Promise<ReturnType>,
-//     StateType,
-//     unknown,
-//     UsersActionsType
-//     >
+
 
 export const GetUsers = (currentPage: number, pageSize: number): any => {
     return async (dispatch: DispatchType) => {
