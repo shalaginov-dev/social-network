@@ -6,6 +6,7 @@ export type InitialAuthType = {
     email: string | null
     login: string | null
     isAuth: boolean
+    initializationSuccess: boolean
 }
 
 let initialState: InitialAuthType = {
@@ -13,6 +14,7 @@ let initialState: InitialAuthType = {
     email: null,
     login: null,
     isAuth: false,
+    initializationSuccess: false
 }
 
 export const authReducer = (state: InitialAuthType = initialState, action: AuthActionsType): InitialAuthType => {
@@ -22,6 +24,11 @@ export const authReducer = (state: InitialAuthType = initialState, action: AuthA
                 ...state,
                 ...action.payload.data,
                 isAuth: action.payload.isAuth
+            }
+        case ACTIONS_TYPE.INITIALIZATION_SUCCESS:
+            return {
+                ...state,
+                initializationSuccess: true
             }
         default:
             return state

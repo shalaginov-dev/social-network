@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from 'react-redux';
-import {StateType} from '../../state/store';
+import {RootStateType} from '../../state/store';
 import {InitialUsersType,} from '../../state/reducers/users-reducer';
 import React, {useEffect} from "react";
 import {Users} from "./Users";
@@ -9,8 +9,9 @@ import {compose} from "redux";
 import {Preloader} from "../common/Preloader/preloader";
 
 export const UsersContainer = () => {
-    const usersPage = useSelector<StateType, InitialUsersType>(state => state.usersPage)
+    const usersPage = useSelector<RootStateType, InitialUsersType>(state => state.usersPage)
     const dispatch = useDispatch()
+
 
     useEffect(() => {
         dispatch(GetUsers(usersPage.currentPage, usersPage.pageSize))

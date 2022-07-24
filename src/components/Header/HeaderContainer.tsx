@@ -1,18 +1,12 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {Header} from "./Header"
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 import {InitialAuthType} from "../../state/reducers/auth-reducer"
-import {StateType} from "../../state/store"
-import {GetAuthUserData} from "../../state/actions/auth-actions";
+import {RootStateType} from "../../state/store"
 import {compose} from "redux";
 
 export const HeaderContainer = () => {
-    const auth = useSelector<StateType, InitialAuthType>(state => state.auth)
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(GetAuthUserData())
-    }, [])
+    const auth = useSelector<RootStateType, InitialAuthType>(state => state.auth)
 
     return (
         <div>

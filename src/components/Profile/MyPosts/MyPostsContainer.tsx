@@ -1,12 +1,12 @@
 import {InitialProfileType} from "../../../state/reducers/profile-reducer";
 import { useSelector} from "react-redux";
-import {StateType} from "../../../state/store";
+import {RootStateType} from "../../../state/store";
 import {MyPosts} from "./MyPosts";
 import React from "react";
 import {compose} from "redux";
 
 export const MyPostContainer = () => {
-    const profilePage = useSelector<StateType, InitialProfileType>(state => state.profilePage)
+    const profilePage = useSelector<RootStateType, InitialProfileType>(state => state.profilePage)
 
     return (
         <MyPosts posts={profilePage.posts}/>

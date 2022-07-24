@@ -1,4 +1,6 @@
-
+.app{
+    position: relative;
+}
 
 .app-wrapper {
     background-color: #363636;
