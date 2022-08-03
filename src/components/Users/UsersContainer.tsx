@@ -1,34 +1,40 @@
-import {useDispatch, useSelector} from 'react-redux';
-import {RootStateType} from '../../state/store';
-import {InitialUsersType,} from '../../state/reducers/users-reducer';
 import React, {useEffect} from "react";
+import {useDispatch, useSelector} from 'react-redux';
 import {Users} from "./Users";
-import {GetUsers} from "../../state/actions/users-actions";
+import {RequestUsers} from "../../state/actions/users-actions";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {Preloader} from "../common/Preloader/preloader";
+import {usersPage} from "../../state/selectors";
 
 export const UsersContainer = () => {
-    const usersPage = useSelector<RootStateType, InitialUsersType>(state => state.usersPage)
-    const dispatch = useDispatch()
 
+    const dispatch = useDispatch()
+    const {
+        users,
+        pageSize,
+        totalUsersCount,
+        currentPage,
+        isFetching,
+        followingInProgress,
+    } = useSelector(usersPage)
 
     useEffect(() => {
-        dispatch(GetUsers(usersPage.currentPage, usersPage.pageSize))
+        dispatch(RequestUsers(currentPage, pageSize))
     }, [])
 
     const onPageChanged = (pageNumber: number) => {
-        dispatch(GetUsers(pageNumber, usersPage.pageSize))
+        dispatch(RequestUsers(pageNumber, pageSize))
     }
 
-    return usersPage.isFetching
+    return isFetching
         ? <Preloader/>
         : <Users
-            users={usersPage.users}
-            pageSize={usersPage.pageSize}
-            totalUsersCount={usersPage.totalUsersCount}
-            currentPage={usersPage.currentPage}
-            followingInProgress={usersPage.followingInProgress}
+            users={users}
+            pageSize={pageSize}
+            totalUsersCount={totalUsersCount}
+            currentPage={currentPage}
+            followingInProgress={followingInProgress}
             onPageChanged={onPageChanged}
         />
 }

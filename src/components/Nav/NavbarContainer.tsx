@@ -2,16 +2,20 @@ import {compose} from "redux";
 import React from "react";
 import {Navbar} from "./Navbar";
 import {useSelector} from "react-redux";
-import {RootStateType} from "../../state/store";
-import {InitialSidebarType} from "../../state/reducers/sidebar-reducer";
-import {InitialDialogsType} from "../../state/reducers/dialogs-reducer";
+import {dialogsPage, sidebar} from "../../state/selectors";
 
 export const NavbarContainer =()=> {
-    const sidebar = useSelector<RootStateType, InitialSidebarType>(state => state.sidebar)
-    const dialogsPage = useSelector<RootStateType, InitialDialogsType>(state => state.dialogsPage)
+
+    const {
+        navigation
+    } = useSelector(sidebar)
+
+    const {
+        dialogs
+    } = useSelector(dialogsPage)
 
     return(
-        <Navbar navigation={sidebar.navigation} dialogs={dialogsPage.dialogs}/>
+        <Navbar navigation={navigation} dialogs={dialogs}/>
     )
 }
 export default compose<React.ComponentType>(

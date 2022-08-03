@@ -2,17 +2,21 @@ import React, {useEffect} from "react";
 import {compose} from "redux";
 import {Profile} from "./Profile";
 import {useDispatch, useSelector} from "react-redux";
-import {RootStateType} from "../../state/store";
 import {RouteProps} from "react-router-dom";
 import {GetProfile, GetStatus} from "../../state/actions/profile-actions";
 import {PathParamsType, withRouter} from "../../hoc/withRouter";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {InitialProfileType} from "../../state/reducers/profile-reducer";
+import {profilePage} from "../../state/selectors";
 
 export type ProfileContainerPropsType = RouteProps & PathParamsType
 
 export const ProfileContainer = (props: ProfileContainerPropsType) => {
-    const profilePage = useSelector<RootStateType, InitialProfileType>(state => state.profilePage)
+
+    const {
+        profile,
+        status
+    } = useSelector(profilePage)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -20,7 +24,7 @@ export const ProfileContainer = (props: ProfileContainerPropsType) => {
         dispatch(GetStatus(props.router.params.userId))
     }, [])
 
-    return <Profile profile={profilePage.profile} status={profilePage.status}/>
+    return <Profile profile={profile} status={status}/>
 
 
 }

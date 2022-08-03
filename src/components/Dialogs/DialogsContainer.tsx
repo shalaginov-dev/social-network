@@ -1,16 +1,18 @@
 import React from "react";
-import { useSelector} from "react-redux";
-import {RootStateType} from "../../state/store";
-import {InitialDialogsType} from "../../state/reducers/dialogs-reducer";
+import {useSelector} from "react-redux";
 import {Dialogs} from "./Dialogs";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {dialogsPage} from "../../state/selectors";
 
 export const DialogsContainer = () => {
-    const dialogsPage = useSelector<RootStateType, InitialDialogsType>(state => state.dialogsPage)
+    const {
+        dialogs,
+        messages
+    } = useSelector(dialogsPage)
 
     return (
-        <Dialogs dialogs={dialogsPage.dialogs} messages={dialogsPage.messages}  />
+        <Dialogs dialogs={dialogs} messages={messages}/>
     )
 }
 

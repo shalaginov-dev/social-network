@@ -4,13 +4,17 @@ import {useSelector} from "react-redux"
 import {InitialAuthType} from "../../state/reducers/auth-reducer"
 import {RootStateType} from "../../state/store"
 import {compose} from "redux";
+import {auth} from "../../state/selectors";
 
 export const HeaderContainer = () => {
-    const auth = useSelector<RootStateType, InitialAuthType>(state => state.auth)
+    const {
+        isAuth,
+        login
+    } = useSelector(auth)
 
     return (
         <div>
-            <Header isAuth={auth.isAuth} login={auth.login}/>
+            <Header isAuth={isAuth} login={login}/>
         </div>
     )
 }

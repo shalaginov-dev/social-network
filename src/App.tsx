@@ -12,21 +12,23 @@ import LoginContainer from "./components/Login/LoginContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {GetAuthUserData} from "./state/actions/auth-actions";
-import {RootStateType} from "./state/store";
-import {InitialAuthType} from "./state/reducers/auth-reducer";
 import {Preloader} from "./components/common/Preloader/preloader";
+import {auth} from "./state/selectors";
 
 
 export const App: React.FC = () => {
-    const auth = useSelector<RootStateType, InitialAuthType>(state => state.auth)
+
     const dispatch = useDispatch()
+    const {
+        initializationSuccess
+    } = useSelector(auth)
 
     useEffect(() => {
         dispatch(GetAuthUserData())
     }, [])
 
-    return !auth.initializationSuccess
-        ? <Preloader />
+    return !initializationSuccess
+        ? <Preloader/>
         : <div className='app'>
             <HeaderContainer/>
             <div className="app-wrapper">
