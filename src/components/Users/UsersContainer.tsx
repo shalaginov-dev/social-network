@@ -5,7 +5,7 @@ import {RequestUsers} from "../../state/actions/users-actions";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {Preloader} from "../common/Preloader/preloader";
-import {usersPage} from "../../state/selectors";
+import {usersPageSelector} from "../../state/selectors";
 
 export const UsersContainer = () => {
 
@@ -17,7 +17,7 @@ export const UsersContainer = () => {
         currentPage,
         isFetching,
         followingInProgress,
-    } = useSelector(usersPage)
+    } = useSelector(usersPageSelector)
 
     useEffect(() => {
         dispatch(RequestUsers(currentPage, pageSize))
