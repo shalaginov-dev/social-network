@@ -1,6 +1,9 @@
 import {usersAPI} from "../../api/api";
 import {UsersType} from "../reducers/users-reducer";
 import {ACTIONS_TYPE} from "./action-types";
+import {ThunkAction} from "redux-thunk";
+import {RootStateType} from "../store";
+import {ProfileActionsType} from "./profile-actions";
 
 export type FollowAT = {
     type: ACTIONS_TYPE.FOLLOW
@@ -73,10 +76,10 @@ export const ToggleFollowingProgress = (isFetching: boolean, userId: string): To
     payload: {isFetching, userId},
 })
 
+type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, UsersActionsType>
 
-
-export const RequestUsers = (page: number, pageSize: number): any => {
-    return async (dispatch: any) => {
+export const RequestUsers = (page: number, pageSize: number): ThunkType => {
+    return async (dispatch) => {
         dispatch(SetCurrentPage(page))
         dispatch(ToggleIsFetching(true))
         const data = await usersAPI.getUsers(page, pageSize)
@@ -85,16 +88,16 @@ export const RequestUsers = (page: number, pageSize: number): any => {
         dispatch(SetTotalUsersCount(data.totalCount))
     }
 }
-export const Follow = (userId: string): any => {
-    return async (dispatch: any) => {
+export const Follow = (userId: string): ThunkType => {
+    return async (dispatch) => {
         dispatch(ToggleFollowingProgress(true, userId))
         const data = await usersAPI.follow(userId)
         data.resultCode === 0 && dispatch(FollowSuccess(userId))
         dispatch(ToggleFollowingProgress(false, userId))
     }
 }
-export const Unfollow = (userId: string): any => {
-    return async (dispatch: any) => {
+export const Unfollow = (userId: string): ThunkType => {
+    return async (dispatch) => {
         dispatch(ToggleFollowingProgress(true, userId))
         const data = await usersAPI.unfollow(userId)
         data.resultCode === 0 && dispatch(UnfollowSuccess(userId))

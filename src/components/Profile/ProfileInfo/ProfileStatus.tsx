@@ -1,11 +1,11 @@
 import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from "react";
 import s from './Profilestatus.module.css'
 import {ProfilePropsType} from "../Profile";
-import {useDispatch} from "react-redux";
 import {UpdateStatus} from "../../../state/actions/profile-actions";
+import {useAppDispatch} from "../../../state/hooks/hooks";
 
 export const ProfileStatus = React.memo((props: ProfilePropsType) => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const [editMode, setEditMode] = useState(false)
     const [title, setTitle] = useState(props.status)

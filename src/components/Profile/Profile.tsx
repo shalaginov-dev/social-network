@@ -10,6 +10,7 @@ export type ProfilePropsType = {
 }
 
 export const Profile = (props: ProfilePropsType) => {
+
     return (
         <div className={s.profile}>
             <ProfileInfo {...props}/>

@@ -4,24 +4,24 @@ import {Route, Routes} from 'react-router-dom'
 import {News} from './components/News';
 import {Music} from './components/Music';
 import {Settings} from './components/Settings';
-import {NavbarContainer} from "./components/Nav/NavbarContainer";
+import NavbarContainer from "./components/Nav/NavbarContainer";
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import {useDispatch, useSelector} from "react-redux";
 import {GetAuthUserData} from "./state/actions/auth-actions";
 import {Preloader} from "./components/common/Preloader/preloader";
 import {auth} from "./state/selectors";
+import {useAppDispatch, useAppSelector} from "./state/hooks/hooks";
 
 
 export const App: React.FC = () => {
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const {
         initializationSuccess
-    } = useSelector(auth)
+    } = useAppSelector(auth)
 
     useEffect(() => {
         dispatch(GetAuthUserData())

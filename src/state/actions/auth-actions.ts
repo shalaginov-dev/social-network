@@ -1,6 +1,8 @@
 import {authAPI} from "../../api/api";
 import {ACTIONS_TYPE} from "./action-types";
 import {stopSubmit} from "redux-form";
+import { ThunkAction } from "redux-thunk";
+import {RootStateType} from "../store";
 
 export type DataType = {
     id: number | null
@@ -25,25 +27,27 @@ export const InitializationSuccess = (): InitializationAT => ({
     type: ACTIONS_TYPE.INITIALIZATION_SUCCESS
 })
 
-export const GetAuthUserData = (): any => {
-    return async (dispatch: any) => {
+type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, AuthActionsType>
+
+export const GetAuthUserData = (): ThunkType => {
+    return async (dispatch) => {
         const data = await authAPI.me()
         dispatch(InitializationSuccess())
         data.resultCode === 0 && dispatch(SetAuthUserData(data.data, true))
     }
 }
 
-export const LogIn = (email: string, password: string, rememberMe: boolean = false): any => {
-    return async (dispatch: any) => {
+export const LogIn = (email: string, password: string, rememberMe: boolean = false): ThunkType => {
+    return async (dispatch) => {
         const data = await authAPI.login(email, password, rememberMe)
         data.resultCode === 0
-            ? dispatch(GetAuthUserData())
+            ? await dispatch(GetAuthUserData())
             : dispatch(stopSubmit('login', {_error: data.messages}))
     }
 }
 
-export const LogOut = (): any => {
-    return async (dispatch: any) => {
+export const LogOut = (): ThunkType => {
+    return async (dispatch) => {
         const data = await authAPI.logout()
         data.resultCode === 0 && dispatch(SetAuthUserData({id: null, email: null, login: null}, false))
     }

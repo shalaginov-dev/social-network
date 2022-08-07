@@ -1,15 +1,14 @@
 import React, {useEffect} from "react";
-import {useDispatch, useSelector} from 'react-redux';
 import {Users} from "./Users";
 import {RequestUsers} from "../../state/actions/users-actions";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {Preloader} from "../common/Preloader/preloader";
 import {usersPageSelector} from "../../state/selectors";
+import {useAppDispatch, useAppSelector} from "../../state/hooks/hooks";
 
 export const UsersContainer = () => {
-
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const {
         users,
         pageSize,
@@ -17,7 +16,7 @@ export const UsersContainer = () => {
         currentPage,
         isFetching,
         followingInProgress,
-    } = useSelector(usersPageSelector)
+    } = useAppSelector(usersPageSelector)
 
     useEffect(() => {
         dispatch(RequestUsers(currentPage, pageSize))

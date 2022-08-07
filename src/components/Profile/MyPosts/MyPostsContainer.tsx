@@ -1,13 +1,13 @@
-import { useSelector} from "react-redux";
 import {MyPosts} from "./MyPosts";
 import React from "react";
 import {compose} from "redux";
 import {profilePage} from "../../../state/selectors";
+import {useAppSelector} from "../../../state/hooks/hooks";
 
 export const MyPostContainer = () => {
     const {
         posts
-    } = useSelector(profilePage)
+    } = useAppSelector(profilePage)
 
     return (
         <MyPosts posts={posts}/>

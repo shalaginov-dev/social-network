@@ -1,23 +1,21 @@
 import React, {useEffect} from "react";
 import {compose} from "redux";
 import {Profile} from "./Profile";
-import {useDispatch, useSelector} from "react-redux";
 import {RouteProps} from "react-router-dom";
 import {GetProfile, GetStatus} from "../../state/actions/profile-actions";
 import {PathParamsType, withRouter} from "../../hoc/withRouter";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {profilePage} from "../../state/selectors";
+import {useAppDispatch, useAppSelector} from "../../state/hooks/hooks";
 
 export type ProfileContainerPropsType = RouteProps & PathParamsType
 
 export const ProfileContainer = (props: ProfileContainerPropsType) => {
-
+    const dispatch = useAppDispatch()
     const {
         profile,
         status
-    } = useSelector(profilePage)
-
-    const dispatch = useDispatch()
+    } = useAppSelector(profilePage)
 
     useEffect(() => {
         dispatch(GetProfile(props.router.params.userId))

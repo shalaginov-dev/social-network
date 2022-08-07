@@ -1,15 +1,15 @@
 import React from "react";
 import {Navigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
 import {LogIn} from "../../state/actions/auth-actions";
 import {FormDataType, LoginReduxForm} from "./LoginForm";
+import {useAppDispatch} from "../../state/hooks/hooks";
 
 type LoginPropsType = {
     isAuth: boolean
 }
 
 export const Login = (props: LoginPropsType) => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const onSubmit = (formData: FormDataType) => {
         dispatch(LogIn(formData.email, formData.password, formData.rememberMe))
     }

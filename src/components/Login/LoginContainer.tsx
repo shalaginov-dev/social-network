@@ -1,16 +1,14 @@
 import React from "react";
 import {compose} from "redux";
-import {useSelector} from "react-redux";
 import {Login} from "./Login";
-import {RootStateType} from "../../state/store";
-import {InitialAuthType} from "../../state/reducers/auth-reducer";
 import {auth} from "../../state/selectors";
+import {useAppSelector} from "../../state/hooks/hooks";
 
 export const LoginContainer = () => {
 
     const {
         isAuth
-    } = useSelector(auth)
+    } = useAppSelector(auth)
 
     return (
         <Login isAuth={isAuth}/>

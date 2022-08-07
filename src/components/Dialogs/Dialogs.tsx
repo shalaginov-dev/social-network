@@ -3,9 +3,9 @@ import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {AddMessageFormDataType, AddMessageReduxForm} from "../Login/AddMessageForm";
-import {useDispatch} from "react-redux";
 import {AddMessage} from "../../state/actions/dialogs-actions";
 import {DialogType, MessageType} from "../../state/reducers/dialogs-reducer";
+import {useAppDispatch} from "../../state/hooks/hooks";
 
 type DialogsPropsType = {
     dialogs: DialogType[]
@@ -13,7 +13,7 @@ type DialogsPropsType = {
 }
 
 export const Dialogs = (props: DialogsPropsType) => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const onSubmit = (formData: AddMessageFormDataType) => {
         dispatch(AddMessage(formData.newDialogsMessage))

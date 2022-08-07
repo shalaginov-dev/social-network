@@ -1,6 +1,8 @@
 import {profileAPI} from "../../api/api";
 import {ProfileType} from "../reducers/profile-reducer";
 import {ACTIONS_TYPE} from "./action-types";
+import {ThunkAction} from "redux-thunk";
+import {RootStateType} from "../store";
 
 export type AddPostAT = {
     type: ACTIONS_TYPE.ADD_POST
@@ -40,22 +42,25 @@ export const UpdateUserStatus = (status: string): UpdateUserStatusAT => ({
     payload: {status},
 })
 
-export const GetProfile = (userId: string = '2'): any => {
-    return async (dispatch: any) => {
+type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, ProfileActionsType>
+
+
+export const GetProfile = (userId: string = '2'): ThunkType => {
+    return async (dispatch) => {
         const data = await profileAPI.getProfile(userId)
         dispatch(SetUserProfile(data))
     }
 }
 
-export const GetStatus = (userId: string = '2'): any => {
-    return async (dispatch: any) => {
+export const GetStatus = (userId: string = '2'): ThunkType => {
+    return async (dispatch) => {
         const data = await profileAPI.getStatus(userId)
         dispatch(SetUserStatus(data))
     }
 }
 
-export const UpdateStatus = (status: string): any => {
-    return async (dispatch: any) => {
+export const UpdateStatus = (status: string): ThunkType => {
+    return async (dispatch) => {
         const data = await profileAPI.updateStatus(status)
         data.resultCode === 0 && dispatch(UpdateUserStatus(status))
     }

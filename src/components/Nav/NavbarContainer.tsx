@@ -1,18 +1,17 @@
 import {compose} from "redux";
 import React from "react";
 import {Navbar} from "./Navbar";
-import {useSelector} from "react-redux";
 import {dialogsPage, sidebar} from "../../state/selectors";
+import {useAppSelector} from "../../state/hooks/hooks";
 
-export const NavbarContainer =()=> {
-
+const NavbarContainer =()=> {
     const {
         navigation
-    } = useSelector(sidebar)
-
+    } = useAppSelector(sidebar)
     const {
         dialogs
-    } = useSelector(dialogsPage)
+    } = useAppSelector(dialogsPage)
+
 
     return(
         <Navbar navigation={navigation} dialogs={dialogs}/>

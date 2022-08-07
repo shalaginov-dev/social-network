@@ -1,16 +1,15 @@
 import React from 'react'
 import {Header} from "./Header"
-import {useSelector} from "react-redux"
-import {InitialAuthType} from "../../state/reducers/auth-reducer"
-import {RootStateType} from "../../state/store"
 import {compose} from "redux";
 import {auth} from "../../state/selectors";
+import {useAppSelector} from "../../state/hooks/hooks";
 
-export const HeaderContainer = () => {
+const HeaderContainer = () => {
     const {
         isAuth,
         login
-    } = useSelector(auth)
+    } = useAppSelector(auth)
+
 
     return (
         <div>

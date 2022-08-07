@@ -1,8 +1,8 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import s from "./Header.module.css"
-import {useDispatch} from "react-redux";
 import {LogOut} from "../../state/actions/auth-actions";
+import {useAppDispatch} from "../../state/hooks/hooks";
 
 export type HeaderPropsType = {
     isAuth: boolean
@@ -10,7 +10,7 @@ export type HeaderPropsType = {
 }
 
 export const Header = (props: HeaderPropsType) => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     return (
         <header className={s.header}>
             <div className={s.headerContainer}>

@@ -4,7 +4,7 @@ import React from "react";
 import {UsersType} from "../../state/reducers/users-reducer";
 import {NavLink} from "react-router-dom";
 import {Follow, Unfollow} from "../../state/actions/users-actions";
-import {useDispatch} from "react-redux";
+import {useAppDispatch} from "../../state/hooks/hooks";
 
 export type UsersPropsType = {
     users: Array<UsersType>
@@ -16,7 +16,7 @@ export type UsersPropsType = {
 }
 
 export const Users = (props: UsersPropsType) => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let pages = []
