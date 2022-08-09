@@ -1,40 +1,8 @@
 import {v1} from "uuid"
-import {ProfileActionsType} from "../actions/profile-actions";
-import {ACTIONS_TYPE} from "../actions/action-types";
+import {ACTIONS_TYPE} from "../types/action-types";
+import {InitialProfileType, ProfileActionsType} from "../types/profile-types";
 
-export type ContactsType = {
-    facebook: string
-    website: null
-    vk: string
-    twitter: string
-    instagram: string
-    youtube: null
-    github: string
-    mainLink: null
-}
-export type PhotosType = {
-    small: string
-    large: string
-}
-export type PostType = {
-    id: string
-    message: string
-    likesCounter: number
-}
-export type ProfileType = {
-    aboutMe: string
-    contacts: ContactsType
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-    fullName: string
-    userId: number
-    photos: PhotosType
-}
-export type InitialProfileType = {
-    posts: Array<PostType>
-    profile: ProfileType | null
-    status: string
-}
+
 
 let initialState: InitialProfileType = {
     posts: [
@@ -44,6 +12,7 @@ let initialState: InitialProfileType = {
     profile: null,
     status: ''
 }
+
 
 export const profileReducer = (state: InitialProfileType = initialState, action: ProfileActionsType): InitialProfileType => {
     switch (action.type) {

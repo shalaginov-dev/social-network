@@ -10,10 +10,10 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import {GetAuthUserData} from "./state/actions/auth-actions";
+import {FetchAuthUserData} from "./state/actions/auth-actions";
 import {Preloader} from "./components/common/Preloader/preloader";
 import {auth} from "./state/selectors";
-import {useAppDispatch, useAppSelector} from "./state/hooks/hooks";
+import {useAppDispatch, useAppSelector} from "./state/hooks";
 
 
 export const App: React.FC = () => {
@@ -24,7 +24,7 @@ export const App: React.FC = () => {
     } = useAppSelector(auth)
 
     useEffect(() => {
-        dispatch(GetAuthUserData())
+        dispatch(FetchAuthUserData())
     }, [])
 
     return !initializationSuccess

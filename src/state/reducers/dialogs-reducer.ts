@@ -1,20 +1,7 @@
 import {v1} from "uuid"
-import {DialogsActionsType} from "../actions/dialogs-actions";
-import {ACTIONS_TYPE} from "../actions/action-types";
+import {DialogsActionsType, InitialDialogsType} from "../types/dialogs-types";
+import {ACTIONS_TYPE} from "../types/action-types";
 
-export type DialogType = {
-    id: string
-    name: string
-    img: string
-}
-export type MessageType = {
-    id: string
-    message: string
-}
-export type InitialDialogsType = {
-    dialogs: DialogType[]
-    messages: MessageType[]
-}
 
 let initialState: InitialDialogsType = {
     dialogs: [
@@ -33,21 +20,6 @@ let initialState: InitialDialogsType = {
             name: 'Sveta',
             img: 'https://c.ndtvimg.com/2020-08/h5mk7js_cat-generic_625x300_28_August_20.jpg?im=Resize=(1230,900)'
         },
-        // {
-        //     id: v1(),
-        //     name: 'Sasha',
-        //     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYABUeQR1dMoqDCZYEkRsntwM5kqnADmv3zUvuQD7eHMnBZ2SmsWuCS8R3TEOmcIW-BLM&usqp=CAU'
-        // },
-        // {
-        //     id: v1(),
-        //     name: 'Viktor',
-        //     img: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/41CF/production/_109474861_angrycat-index-getty3-3.jpg'
-        // },
-        // {
-        //     id: v1(),
-        //     name: 'Valera',
-        //     img: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/09C5/production/_116210520_neo4_976.jpg'
-        // }
     ],
     messages: [
         {id: v1(), message: 'Hi'},

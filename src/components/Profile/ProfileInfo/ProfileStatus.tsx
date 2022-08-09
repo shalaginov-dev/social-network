@@ -1,8 +1,8 @@
 import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from "react";
-import s from './Profilestatus.module.css'
+import s from './Profilestatus.module.css';
 import {ProfilePropsType} from "../Profile";
 import {UpdateStatus} from "../../../state/actions/profile-actions";
-import {useAppDispatch} from "../../../state/hooks/hooks";
+import {useAppDispatch} from "../../../state/hooks";
 
 export const ProfileStatus = React.memo((props: ProfilePropsType) => {
     const dispatch = useAppDispatch()

@@ -1,14 +1,15 @@
 import React, {ComponentType} from "react";
 import {Navigate} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {RootStateType} from "../state/store";
-import {InitialAuthType} from "../state/reducers/auth-reducer";
+import {auth} from "../state/selectors";
+import {useAppSelector} from "../state/hooks";
 
 export function withAuthRedirect<T>(Component: ComponentType<T>) {
     function RedirectComponent(props: T) {
-        const auth = useSelector<RootStateType, InitialAuthType>(state => state.auth)
+        const {
+            isAuth
+        } = useAppSelector(auth)
 
-        return !auth.isAuth
+        return !isAuth
             ? <Navigate replace to={'/login'}/>
             : <Component {...props as T}/>
     }

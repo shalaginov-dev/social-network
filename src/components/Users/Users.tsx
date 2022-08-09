@@ -1,10 +1,10 @@
 import s from "./Users.module.css";
 import cat from "../../assets/images/cat.png";
 import React from "react";
-import {UsersType} from "../../state/reducers/users-reducer";
 import {NavLink} from "react-router-dom";
 import {Follow, Unfollow} from "../../state/actions/users-actions";
-import {useAppDispatch} from "../../state/hooks/hooks";
+import {useAppDispatch} from "../../state/hooks";
+import {UsersType} from "../../state/types/users-types";
 
 export type UsersPropsType = {
     users: Array<UsersType>

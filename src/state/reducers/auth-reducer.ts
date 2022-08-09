@@ -1,13 +1,5 @@
-import {AuthActionsType} from "../actions/auth-actions";
-import {ACTIONS_TYPE} from "../actions/action-types";
-
-export type InitialAuthType = {
-    id: number | null
-    email: string | null
-    login: string | null
-    isAuth: boolean
-    initializationSuccess: boolean
-}
+import {AuthActionsType, InitialAuthType} from "../types/auth-types";
+import {ACTIONS_TYPE} from "../types/action-types";
 
 let initialState: InitialAuthType = {
     id: null,

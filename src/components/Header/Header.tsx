@@ -1,8 +1,8 @@
-import React from 'react';
-import {NavLink} from 'react-router-dom';
+import React from 'react'
+import {NavLink} from 'react-router-dom'
 import s from "./Header.module.css"
-import {LogOut} from "../../state/actions/auth-actions";
-import {useAppDispatch} from "../../state/hooks/hooks";
+import {LogOut} from "../../state/actions/auth-actions"
+import {useAppDispatch} from "../../state/hooks";
 
 export type HeaderPropsType = {
     isAuth: boolean

@@ -1,10 +1,10 @@
 import React from "react";
-import s from "./MyPosts.module.css"
+import s from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
 import {AddPostFormDataType, AddPostReduxForm} from "../../Login/AddPostForm";
 import {AddPost} from "../../../state/actions/profile-actions";
-import {PostType} from "../../../state/reducers/profile-reducer";
-import {useAppDispatch} from "../../../state/hooks/hooks";
+import {useAppDispatch} from "../../../state/hooks";
+import {PostType} from "../../../state/types/profile-types";
 
 type MyPostPropsType = {
     posts: PostType[]

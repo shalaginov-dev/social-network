@@ -2,7 +2,7 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import s from "./Nav.module.css"
 import {NavigationType} from "../../state/reducers/sidebar-reducer";
-import {DialogType} from "../../state/reducers/dialogs-reducer";
+import {DialogType} from "../../state/types/dialogs-types";
 
 type NavbarPropsType = {
     navigation: NavigationType[]

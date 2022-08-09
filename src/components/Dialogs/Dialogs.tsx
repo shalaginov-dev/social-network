@@ -4,8 +4,9 @@ import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {AddMessageFormDataType, AddMessageReduxForm} from "../Login/AddMessageForm";
 import {AddMessage} from "../../state/actions/dialogs-actions";
-import {DialogType, MessageType} from "../../state/reducers/dialogs-reducer";
-import {useAppDispatch} from "../../state/hooks/hooks";
+import {useAppDispatch} from "../../state/hooks";
+import {DialogType, MessageType} from "../../state/types/dialogs-types";
+
 
 type DialogsPropsType = {
     dialogs: DialogType[]

@@ -1,10 +1,10 @@
 import {RootStateType} from "./store";
-import {InitialUsersType} from "./reducers/users-reducer";
-import {InitialAuthType} from "./reducers/auth-reducer";
 import {InitialSidebarType} from "./reducers/sidebar-reducer";
-import {InitialDialogsType} from "./reducers/dialogs-reducer";
-import {InitialProfileType} from "./reducers/profile-reducer";
 import {createSelector} from "reselect";
+import {InitialAuthType} from "./types/auth-types";
+import {InitialUsersType} from "./types/users-types";
+import {InitialDialogsType} from "./types/dialogs-types";
+import {InitialProfileType} from "./types/profile-types";
 
 export const usersPage = (state: RootStateType): InitialUsersType => state.usersPage
 

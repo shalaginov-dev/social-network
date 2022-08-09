@@ -6,7 +6,7 @@ import {GetProfile, GetStatus} from "../../state/actions/profile-actions";
 import {PathParamsType, withRouter} from "../../hoc/withRouter";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {profilePage} from "../../state/selectors";
-import {useAppDispatch, useAppSelector} from "../../state/hooks/hooks";
+import {useAppDispatch, useAppSelector} from "../../state/hooks";
 
 export type ProfileContainerPropsType = RouteProps & PathParamsType
 

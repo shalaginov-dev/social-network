@@ -1,50 +1,13 @@
 import {usersAPI} from "../../api/api";
-import {UsersType} from "../reducers/users-reducer";
-import {ACTIONS_TYPE} from "./action-types";
-import {ThunkAction} from "redux-thunk";
-import {RootStateType} from "../store";
-import {ProfileActionsType} from "./profile-actions";
-
-export type FollowAT = {
-    type: ACTIONS_TYPE.FOLLOW
-    payload: { userId: string }
-}
-export type UnfollowAT = {
-    type: ACTIONS_TYPE.UNFOLLOW
-    payload: { userId: string }
-}
-export type SetUsersAT = {
-    type: ACTIONS_TYPE.SET_USERS
-    payload: { users: Array<UsersType> }
-}
-export type SetCurrentPageAT = {
-    type: ACTIONS_TYPE.SET_CURRENT_PAGE
-    payload: { currentPage: number }
-}
-export type SetTotalUsersCountAT = {
-    type: ACTIONS_TYPE.SET_TOTAL_USERS_COUNT
-    payload: { totalCount: number }
-}
-export type ToggleIsFetchingAT = {
-    type: ACTIONS_TYPE.TOGGLE_IS_FETCHING
-    payload: { isFetching: boolean }
-}
-export type ToggleIsFollowingProgressAT = {
-    type: ACTIONS_TYPE.TOGGLE_IS_FOLLOWING_PROGRESS
-    payload: {
-        isFetching: boolean
-        userId: string
-    }
-}
-
-export type UsersActionsType =
-    FollowAT
-    | UnfollowAT
-    | SetUsersAT
-    | SetCurrentPageAT
-    | SetTotalUsersCountAT
-    | ToggleIsFetchingAT
-    | ToggleIsFollowingProgressAT
+import {ACTIONS_TYPE} from "../types/action-types";
+import {
+    FollowAT,
+    SetCurrentPageAT,
+    SetTotalUsersCountAT,
+    SetUsersAT, ThunkType,
+    ToggleIsFetchingAT, ToggleIsFollowingProgressAT,
+    UnfollowAT, UsersType,
+} from "../types/users-types";
 
 
 export const FollowSuccess = (userId: string): FollowAT => ({
@@ -76,7 +39,6 @@ export const ToggleFollowingProgress = (isFetching: boolean, userId: string): To
     payload: {isFetching, userId},
 })
 
-type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, UsersActionsType>
 
 export const RequestUsers = (page: number, pageSize: number): ThunkType => {
     return async (dispatch) => {

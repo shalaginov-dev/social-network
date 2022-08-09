@@ -2,7 +2,7 @@ import React from "react";
 import {Navigate} from "react-router-dom";
 import {LogIn} from "../../state/actions/auth-actions";
 import {FormDataType, LoginReduxForm} from "./LoginForm";
-import {useAppDispatch} from "../../state/hooks/hooks";
+import {useAppDispatch} from "../../state/hooks";
 
 type LoginPropsType = {
     isAuth: boolean

@@ -5,7 +5,7 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {Preloader} from "../common/Preloader/preloader";
 import {usersPageSelector} from "../../state/selectors";
-import {useAppDispatch, useAppSelector} from "../../state/hooks/hooks";
+import {useAppDispatch, useAppSelector} from "../../state/hooks";
 
 export const UsersContainer = () => {
     const dispatch = useAppDispatch()

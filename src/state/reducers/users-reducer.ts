@@ -1,30 +1,7 @@
-import {UsersActionsType} from "../actions/users-actions";
-import {ACTIONS_TYPE} from "../actions/action-types";
+import {ACTIONS_TYPE} from "../types/action-types";
+import {InitialUsersType, UsersActionsType} from "../types/users-types";
 
-type LocationType = {
-    city: string
-    country: string
-}
-export type UsersType = {
-    id: string
-    photos: {
-        small: string | null
-        large: string | null
-    }
-    followed: boolean
-    name: string
-    status: string
-    location: LocationType
-}
-export type InitialUsersType = {
-    users: Array<UsersType>
-    pageSize: number
-    totalUsersCount: number
-    currentPage: number
-    isFetching: boolean
-    followingInProgress: Array<string>
-}
-let initialState: InitialUsersType = {
+const initialState: InitialUsersType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,

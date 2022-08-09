@@ -1,26 +1,13 @@
 import {profileAPI} from "../../api/api";
-import {ProfileType} from "../reducers/profile-reducer";
-import {ACTIONS_TYPE} from "./action-types";
-import {ThunkAction} from "redux-thunk";
-import {RootStateType} from "../store";
+import {ACTIONS_TYPE} from "../types/action-types";
+import {
+    AddPostAT, ProfileType,
+    SetUserProfileAT,
+    SetUserStatusAT,
+    UpdateUserStatusAT
+} from "../types/profile-types";
+import {ThunkType} from "../types/profile-types";
 
-export type AddPostAT = {
-    type: ACTIONS_TYPE.ADD_POST
-    payload: { newText: string }
-}
-export type SetUserProfileAT = {
-    type: ACTIONS_TYPE.SET_USER_PROFILE
-    payload: { profile: ProfileType }
-}
-export type SetUserStatusAT = {
-    type: ACTIONS_TYPE.SET_USER_STATUS
-    payload: { status: string }
-}
-export type UpdateUserStatusAT = {
-    type: ACTIONS_TYPE.UPDATE_USER_STATUS
-    payload: { status: string }
-}
-export type ProfileActionsType = AddPostAT | SetUserProfileAT | SetUserStatusAT | UpdateUserStatusAT
 
 export const AddPost = (newText: string): AddPostAT => ({
     type: ACTIONS_TYPE.ADD_POST,
@@ -41,8 +28,6 @@ export const UpdateUserStatus = (status: string): UpdateUserStatusAT => ({
     type: ACTIONS_TYPE.UPDATE_USER_STATUS,
     payload: {status},
 })
-
-type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, ProfileActionsType>
 
 
 export const GetProfile = (userId: string = '2'): ThunkType => {

@@ -3,7 +3,7 @@ import {Dialogs} from "./Dialogs";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {dialogsPage} from "../../state/selectors";
-import {useAppSelector} from "../../state/hooks/hooks";
+import {useAppSelector} from "../../state/hooks";
 
 export const DialogsContainer = () => {
     const {

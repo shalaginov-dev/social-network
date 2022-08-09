@@ -2,7 +2,7 @@ import React from 'react'
 import {Header} from "./Header"
 import {compose} from "redux";
 import {auth} from "../../state/selectors";
-import {useAppSelector} from "../../state/hooks/hooks";
+import {useAppSelector} from "../../state/hooks";
 
 const HeaderContainer = () => {
     const {
