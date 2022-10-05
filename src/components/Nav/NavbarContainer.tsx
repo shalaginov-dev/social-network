@@ -4,18 +4,13 @@ import {Navbar} from "./Navbar";
 import {dialogsPage, sidebar} from "../../state/selectors";
 import {useAppSelector} from "../../state/hooks";
 
-const NavbarContainer =()=> {
-    const {
-        navigation
-    } = useAppSelector(sidebar)
-    const {
-        dialogs
-    } = useAppSelector(dialogsPage)
+const NavbarContainer = () => {
+    const {navigation} = useAppSelector(sidebar)
+    const {dialogs} = useAppSelector(dialogsPage)
 
 
-    return(
+    return (
         <Navbar navigation={navigation} dialogs={dialogs}/>
     )
 }
-export default compose<React.ComponentType>(
-)(NavbarContainer)
+export default compose<React.ComponentType>()(NavbarContainer)

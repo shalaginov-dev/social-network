@@ -1,15 +1,16 @@
-import { v1 } from "uuid"
+import {v1} from "uuid"
 
-export type NavigationType = {
+export interface INavigation {
     id: string
     to: string
     title: string
 }
-export type InitialSidebarType = {
-    navigation: NavigationType[]
+
+export interface IInitialSidebar {
+    navigation: INavigation[]
 }
 
-let initialState: InitialSidebarType = {
+let initialState: IInitialSidebar = {
     navigation: [
         {id: v1(), to: '/profile', title: 'Profile'},
         {id: v1(), to: '/dialogs', title: 'Messages'},
@@ -20,7 +21,7 @@ let initialState: InitialSidebarType = {
     ]
 }
 
-export const sidebarReducer = (state: InitialSidebarType = initialState, action: any): InitialSidebarType => {
+export const sidebarReducer = (state: IInitialSidebar = initialState, action: any): IInitialSidebar => {
 
     return state
 }

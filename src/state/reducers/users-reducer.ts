@@ -1,7 +1,7 @@
 import {ACTIONS_TYPE} from "../types/action-types";
-import {InitialUsersType, UsersActionsType} from "../types/users-types";
+import {IInitialUsers, UsersActionsType} from "../types/users-types";
 
-const initialState: InitialUsersType = {
+const initialState: IInitialUsers = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
@@ -10,7 +10,7 @@ const initialState: InitialUsersType = {
     followingInProgress: [],
 }
 
-export const usersReducer = (state: InitialUsersType = initialState, action: UsersActionsType): InitialUsersType => {
+export const usersReducer = (state: IInitialUsers = initialState, action: UsersActionsType): IInitialUsers => {
     switch (action.type) {
         case ACTIONS_TYPE.FOLLOW:
             return {

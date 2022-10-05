@@ -4,27 +4,28 @@ import s from "./Header.module.css"
 import {LogOut} from "../../state/actions/auth-actions"
 import {useAppDispatch} from "../../state/hooks";
 
-export type HeaderPropsType = {
+interface IHeaderProps {
     isAuth: boolean
     login: string | null
 }
 
-export const Header = (props: HeaderPropsType) => {
+export const Header = ({isAuth, login}: IHeaderProps) => {
     const dispatch = useAppDispatch()
+
     return (
         <header className={s.header}>
             <div className={s.headerContainer}>
-                <img
-                    src="https://git-scm.com/images/logos/logomark-white@2x.png"
-                    alt="label"
-                />
                 <div className={s.loginBlock}>
                     {
-                        props.isAuth
+                        isAuth
                             ? <div>
-                                {props.login} -
-                                <button onClick={() => {dispatch(LogOut())}}>log out</button>
-                        </div>
+                                <span>{login + ' '}</span>
+                                <button onClick={() => {
+                                    dispatch(LogOut())
+                                }}>
+                                    log out
+                                </button>
+                            </div>
                             : <NavLink to={'/login'}>Login</NavLink>
                     }
                 </div>

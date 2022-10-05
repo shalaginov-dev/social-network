@@ -16,12 +16,9 @@ import {auth} from "./state/selectors";
 import {useAppDispatch, useAppSelector} from "./state/hooks";
 
 
-export const App: React.FC = () => {
-
+export const App = () => {
+    const {initializationSuccess} = useAppSelector(auth)
     const dispatch = useAppDispatch()
-    const {
-        initializationSuccess
-    } = useAppSelector(auth)
 
     useEffect(() => {
         dispatch(FetchAuthUserData())

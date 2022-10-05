@@ -1,21 +1,21 @@
 import React from "react";
 import {Navigate} from "react-router-dom";
 import {LogIn} from "../../state/actions/auth-actions";
-import {FormDataType, LoginReduxForm} from "./LoginForm";
+import {IFormData, LoginReduxForm} from "./LoginForm";
 import {useAppDispatch} from "../../state/hooks";
 
-type LoginPropsType = {
+interface ILoginProps {
     isAuth: boolean
 }
 
-export const Login = (props: LoginPropsType) => {
+export const Login = ({isAuth}: ILoginProps) => {
     const dispatch = useAppDispatch()
-    const onSubmit = (formData: FormDataType) => {
+    const onSubmit = (formData: IFormData) => {
         dispatch(LogIn(formData.email, formData.password, formData.rememberMe))
     }
 
     return (
-        props.isAuth
+        isAuth
             ? <Navigate replace to={'/profile'}/>
             : <div>
                 <h1>LOGIN</h1>

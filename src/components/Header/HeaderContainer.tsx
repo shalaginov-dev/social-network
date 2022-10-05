@@ -5,11 +5,7 @@ import {auth} from "../../state/selectors";
 import {useAppSelector} from "../../state/hooks";
 
 const HeaderContainer = () => {
-    const {
-        isAuth,
-        login
-    } = useAppSelector(auth)
-
+    const {isAuth, login} = useAppSelector(auth)
 
     return (
         <div>
@@ -18,5 +14,4 @@ const HeaderContainer = () => {
     )
 }
 
-export default compose<React.ComponentType>(
-)(HeaderContainer)
+export default compose<React.ComponentType>()(HeaderContainer)

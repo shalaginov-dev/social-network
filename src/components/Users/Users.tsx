@@ -4,10 +4,10 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import {Follow, Unfollow} from "../../state/actions/users-actions";
 import {useAppDispatch} from "../../state/hooks";
-import {UsersType} from "../../state/types/users-types";
+import {IUsers} from "../../state/types/users-types";
 
-export type UsersPropsType = {
-    users: Array<UsersType>
+interface IUsersProps {
+    users: Array<IUsers>
     pageSize: number
     totalUsersCount: number
     currentPage: number
@@ -15,29 +15,30 @@ export type UsersPropsType = {
     onPageChanged: (pageNumber: number) => void
 }
 
-export const Users = (props: UsersPropsType) => {
+export const Users = ({ users, pageSize, totalUsersCount, currentPage, followingInProgress, onPageChanged}: IUsersProps) => {
     const dispatch = useAppDispatch()
 
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    let pagesCount = Math.ceil(totalUsersCount / pageSize)
     let pages = []
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
+
     return (
         <div className={s.userWrapper}>
             <div className={s.pageWrapper}>
                 {
                     pages.map(p => <span
                         key={p}
-                        className={props.currentPage === p ? s.selectedPage : s.page}
+                        className={currentPage === p ? s.selectedPage : s.page}
                         onClick={() => {
-                            props.onPageChanged(p)
+                            onPageChanged(p)
                         }}
                     >{p}</span>)
                 }
             </div>
             {
-                props.users.map(u => <div key={u.id}>
+                users.map(u => <div key={u.id}>
                     <span>
                         <div>
                             <NavLink to={'/profile/' + u.id}>
@@ -46,10 +47,10 @@ export const Users = (props: UsersPropsType) => {
                         </div>
                         <div>
                             {u.followed
-                                ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                ? <button disabled={followingInProgress.some(id => id === u.id)} onClick={() => {
                                     dispatch(Unfollow(u.id))
                                 }}>Unfollow</button>
-                                : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                : <button disabled={followingInProgress.some(id => id === u.id)} onClick={() => {
                                     dispatch(Follow(u.id))
                                 }}>Follow</button>
                             }

@@ -1,21 +1,21 @@
 import {ACTIONS_TYPE} from "./action-types";
 
-export type DialogType = {
+export interface IDialog {
     id: string
     name: string
     img: string
 }
-export type MessageType = {
+export interface IMessage {
     id: string
     message: string
 }
-export type InitialDialogsType = {
-    dialogs: DialogType[]
-    messages: MessageType[]
+export interface IInitialDialogs {
+    dialogs: IDialog[]
+    messages: IMessage[]
 }
-
-export type AddMessageAT = {
+export interface IAddMessage {
     type: ACTIONS_TYPE.ADD_MESSAGE
     payload: { messageText: string }
 }
-export type DialogsActionsType = AddMessageAT
+
+export type DialogsActionsType = IAddMessage

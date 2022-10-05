@@ -4,10 +4,10 @@ import {Post} from "./Post/Post";
 import {AddPostFormDataType, AddPostReduxForm} from "../../Login/AddPostForm";
 import {AddPost} from "../../../state/actions/profile-actions";
 import {useAppDispatch} from "../../../state/hooks";
-import {PostType} from "../../../state/types/profile-types";
+import {IPost} from "../../../state/types/profile-types";
 
 type MyPostPropsType = {
-    posts: PostType[]
+    posts: IPost[]
 }
 
 export const MyPosts = (props: MyPostPropsType) => {

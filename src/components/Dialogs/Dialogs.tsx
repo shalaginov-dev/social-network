@@ -2,33 +2,33 @@ import React from "react";
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {AddMessageFormDataType, AddMessageReduxForm} from "../Login/AddMessageForm";
+import {IAddMessageFormData, AddMessageReduxForm} from "../Login/AddMessageForm";
 import {AddMessage} from "../../state/actions/dialogs-actions";
 import {useAppDispatch} from "../../state/hooks";
-import {DialogType, MessageType} from "../../state/types/dialogs-types";
+import {IDialog, IMessage} from "../../state/types/dialogs-types";
 
 
-type DialogsPropsType = {
-    dialogs: DialogType[]
-    messages: MessageType[]
+interface IDialogsProps  {
+    dialogs: IDialog[]
+    messages: IMessage[]
 }
 
-export const Dialogs = (props: DialogsPropsType) => {
+export const Dialogs = ({ dialogs, messages}: IDialogsProps) => {
     const dispatch = useAppDispatch()
 
-    const onSubmit = (formData: AddMessageFormDataType) => {
+    const onSubmit = (formData: IAddMessageFormData) => {
         dispatch(AddMessage(formData.newDialogsMessage))
     }
 
     return <div className={s.dialogs}>
         <div className={s.dialogsItems}>
             {
-                props.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id} img={d.img}/>)
+                dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id} img={d.img}/>)
             }
         </div>
         <div className={s.messages}>
             {
-                props.messages.map(m => <Message key={m.id} message={m.message}/>)
+                messages.map(m => <Message key={m.id} message={m.message}/>)
             }
         </div>
         <div className={s.newMessage}>

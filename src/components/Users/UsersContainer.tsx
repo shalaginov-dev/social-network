@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {Users} from "./Users";
-import {RequestUsers} from "../../state/actions/users-actions";
+import {FetchUsers} from "../../state/actions/users-actions";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {Preloader} from "../common/Preloader/preloader";
@@ -8,7 +8,6 @@ import {usersPageSelector} from "../../state/selectors";
 import {useAppDispatch, useAppSelector} from "../../state/hooks";
 
 export const UsersContainer = () => {
-    const dispatch = useAppDispatch()
     const {
         users,
         pageSize,
@@ -17,13 +16,13 @@ export const UsersContainer = () => {
         isFetching,
         followingInProgress,
     } = useAppSelector(usersPageSelector)
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(RequestUsers(currentPage, pageSize))
+        dispatch(FetchUsers(currentPage, pageSize))
     }, [])
-
     const onPageChanged = (pageNumber: number) => {
-        dispatch(RequestUsers(pageNumber, pageSize))
+        dispatch(FetchUsers(pageNumber, pageSize))
     }
 
     return isFetching

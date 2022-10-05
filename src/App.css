@@ -3,7 +3,6 @@
 }
 
 .app-wrapper {
-    background-color: #363636;
     margin: 0 auto;
     display: grid;
     width: 800px;
@@ -15,9 +14,7 @@
 }
 
 .app-wrapper-content {
-    border: #000000 3px solid;
-    border-top: 0;
-    border-left: 0;
     grid-area: c;
     background-color: #25252a;
+    border-radius: 4px;
 }

@@ -5,7 +5,8 @@ import {
 } from "react-router-dom";
 import {ComponentType} from "react";
 
-export type PathParamsType = {
+export interface IPathParams
+ {
     router: {
         location: {
             hash: string,

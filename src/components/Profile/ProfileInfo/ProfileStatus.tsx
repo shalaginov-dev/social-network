@@ -1,18 +1,21 @@
 import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from "react";
 import s from './Profilestatus.module.css';
-import {ProfilePropsType} from "../Profile";
 import {UpdateStatus} from "../../../state/actions/profile-actions";
 import {useAppDispatch} from "../../../state/hooks";
 
-export const ProfileStatus = React.memo((props: ProfilePropsType) => {
+interface IProfileStatusProps{
+    status: string
+}
+
+export const ProfileStatus = React.memo(({status}: IProfileStatusProps) => {
     const dispatch = useAppDispatch()
 
     const [editMode, setEditMode] = useState(false)
-    const [title, setTitle] = useState(props.status)
+    const [title, setTitle] = useState(status)
 
     useEffect(()=> {
-        setTitle(props.status)
-    },[props.status])
+        setTitle(status)
+    },[status])
 
     const activateEditMode = () => {
         setEditMode(true)

@@ -1,7 +1,7 @@
-import {AuthActionsType, InitialAuthType} from "../types/auth-types";
+import {AuthActionsType, IInitialAuth} from "../types/auth-types";
 import {ACTIONS_TYPE} from "../types/action-types";
 
-let initialState: InitialAuthType = {
+let initialState: IInitialAuth = {
     id: null,
     email: null,
     login: null,
@@ -9,7 +9,7 @@ let initialState: InitialAuthType = {
     initializationSuccess: false
 }
 
-export const authReducer = (state: InitialAuthType = initialState, action: AuthActionsType): InitialAuthType => {
+export const authReducer = (state: IInitialAuth = initialState, action: AuthActionsType): IInitialAuth => {
     switch (action.type) {
         case ACTIONS_TYPE.SET_USER_DATA:
             return {

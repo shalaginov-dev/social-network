@@ -2,21 +2,21 @@ import React from "react";
 import s from './ProfileInfo.module.css'
 import {Preloader} from "../../common/Preloader/preloader";
 import {ProfileStatus} from "./ProfileStatus";
-import {ProfilePropsType} from "../Profile";
+import {IProfileProps} from "../Profile";
 
-export const ProfileInfo = (props: ProfilePropsType) => {
+export const ProfileInfo = ({profile, status}: IProfileProps) => {
 
-    return !props.profile
+    return !profile
         ? <Preloader/>
         : <div>
             <div className={s.mainBlock}>
                 <div className={s.descriptionBlock}>
-                    <img src={props.profile.photos.small} alt="ava"/>
-                    <div>{props.profile.aboutMe}</div>
+                    <img src={profile.photos.small} alt="ava"/>
+                    <div>{profile.aboutMe}</div>
                 </div>
                 <div className={s.name}>
-                    <div>{props.profile.fullName}</div>
-                    <ProfileStatus {...props}/>
+                    <div>{profile.fullName}</div>
+                    <ProfileStatus status={status}/>
                 </div>
             </div>
         </div>

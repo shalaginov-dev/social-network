@@ -6,10 +6,7 @@ import {dialogsPage} from "../../state/selectors";
 import {useAppSelector} from "../../state/hooks";
 
 export const DialogsContainer = () => {
-    const {
-        dialogs,
-        messages
-    } = useAppSelector(dialogsPage)
+    const {dialogs, messages} = useAppSelector(dialogsPage)
 
     return (
         <Dialogs dialogs={dialogs} messages={messages}/>

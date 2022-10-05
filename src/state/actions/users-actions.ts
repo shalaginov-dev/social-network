@@ -1,46 +1,46 @@
 import {usersAPI} from "../../api/api";
 import {ACTIONS_TYPE} from "../types/action-types";
 import {
-    FollowAT,
-    SetCurrentPageAT,
-    SetTotalUsersCountAT,
-    SetUsersAT, ThunkType,
-    ToggleIsFetchingAT, ToggleIsFollowingProgressAT,
-    UnfollowAT, UsersType,
+    IFollow,
+    ISetCurrentPage,
+    ISetTotalUsersCount,
+    ISetUsers, ThunkType,
+    IToggleIsFetching, IToggleIsFollowingProgress,
+    IUnfollow, IUsers,
 } from "../types/users-types";
 
 
-export const FollowSuccess = (userId: string): FollowAT => ({
+export const FollowSuccess = (userId: string): IFollow => ({
     type: ACTIONS_TYPE.FOLLOW,
     payload: {userId},
 })
-export const UnfollowSuccess = (userId: string): UnfollowAT => ({
+export const UnfollowSuccess = (userId: string): IUnfollow => ({
     type: ACTIONS_TYPE.UNFOLLOW,
     payload: {userId},
 })
-export const SetUsers = (users: Array<UsersType>): SetUsersAT => ({
+export const SetUsers = (users: Array<IUsers>): ISetUsers => ({
     type: ACTIONS_TYPE.SET_USERS,
     payload: {users},
 })
-export const SetCurrentPage = (currentPage: number): SetCurrentPageAT => ({
+export const SetCurrentPage = (currentPage: number): ISetCurrentPage => ({
     type: ACTIONS_TYPE.SET_CURRENT_PAGE,
     payload: {currentPage},
 })
-export const SetTotalUsersCount = (totalCount: number): SetTotalUsersCountAT => ({
+export const SetTotalUsersCount = (totalCount: number): ISetTotalUsersCount => ({
     type: ACTIONS_TYPE.SET_TOTAL_USERS_COUNT,
     payload: {totalCount},
 })
-export const ToggleIsFetching = (isFetching: boolean): ToggleIsFetchingAT => ({
+export const ToggleIsFetching = (isFetching: boolean): IToggleIsFetching => ({
     type: ACTIONS_TYPE.TOGGLE_IS_FETCHING,
     payload: {isFetching},
 })
-export const ToggleFollowingProgress = (isFetching: boolean, userId: string): ToggleIsFollowingProgressAT => ({
+export const ToggleFollowingProgress = (isFetching: boolean, userId: string): IToggleIsFollowingProgress => ({
     type: ACTIONS_TYPE.TOGGLE_IS_FOLLOWING_PROGRESS,
     payload: {isFetching, userId},
 })
 
 
-export const RequestUsers = (page: number, pageSize: number): ThunkType => {
+export const FetchUsers = (page: number, pageSize: number): ThunkType => {
     return async (dispatch) => {
         dispatch(SetCurrentPage(page))
         dispatch(ToggleIsFetching(true))

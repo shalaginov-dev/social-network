@@ -1,21 +1,36 @@
 .header {
-    border: #000000 3px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-top-width: 0;
     grid-area: h;
     background-color: #25252a;
+    height: 25px;
+    padding: 3px 3px;
+    margin-bottom: 10px;
 }
 
-.header img {
-    width: 20px;
+.headerContainer {
+    width: 800px;
 }
 
 .loginBlock {
     float: right;
+    color: white;
+}
+
+.loginBlock button {
+    background-color: transparent;
+    color: white;
+    /*border: 0;*/
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 .loginBlock a {
     color: white;
 }
-.loginBlock {
-    color: white;
+.loginBlock span {
+    font-size: 12px;
+    opacity: 50%;
 }

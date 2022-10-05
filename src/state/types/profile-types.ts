@@ -2,7 +2,7 @@ import {ACTIONS_TYPE} from "./action-types";
 import {ThunkAction} from "redux-thunk";
 import {RootStateType} from "../store";
 
-export type ContactsType = {
+interface IContacts {
     facebook: string
     website: null
     vk: string
@@ -12,45 +12,45 @@ export type ContactsType = {
     github: string
     mainLink: null
 }
-export type PhotosType = {
+interface IPhotos {
     small: string
     large: string
 }
-export type PostType = {
+export interface IPost {
     id: string
     message: string
     likesCounter: number
 }
-export type ProfileType = {
+export interface IProfile {
     aboutMe: string
-    contacts: ContactsType
+    contacts: IContacts
     lookingForAJob: boolean
     lookingForAJobDescription: string
     fullName: string
     userId: number
-    photos: PhotosType
+    photos: IPhotos
 }
-export type InitialProfileType = {
-    posts: Array<PostType>
-    profile: ProfileType | null
+export interface IInitialProfile {
+    posts: Array<IPost>
+    profile: IProfile | null
     status: string
 }
-
-export type AddPostAT = {
+export interface IAddPost {
     type: ACTIONS_TYPE.ADD_POST
     payload: { newText: string }
 }
-export type SetUserProfileAT = {
+export interface ISetUserProfile {
     type: ACTIONS_TYPE.SET_USER_PROFILE
-    payload: { profile: ProfileType }
+    payload: { profile: IProfile }
 }
-export type SetUserStatusAT = {
+export interface ISetUserStatus {
     type: ACTIONS_TYPE.SET_USER_STATUS
     payload: { status: string }
 }
-export type UpdateUserStatusAT = {
+export interface IUpdateUserStatus {
     type: ACTIONS_TYPE.UPDATE_USER_STATUS
     payload: { status: string }
 }
-export type ProfileActionsType = AddPostAT | SetUserProfileAT | SetUserStatusAT | UpdateUserStatusAT
+
+export type ProfileActionsType = IAddPost | ISetUserProfile | ISetUserStatus | IUpdateUserStatus
 export type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, ProfileActionsType>

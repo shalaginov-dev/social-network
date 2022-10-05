@@ -5,15 +5,11 @@ import {auth} from "../../state/selectors";
 import {useAppSelector} from "../../state/hooks";
 
 export const LoginContainer = () => {
-
-    const {
-        isAuth
-    } = useAppSelector(auth)
+    const {isAuth} = useAppSelector(auth)
 
     return (
         <Login isAuth={isAuth}/>
     )
 }
 
-export default compose<React.ComponentType>(
-)(LoginContainer)
+export default compose<React.ComponentType>()(LoginContainer)

@@ -2,11 +2,11 @@ import {ACTIONS_TYPE} from "./action-types";
 import {ThunkAction} from "redux-thunk";
 import {RootStateType} from "../store";
 
-type LocationType = {
+interface ILocation  {
     city: string
     country: string
 }
-export type UsersType = {
+export interface IUsers {
     id: string
     photos: {
         small: string | null
@@ -15,43 +15,41 @@ export type UsersType = {
     followed: boolean
     name: string
     status: string
-    location: LocationType
+    location: ILocation
 }
-export type InitialUsersType = {
-    users: Array<UsersType>
+export interface IInitialUsers {
+    users: Array<IUsers>
     pageSize: number
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
     followingInProgress: Array<string>
 }
-
-
-export type FollowAT = {
+export interface IFollow {
     type: ACTIONS_TYPE.FOLLOW
     payload: { userId: string }
 }
-export type UnfollowAT = {
+export interface IUnfollow {
     type: ACTIONS_TYPE.UNFOLLOW
     payload: { userId: string }
 }
-export type SetUsersAT = {
+export interface ISetUsers {
     type: ACTIONS_TYPE.SET_USERS
-    payload: { users: Array<UsersType> }
+    payload: { users: Array<IUsers> }
 }
-export type SetCurrentPageAT = {
+export interface ISetCurrentPage {
     type: ACTIONS_TYPE.SET_CURRENT_PAGE
     payload: { currentPage: number }
 }
-export type SetTotalUsersCountAT = {
+export interface ISetTotalUsersCount {
     type: ACTIONS_TYPE.SET_TOTAL_USERS_COUNT
     payload: { totalCount: number }
 }
-export type ToggleIsFetchingAT = {
+export interface IToggleIsFetching {
     type: ACTIONS_TYPE.TOGGLE_IS_FETCHING
     payload: { isFetching: boolean }
 }
-export type ToggleIsFollowingProgressAT = {
+export interface IToggleIsFollowingProgress {
     type: ACTIONS_TYPE.TOGGLE_IS_FOLLOWING_PROGRESS
     payload: {
         isFetching: boolean
@@ -60,12 +58,11 @@ export type ToggleIsFollowingProgressAT = {
 }
 
 export type UsersActionsType =
-    FollowAT
-    | UnfollowAT
-    | SetUsersAT
-    | SetCurrentPageAT
-    | SetTotalUsersCountAT
-    | ToggleIsFetchingAT
-    | ToggleIsFollowingProgressAT
-
+    IFollow
+    | IUnfollow
+    | ISetUsers
+    | ISetCurrentPage
+    | ISetTotalUsersCount
+    | IToggleIsFetching
+    | IToggleIsFollowingProgress
 export type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, UsersActionsType>

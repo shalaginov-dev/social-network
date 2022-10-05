@@ -5,9 +5,7 @@ import {useAppSelector} from "../state/hooks";
 
 export function withAuthRedirect<T>(Component: ComponentType<T>) {
     function RedirectComponent(props: T) {
-        const {
-            isAuth
-        } = useAppSelector(auth)
+        const {isAuth} = useAppSelector(auth)
 
         return !isAuth
             ? <Navigate replace to={'/login'}/>
