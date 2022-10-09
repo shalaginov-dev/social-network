@@ -1,10 +1,10 @@
-import React from "react";
+import React, {memo} from "react";
 import s from './ProfileInfo.module.css'
-import {Preloader} from "../../common/Preloader/preloader";
+import {Preloader} from "../../common/Preloader/Preloader";
 import {ProfileStatus} from "./ProfileStatus";
 import {IProfileProps} from "../Profile";
 
-export const ProfileInfo = ({profile, status}: IProfileProps) => {
+export const ProfileInfo = memo(({profile, status}: IProfileProps) => {
 
     return !profile
         ? <Preloader/>
@@ -20,6 +20,5 @@ export const ProfileInfo = ({profile, status}: IProfileProps) => {
                 </div>
             </div>
         </div>
-
-}
+})
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
 import {requiredField} from "../../utils/validators/validators";
@@ -10,7 +10,7 @@ export interface IFormData {
     rememberMe: boolean
 }
 
-export const LoginForm: React.FC<InjectedFormProps<IFormData>> = ({error, handleSubmit}) => {
+export const LoginForm: React.FC<InjectedFormProps<IFormData>> = memo(({error, handleSubmit}) => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -47,6 +47,6 @@ export const LoginForm: React.FC<InjectedFormProps<IFormData>> = ({error, handle
             </form>
         </div>
     )
-}
+})
 
 export const LoginReduxForm = reduxForm<IFormData>({form: 'login'})(LoginForm)

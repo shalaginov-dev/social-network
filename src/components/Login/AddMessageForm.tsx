@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Textarea} from "../common/FormsControls/FormsControls";
 import {maxLength, requiredField} from "../../utils/validators/validators";
@@ -10,7 +10,7 @@ export interface IAddMessageFormData {
 const maxLength10 = maxLength(10)
 
 
-export const AddMessageForm: React.FC<InjectedFormProps<IAddMessageFormData>> = ({handleSubmit}) => {
+export const AddMessageForm: React.FC<InjectedFormProps<IAddMessageFormData>> = memo(({handleSubmit}) => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -28,6 +28,6 @@ export const AddMessageForm: React.FC<InjectedFormProps<IAddMessageFormData>> = 
             </form>
         </div>
     )
-}
+})
 
 export const AddMessageReduxForm = reduxForm<IAddMessageFormData>({form: 'addMessageForm'})(AddMessageForm)

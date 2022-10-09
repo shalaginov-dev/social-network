@@ -6,7 +6,7 @@ interface ILocation  {
     city: string
     country: string
 }
-export interface IUsers {
+export interface IUser {
     id: string
     photos: {
         small: string | null
@@ -18,7 +18,7 @@ export interface IUsers {
     location: ILocation
 }
 export interface IInitialUsers {
-    users: Array<IUsers>
+    users: Array<IUser>
     pageSize: number
     totalUsersCount: number
     currentPage: number
@@ -35,7 +35,7 @@ export interface IUnfollow {
 }
 export interface ISetUsers {
     type: ACTIONS_TYPE.SET_USERS
-    payload: { users: Array<IUsers> }
+    payload: { users: Array<IUser> }
 }
 export interface ISetCurrentPage {
     type: ACTIONS_TYPE.SET_CURRENT_PAGE

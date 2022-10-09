@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {Navigate} from "react-router-dom";
 import {LogIn} from "../../state/actions/auth-actions";
 import {IFormData, LoginReduxForm} from "./LoginForm";
@@ -8,7 +8,7 @@ interface ILoginProps {
     isAuth: boolean
 }
 
-export const Login = ({isAuth}: ILoginProps) => {
+export const Login = memo(({isAuth}: ILoginProps) => {
     const dispatch = useAppDispatch()
     const onSubmit = (formData: IFormData) => {
         dispatch(LogIn(formData.email, formData.password, formData.rememberMe))
@@ -22,4 +22,4 @@ export const Login = ({isAuth}: ILoginProps) => {
                 <LoginReduxForm onSubmit={onSubmit}/>
             </div>
     )
-}
+})

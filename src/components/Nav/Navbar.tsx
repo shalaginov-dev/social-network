@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {NavLink} from "react-router-dom";
 import s from "./Nav.module.css"
 import {INavigation} from "../../state/reducers/sidebar-reducer";
@@ -9,7 +9,7 @@ interface INavbarProps {
     dialogs: IDialog[]
 }
 
-export const Navbar = ({navigation, dialogs}: INavbarProps) => {
+export const Navbar = memo(({navigation, dialogs}: INavbarProps) => {
 
     return (
         <nav className={s.sidebar}>
@@ -34,6 +34,6 @@ export const Navbar = ({navigation, dialogs}: INavbarProps) => {
             </div>
         </nav>
     )
-}
+})
 
 

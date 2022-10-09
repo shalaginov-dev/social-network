@@ -5,9 +5,7 @@ import {profilePage} from "../../../state/selectors";
 import {useAppSelector} from "../../../state/hooks";
 
 export const MyPostContainer = () => {
-    const {
-        posts
-    } = useAppSelector(profilePage)
+    const {posts} = useAppSelector(profilePage)
 
     return (
         <MyPosts posts={posts}/>

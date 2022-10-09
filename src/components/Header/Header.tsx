@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {memo} from 'react'
 import {NavLink} from 'react-router-dom'
 import s from "./Header.module.css"
 import {LogOut} from "../../state/actions/auth-actions"
@@ -9,7 +9,7 @@ interface IHeaderProps {
     login: string | null
 }
 
-export const Header = ({isAuth, login}: IHeaderProps) => {
+export const Header = memo(({isAuth, login}: IHeaderProps) => {
     const dispatch = useAppDispatch()
 
     return (
@@ -32,6 +32,6 @@ export const Header = ({isAuth, login}: IHeaderProps) => {
             </div>
         </header>
     )
-}
+})
 
 

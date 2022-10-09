@@ -6,7 +6,7 @@ import {
     ISetTotalUsersCount,
     ISetUsers, ThunkType,
     IToggleIsFetching, IToggleIsFollowingProgress,
-    IUnfollow, IUsers,
+    IUnfollow, IUser,
 } from "../types/users-types";
 
 
@@ -18,7 +18,7 @@ export const UnfollowSuccess = (userId: string): IUnfollow => ({
     type: ACTIONS_TYPE.UNFOLLOW,
     payload: {userId},
 })
-export const SetUsers = (users: Array<IUsers>): ISetUsers => ({
+export const SetUsers = (users: Array<IUser>): ISetUsers => ({
     type: ACTIONS_TYPE.SET_USERS,
     payload: {users},
 })

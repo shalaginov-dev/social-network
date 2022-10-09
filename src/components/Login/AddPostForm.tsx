@@ -1,18 +1,18 @@
-import React from "react";
+import React, {memo} from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLength, requiredField} from "../../utils/validators/validators";
 import {Textarea} from "../common/FormsControls/FormsControls";
 
-export type AddPostFormDataType = {
+export interface IAddPostFormData {
     newPostMessage: string
 }
 
 const maxLength10 = maxLength(10)
 
-export const AddPostForm: React.FC<InjectedFormProps<AddPostFormDataType>> = (props) => {
+export const AddPostForm: React.FC<InjectedFormProps<IAddPostFormData>> = memo(({handleSubmit}) => {
     return (
         <div>
-            <form onSubmit={props.handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <Field
                         component={Textarea}
@@ -27,6 +27,6 @@ export const AddPostForm: React.FC<InjectedFormProps<AddPostFormDataType>> = (pr
             </form>
         </div>
     )
-}
+})
 
-export const AddPostReduxForm = reduxForm<AddPostFormDataType>({form: 'addPostForm'})(AddPostForm)
+export const AddPostReduxForm = reduxForm<IAddPostFormData>({form: 'addPostForm'})(AddPostForm)

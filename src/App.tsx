@@ -11,7 +11,7 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {FetchAuthUserData} from "./state/actions/auth-actions";
-import {Preloader} from "./components/common/Preloader/preloader";
+import {Preloader} from "./components/common/Preloader/Preloader";
 import {auth} from "./state/selectors";
 import {useAppDispatch, useAppSelector} from "./state/hooks";
 

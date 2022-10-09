@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
@@ -8,12 +8,12 @@ import {useAppDispatch} from "../../state/hooks";
 import {IDialog, IMessage} from "../../state/types/dialogs-types";
 
 
-interface IDialogsProps  {
+interface IDialogsProps {
     dialogs: IDialog[]
     messages: IMessage[]
 }
 
-export const Dialogs = ({ dialogs, messages}: IDialogsProps) => {
+export const Dialogs = memo(({dialogs, messages}: IDialogsProps) => {
     const dispatch = useAppDispatch()
 
     const onSubmit = (formData: IAddMessageFormData) => {
@@ -35,5 +35,5 @@ export const Dialogs = ({ dialogs, messages}: IDialogsProps) => {
             <AddMessageReduxForm onSubmit={onSubmit}/>
         </div>
     </div>
-}
+})
 

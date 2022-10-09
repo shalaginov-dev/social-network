@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {memo, useEffect} from "react";
 import {compose} from "redux";
 import {Profile} from "./Profile";
 import {RouteProps} from "react-router-dom";
@@ -10,7 +10,7 @@ import {useAppDispatch, useAppSelector} from "../../state/hooks";
 
 type ProfileContainerPropsType = RouteProps & IPathParams
 
-export const ProfileContainer = ({router}: ProfileContainerPropsType) => {
+export const ProfileContainer = memo(({router}: ProfileContainerPropsType) => {
     const {profile, status} = useAppSelector(profilePage)
     const dispatch = useAppDispatch()
 
@@ -22,7 +22,7 @@ export const ProfileContainer = ({router}: ProfileContainerPropsType) => {
     return <Profile profile={profile} status={status}/>
 
 
-}
+})
 
 export default compose<React.ComponentType>(
     withRouter,

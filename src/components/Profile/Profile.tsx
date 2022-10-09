@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import s from './Profile.module.css';
@@ -9,7 +9,7 @@ export interface IProfileProps {
     status: string
 }
 
-export const Profile = (props: IProfileProps) => {
+export const Profile = memo((props: IProfileProps) => {
 
     return (
         <div className={s.profile}>
@@ -17,6 +17,6 @@ export const Profile = (props: IProfileProps) => {
             <MyPostsContainer/>
         </div>
     )
-}
+})
 
 

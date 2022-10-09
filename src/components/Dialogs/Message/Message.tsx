@@ -1,12 +1,12 @@
 import s from "../Dialogs.module.css";
-import React from "react";
+import React, {memo} from "react";
 
-type MessageType = {
+interface IMessage {
     message: string | number
 }
 
-export const Message = (props: MessageType) => {
+export const Message = memo(({message}: IMessage) => {
 
-    return <div className={s.message}>{props.message}</div>
-}
+    return <div className={s.message}>{message}</div>
+})
 

@@ -3,7 +3,7 @@ import {Users} from "./Users";
 import {FetchUsers} from "../../state/actions/users-actions";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
-import {Preloader} from "../common/Preloader/preloader";
+import {Preloader} from "../common/Preloader/Preloader";
 import {usersPageSelector} from "../../state/selectors";
 import {useAppDispatch, useAppSelector} from "../../state/hooks";
 
