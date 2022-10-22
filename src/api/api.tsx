@@ -1,4 +1,15 @@
 import axios from "axios";
+import {IPhotos} from "../state/types/profile-types";
+import {IAboutMeFormProps} from "../components/Profile/ProfileInfo/AboutMe/AboutMeForm";
+
+interface IResponse<I> {
+    resultCode: number
+    messages: string[]
+    fieldsErrors: string[]
+    data: {
+        photos: I
+    }
+}
 
 export const instance = axios.create({
     withCredentials: true,
@@ -29,6 +40,19 @@ export const profileAPI = {
     },
     updateStatus(status: string) {
         return instance.put(`profile/status`, {status}).then(res => res.data)
+    },
+    updatePhoto(photo: any) {
+        const formData = new FormData()
+        formData.append('image', photo)
+        return instance.put<IResponse<IPhotos>>(`profile/photo`, formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            }
+        }).then(res => res.data)
+    },
+    updateProfile(profile: IAboutMeFormProps){
+        return instance.put(`profile`, profile).then(res => res.data)
+
     }
 }
 

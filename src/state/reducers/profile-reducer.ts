@@ -3,8 +3,7 @@ import {ACTIONS_TYPE} from "../types/action-types";
 import {IInitialProfile, ProfileActionsType} from "../types/profile-types";
 
 
-
-let initialState: IInitialProfile = {
+const initialState: IInitialProfile = {
     posts: [
         {id: v1(), message: 'Hi, how are you?', likesCounter: 2},
         {id: v1(), message: "It's my  first post", likesCounter: 5},
@@ -27,6 +26,10 @@ export const profileReducer = (state: IInitialProfile = initialState, action: Pr
             return {...state, status: action.payload.status}
         case ACTIONS_TYPE.UPDATE_USER_STATUS:
             return {...state, status: action.payload.status}
+        case ACTIONS_TYPE.UPDATE_USER_PHOTO:
+            return state.profile
+                ? {...state, profile: {...state.profile, photos: action.payload.photos}}
+                : {...state}
         default:
             return state
     }

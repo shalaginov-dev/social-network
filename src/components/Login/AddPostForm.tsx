@@ -9,7 +9,7 @@ export interface IAddPostFormData {
 
 const maxLength10 = maxLength(10)
 
-export const AddPostForm: React.FC<InjectedFormProps<IAddPostFormData>> = memo(({handleSubmit}) => {
+const AddPostForm: React.FC<InjectedFormProps<IAddPostFormData>> = memo(({handleSubmit}) => {
     return (
         <div>
             <form onSubmit={handleSubmit}>

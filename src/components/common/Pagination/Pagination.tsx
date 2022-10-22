@@ -28,7 +28,6 @@ export const Pagination = memo(({
     const leftPortionPageNumber = (portionNumber - 1) * portionSize + 1
     const rightPortionPageNumber = portionNumber * portionSize
 
-
     return (
         <div className={s.paginationWrapper}>
             {
@@ -39,19 +38,21 @@ export const Pagination = memo(({
             {
                 pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                     .map(p => (
-                        <div
-                            key={p}
-                            className={currentPage === p ? s.selectedPage : s.page}
-                            onClick={() => {
-                                onPageChanged(p)
-                            }}
-                        >{p}</div>)
+                            <div
+                                key={p}
+                                className={currentPage === p ? s.selectedPage : s.page}
+                                onClick={() => {onPageChanged(p)}}>{p}
+                            </div>
+                        )
                     )
             }
             {
                 portionCount > portionNumber && <button onClick={() => {
                     setPortionNumber(portionNumber + 1)
                 }}>next</button>
+            }
+            {
+                <button onClick={()=> {setPortionNumber(pagesCount / 10)}}> end </button>
             }
         </div>
     )

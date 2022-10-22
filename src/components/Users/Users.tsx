@@ -1,6 +1,5 @@
 import s from "./Users.module.css";
 import React, {memo} from "react";
-import {useAppDispatch} from "../../state/hooks";
 import {IUser} from "../../state/types/users-types";
 import {Pagination} from "../common/Pagination/Pagination";
 import {User} from "./User";

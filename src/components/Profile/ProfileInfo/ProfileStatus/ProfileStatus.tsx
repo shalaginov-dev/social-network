@@ -1,7 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, memo, useEffect, useState} from "react";
-import s from './Profilestatus.module.css';
-import {UpdateStatus} from "../../../state/actions/profile-actions";
-import {useAppDispatch} from "../../../state/hooks";
+import s from './ProfileStatus.module.css';
+import {UpdateStatus} from "../../../../state/actions/profile-actions";
+import {useAppDispatch} from "../../../../state/hooks";
 
 interface IProfileStatusProps{
     status: string
@@ -45,6 +45,9 @@ export const ProfileStatus = memo(({status}: IProfileStatusProps) => {
                 autoFocus
                 onKeyPress={onKeyPressHandler}
             />
-            : <span className={s.status} onDoubleClick={activateEditMode}>{tempTitle}</span>
+            : <div>
+            <b>Status: </b>
+                <span className={s.status} onDoubleClick={activateEditMode}>{tempTitle}</span>
+            </div>
     )
 })

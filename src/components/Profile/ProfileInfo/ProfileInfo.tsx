@@ -1,24 +1,41 @@
-import React, {memo} from "react";
+import React, {memo, useState} from "react";
 import s from './ProfileInfo.module.css'
-import {Preloader} from "../../common/Preloader/Preloader";
-import {ProfileStatus} from "./ProfileStatus";
-import {IProfileProps} from "../Profile";
+import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
+import {IProfile} from "../../../state/types/profile-types";
+import {AboutMe} from "./AboutMe/AboutMe";
+import {ProfilePhoto} from "./ProfilePhoto/ProfilePhoto";
+import {AboutMeEditForm, IAboutMeFormProps} from "./AboutMe/AboutMeForm";
+import {useAppDispatch} from "../../../state/hooks";
+import {UpdateProfile} from "../../../state/actions/profile-actions";
 
-export const ProfileInfo = memo(({profile, status}: IProfileProps) => {
+interface IProfileInfoProps {
+    profile: IProfile | null
+    status: string
+    isOwn: boolean
+}
 
-    return !profile
-        ? <Preloader/>
-        : <div>
-            <div className={s.mainBlock}>
-                <div className={s.descriptionBlock}>
-                    <img src={profile.photos.small} alt="ava"/>
-                    <div>{profile.aboutMe}</div>
-                </div>
-                <div className={s.name}>
-                    <div>{profile.fullName}</div>
-                    <ProfileStatus status={status}/>
-                </div>
-            </div>
-        </div>
-})
+export const ProfileInfo = memo(({profile, status, isOwn}: IProfileInfoProps) => {
+        const dispatch = useAppDispatch()
+        const [editMode, setEditMode] = useState(false)
+
+        const onSubmit = (formData: IAboutMeFormProps) => {
+            dispatch(UpdateProfile(formData))
+            setEditMode(false)
+        }
+
+    return profile
+            ? <div className={s.profileInfoBlock}>
+                <ProfilePhoto profile={profile} isOwn={isOwn}/>
+                <ProfileStatus status={status}/>
+                {editMode
+                    // @ts-ignore
+                    ? <AboutMeEditForm initialValues={profile} onSubmit={onSubmit}/>
+                    : <AboutMe toggleEditMode={() => {
+                        setEditMode(true)
+                    }} profile={profile} isOwn={isOwn}/>
+                }
+
+            </div> : null
+    }
+)
 

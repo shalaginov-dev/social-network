@@ -10,7 +10,7 @@ export interface IAddMessageFormData {
 const maxLength10 = maxLength(10)
 
 
-export const AddMessageForm: React.FC<InjectedFormProps<IAddMessageFormData>> = memo(({handleSubmit}) => {
+const AddMessageForm: React.FC<InjectedFormProps<IAddMessageFormData>> = memo(({handleSubmit}) => {
     return (
         <div>
             <form onSubmit={handleSubmit}>

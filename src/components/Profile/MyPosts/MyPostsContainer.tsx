@@ -1,19 +1,15 @@
-import {MyPosts} from "./MyPosts";
-import React from "react";
-import {compose} from "redux";
-import {profilePage} from "../../../state/selectors";
-import {useAppSelector} from "../../../state/hooks";
+import {IMyPostProps, MyPosts} from "./MyPosts";
+import React, {memo} from "react";
 
-export const MyPostContainer = () => {
-    const {posts} = useAppSelector(profilePage)
+export const MyPostContainer = memo(({posts, photos}: IMyPostProps) => {
+
 
     return (
-        <MyPosts posts={posts}/>
+        <MyPosts posts={posts} photos={photos}/>
     )
-}
+})
 
-export default compose<React.ComponentType>(
-)(MyPostContainer)
+
 
 
 
