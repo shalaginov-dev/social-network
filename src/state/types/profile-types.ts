@@ -12,7 +12,7 @@ interface IContacts {
     github: null | string
     mainLink: null | string
 }
-export interface IPhotos {
+export interface Photos {
     small: string
     large: string
 }
@@ -21,18 +21,18 @@ export interface IPost {
     message: string
     likesCounter: number
 }
-export interface IProfile {
+export interface MyProfile {
     aboutMe: string | null
     contacts: IContacts
     lookingForAJob: boolean
     lookingForAJobDescription: string | null
     fullName: string
     userId: number
-    photos: IPhotos
+    photos: Photos
 }
-export interface IInitialProfile {
+export interface InitialProfile {
     posts: Array<IPost>
-    profile: IProfile | null
+    profile: MyProfile | null
     status: string
 }
 export interface IAddPost {
@@ -41,7 +41,7 @@ export interface IAddPost {
 }
 export interface ISetUserProfile {
     type: ACTIONS_TYPE.SET_USER_PROFILE
-    payload: { profile: IProfile }
+    payload: { profile: MyProfile }
 }
 export interface ISetUserStatus {
     type: ACTIONS_TYPE.SET_USER_STATUS
@@ -53,7 +53,7 @@ export interface IUpdateUserStatus {
 }
 export interface IUpdateUserPhoto {
     type: ACTIONS_TYPE.UPDATE_USER_PHOTO
-    payload: { photos: IPhotos }
+    payload: { photos: Photos }
 }
 
 export type ProfileActionsType = IAddPost | ISetUserProfile | ISetUserStatus | IUpdateUserStatus | IUpdateUserPhoto

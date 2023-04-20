@@ -12,7 +12,7 @@ export interface IInitialSidebar {
 
 let initialState: IInitialSidebar = {
     navigation: [
-        {id: v1(), to: '/profile', title: 'Profile'},
+        {id: v1(), to: '/', title: 'Profile'},
         {id: v1(), to: '/dialogs', title: 'Messages'},
         {id: v1(), to: '/users', title: 'Users'},
         {id: v1(), to: '/news', title: 'News'},

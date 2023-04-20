@@ -6,10 +6,11 @@ import {useAppSelector} from "../../state/hooks";
 
 const HeaderContainer = () => {
     const {isAuth, login} = useAppSelector(auth)
+    const photo = useAppSelector(state => state.profilePage.profile?.photos.small)
 
     return (
         <div>
-            <Header isAuth={isAuth} login={login}/>
+            <Header isAuth={isAuth} photo={photo}/>
         </div>
     )
 }

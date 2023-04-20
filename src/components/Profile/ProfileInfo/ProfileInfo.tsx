@@ -1,7 +1,7 @@
 import React, {memo, useState} from "react";
 import s from './ProfileInfo.module.css'
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
-import {IProfile} from "../../../state/types/profile-types";
+import {MyProfile} from "../../../state/types/profile-types";
 import {AboutMe} from "./AboutMe/AboutMe";
 import {ProfilePhoto} from "./ProfilePhoto/ProfilePhoto";
 import {AboutMeEditForm, IAboutMeFormProps} from "./AboutMe/AboutMeForm";
@@ -9,7 +9,7 @@ import {useAppDispatch} from "../../../state/hooks";
 import {UpdateProfile} from "../../../state/actions/profile-actions";
 
 interface IProfileInfoProps {
-    profile: IProfile | null
+    profile: MyProfile | null
     status: string
     isOwn: boolean
 }

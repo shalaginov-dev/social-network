@@ -2,10 +2,10 @@ import s from "../ProfileInfo.module.css";
 import React, {ChangeEvent, useState} from "react";
 import {UpdatePhoto} from "../../../../state/actions/profile-actions";
 import {useAppDispatch} from "../../../../state/hooks";
-import {IProfile} from "../../../../state/types/profile-types";
+import {MyProfile} from "../../../../state/types/profile-types";
 
 interface IProfilePhotoProps {
-    profile: IProfile | null
+    profile: MyProfile | null
     isOwn: boolean
 }
 

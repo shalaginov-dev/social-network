@@ -1,5 +1,5 @@
 import axios from "axios";
-import {IPhotos} from "../state/types/profile-types";
+import {Photos} from "../state/types/profile-types";
 import {IAboutMeFormProps} from "../components/Profile/ProfileInfo/AboutMe/AboutMeForm";
 
 interface IResponse<I> {
@@ -44,7 +44,7 @@ export const profileAPI = {
     updatePhoto(photo: any) {
         const formData = new FormData()
         formData.append('image', photo)
-        return instance.put<IResponse<IPhotos>>(`profile/photo`, formData, {
+        return instance.put<IResponse<Photos>>(`profile/photo`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
             }

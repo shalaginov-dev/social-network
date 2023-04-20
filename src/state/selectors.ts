@@ -4,7 +4,7 @@ import {createSelector} from "reselect";
 import {IInitialAuth} from "./types/auth-types";
 import {IInitialUsers} from "./types/users-types";
 import {IInitialDialogs} from "./types/dialogs-types";
-import {IInitialProfile} from "./types/profile-types";
+import {InitialProfile} from "./types/profile-types";
 
 export const usersPage = (state: RootStateType): IInitialUsers => state.usersPage
 
@@ -16,5 +16,5 @@ export const sidebar = (state: RootStateType): IInitialSidebar => state.sidebar
 
 export const dialogsPage = (state: RootStateType): IInitialDialogs => state.dialogsPage
 
-export const profilePage = (state: RootStateType): IInitialProfile => state.profilePage
+export const profilePage = (state: RootStateType): InitialProfile => state.profilePage
 

@@ -1,10 +1,10 @@
 import s from "../ProfileInfo.module.css";
 import {Contact} from "./Contact";
 import React from "react";
-import {IProfile} from "../../../../state/types/profile-types";
+import {MyProfile} from "../../../../state/types/profile-types";
 
 interface IAboutMeProps {
-    profile: IProfile | null
+    profile: MyProfile | null
     isOwn: boolean
     toggleEditMode: () => void
 }

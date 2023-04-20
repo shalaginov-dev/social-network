@@ -1,9 +1,9 @@
 import {v1} from "uuid"
 import {ACTIONS_TYPE} from "../types/action-types";
-import {IInitialProfile, ProfileActionsType} from "../types/profile-types";
+import {InitialProfile, ProfileActionsType} from "../types/profile-types";
 
 
-const initialState: IInitialProfile = {
+const initialState: InitialProfile = {
     posts: [
         {id: v1(), message: 'Hi, how are you?', likesCounter: 2},
         {id: v1(), message: "It's my  first post", likesCounter: 5},
@@ -13,7 +13,7 @@ const initialState: IInitialProfile = {
 }
 
 
-export const profileReducer = (state: IInitialProfile = initialState, action: ProfileActionsType): IInitialProfile => {
+export const profileReducer = (state: InitialProfile = initialState, action: ProfileActionsType): InitialProfile => {
     switch (action.type) {
         case ACTIONS_TYPE.ADD_POST:
             return {

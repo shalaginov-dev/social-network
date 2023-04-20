@@ -14,11 +14,10 @@ interface IUserProps {
 
 export const User = memo(({user, followingInProgress,}: IUserProps) => {
     const dispatch = useAppDispatch()
-
     return (
         <div>
             <div>
-                <NavLink to={'/profile/' + user.id}>
+                <NavLink to={`/profile/${user.id}`}>
                     <img alt={'ava'} src={user.photos.small || cat} className={s.userPhoto}/>
                 </NavLink>
             </div>

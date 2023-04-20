@@ -1,11 +1,11 @@
 import React from "react";
 import s from "./Post.module.css"
-import {IPhotos} from "../../../../state/types/profile-types";
+import {Photos} from "../../../../state/types/profile-types";
 
 interface IPostProps {
     message: string
     likesCounter: number
-    photos: IPhotos
+    photos: Photos
 }
 
 export const Post = ({message, likesCounter, photos}: IPostProps) => {

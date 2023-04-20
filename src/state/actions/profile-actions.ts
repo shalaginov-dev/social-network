@@ -1,7 +1,7 @@
 import {profileAPI} from "../../api/api";
 import {ACTIONS_TYPE} from "../types/action-types";
 import {
-    IAddPost, IPhotos, IProfile,
+    IAddPost, Photos, MyProfile,
     ISetUserProfile,
     ISetUserStatus, IUpdateUserPhoto,
     IUpdateUserStatus
@@ -15,7 +15,7 @@ export const AddPost = (newText: string): IAddPost => ({
     payload: {newText,},
 })
 
-export const SetUserProfile = (profile: IProfile): ISetUserProfile => ({
+export const SetUserProfile = (profile: MyProfile): ISetUserProfile => ({
     type: ACTIONS_TYPE.SET_USER_PROFILE,
     payload: {profile},
 })
@@ -29,7 +29,7 @@ export const UpdateUserStatus = (status: string): IUpdateUserStatus => ({
     type: ACTIONS_TYPE.UPDATE_USER_STATUS,
     payload: {status},
 })
-export const UpdateUserPhoto = (photos: IPhotos): IUpdateUserPhoto => ({
+export const UpdateUserPhoto = (photos: Photos): IUpdateUserPhoto => ({
     type: ACTIONS_TYPE.UPDATE_USER_PHOTO,
     payload: {photos: photos},
 })

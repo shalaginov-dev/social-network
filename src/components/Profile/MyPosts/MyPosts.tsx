@@ -4,11 +4,11 @@ import {Post} from "./Post/Post";
 import {IAddPostFormData, AddPostReduxForm} from "../../Login/AddPostForm";
 import {AddPost} from "../../../state/actions/profile-actions";
 import {useAppDispatch} from "../../../state/hooks";
-import {IPhotos, IPost, IProfile} from "../../../state/types/profile-types";
+import {Photos, IPost, MyProfile} from "../../../state/types/profile-types";
 
 export interface IMyPostProps {
     posts: IPost[]
-    photos: IPhotos
+    photos: Photos
 }
 
 export const MyPosts = memo(({posts, photos}: IMyPostProps) => {

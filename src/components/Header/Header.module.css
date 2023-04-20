@@ -5,32 +5,64 @@
     border-top-width: 0;
     grid-area: h;
     background-color: #222222;
-    height: 25px;
-    padding: 3px 3px;
+    height: 30px;
     margin-bottom: 10px;
 }
 
 .headerContainer {
+    display: flex;
+    justify-content: flex-end;
     width: 800px;
+    height: 30px;
 }
 
 .loginBlock {
-    float: right;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+    padding: 0 10px;
     color: white;
+    height: 100%;
+    width: 34px;
 }
 
-.loginBlock button {
-    background-color: transparent;
-    color: white;
-    /*border: 0;*/
-    border-radius: 3px;
-    cursor: pointer;
+.loginBlock:hover{
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-.loginBlock a {
-    color: white;
+.loginBlock img{
+    border-radius: 50%;
+    height: 22px;
 }
-.loginBlock span {
-    font-size: 12px;
+.loginBlock svg{
+    position: absolute;
+    left: -216px;
+    top: 10px;
+    height: 12px;
     opacity: 50%;
+}
+.popupBlock{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 54px;
+    height: 60px;
+    background-color: rgb(72, 72, 72);
+    position: absolute;
+    top: 30px;
+    border-radius: 0 0 2px 2px;
+}
+
+.popupBlock p{
+    margin: 0 auto;
+    padding: 3px;
+    cursor: pointer;
+    width: 100%;
+    color: white;
+    font-size: 13px;
+}
+
+.popupBlock p:hover{
+    background-color: rgba(255, 255, 255, 0.1);
 }

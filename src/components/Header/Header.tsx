@@ -1,34 +1,42 @@
-import React, {memo} from 'react'
+import React, {memo, useState} from 'react'
 import {NavLink} from 'react-router-dom'
 import s from "./Header.module.css"
 import {LogOut} from "../../state/actions/auth-actions"
-import {useAppDispatch} from "../../state/hooks";
+import {useAppDispatch, useAppSelector} from "../../state/hooks";
 
-interface IHeaderProps {
+interface HeaderProps {
     isAuth: boolean
-    login: string | null
+    photo?: string
 }
 
-export const Header = memo(({isAuth, login}: IHeaderProps) => {
+export const Header = memo(({isAuth, photo}: HeaderProps) => {
     const dispatch = useAppDispatch()
-
+    const [popupView, setPopupView] = useState(false)
+    const handleLogoutClick=()=>{
+        setPopupView(false)
+        dispatch(LogOut())
+    }
+    console.log(isAuth)
     return (
         <header className={s.header}>
             <div className={s.headerContainer}>
-                <div className={s.loginBlock}>
-                    {
-                        isAuth
-                            ? <div>
-                                <span>{login + ' '}</span>
-                                <button onClick={() => {
-                                    dispatch(LogOut())
-                                }}>
-                                    log out
-                                </button>
-                            </div>
-                            : <NavLink to={'/login'}>Login</NavLink>
-                    }
-                </div>
+                {
+                    isAuth &&
+                    <div onClick={() => {setPopupView(!popupView)}} className={s.loginBlock}>
+                        <img src={photo} alt="ava"/>
+                        <svg fill="#FFFFFF99" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24"
+                             width="512" height="512">
+                            <path
+                                d="M18.71,8.21a1,1,0,0,0-1.42,0l-4.58,4.58a1,1,0,0,1-1.42,0L6.71,8.21a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41l4.59,4.59a3,3,0,0,0,4.24,0l4.59-4.59A1,1,0,0,0,18.71,8.21Z"/>
+                        </svg>
+                    </div>
+                }
+                {
+                    popupView &&
+                    <div className={s.popupBlock}>
+                        <p onClick={handleLogoutClick}>logout</p>
+                    </div>
+                }
             </div>
         </header>
     )
