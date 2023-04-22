@@ -6,11 +6,9 @@ export function MainLayout() {
     return (
         <div className="wrapper">
             <HeaderContainer/>
-            <div className="app-wrapper">
+            <div className="content">
                 <NavbarContainer/>
-                <div className="app-wrapper-content">
-                    <Outlet/>
-                </div>
+                <Outlet/>
             </div>
         </div>
     )

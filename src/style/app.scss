@@ -7,22 +7,12 @@
     background-color: #484848;
     margin: 50px auto;
     border-radius: 10px;
-    max-width: 1400px;
+    max-width: 900px;
+
 }
 
-.app-wrapper {
-    margin: 0 auto;
-    display: grid;
-    width: 800px;
-    grid-template-areas:
-            'h h'
-            'n c';
-    /*grid-template-rows: 60px 1fr;*/
-    grid-template-columns: 2fr 10fr;
-}
-
-.app-wrapper-content {
-    grid-area: c;
-    background-color: #222222;
-    border-radius: 4px;
+.content {
+    display: flex;
+    justify-content: center;
+    width: 900px;
 }
