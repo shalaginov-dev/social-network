@@ -1,4 +1,4 @@
-import s from "./Users.module.css";
+import s from "./Users.module.scss";
 import cat from "../../assets/images/cat.png";
 import React, {memo} from "react";
 import {NavLink} from "react-router-dom";

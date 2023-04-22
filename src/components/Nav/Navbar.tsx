@@ -1,6 +1,6 @@
 import React, {memo} from "react";
 import {NavLink} from "react-router-dom";
-import s from "./Nav.module.css"
+import s from "./Nav.module.scss"
 import {INavigation} from "../../state/reducers/sidebar-reducer";
 import {IDialog} from "../../state/types/dialogs-types";
 

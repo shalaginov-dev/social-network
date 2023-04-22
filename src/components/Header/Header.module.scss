@@ -56,7 +56,7 @@
 
 .popupBlock p{
     margin: 0 auto;
-    padding: 3px;
+    padding: 3px 7px;
     cursor: pointer;
     width: 100%;
     color: white;
@@ -64,5 +64,6 @@
 }
 
 .popupBlock p:hover{
+    font-weight: 500;
     background-color: rgba(255, 255, 255, 0.1);
 }

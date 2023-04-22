@@ -1,5 +1,5 @@
 import React, {memo} from "react";
-import s from "./MyPosts.module.css";
+import s from "./MyPosts.module.scss";
 import {Post} from "./Post/Post";
 import {IAddPostFormData, AddPostReduxForm} from "../../Login/AddPostForm";
 import {AddPost} from "../../../state/actions/profile-actions";

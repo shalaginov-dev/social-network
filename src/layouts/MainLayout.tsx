@@ -4,7 +4,7 @@ import NavbarContainer from "../components/Nav/NavbarContainer";
 
 export function MainLayout() {
     return (
-        <div className="app">
+        <div className="wrapper">
             <HeaderContainer/>
             <div className="app-wrapper">
                 <NavbarContainer/>

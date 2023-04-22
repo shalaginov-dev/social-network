@@ -1,4 +1,4 @@
-import s from "../Dialogs.module.css";
+import s from "../Dialogs.module.scss";
 import React, {memo} from "react";
 
 interface IMessage {

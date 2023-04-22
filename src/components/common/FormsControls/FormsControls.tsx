@@ -1,4 +1,4 @@
-import s from './FormsControls.module.css'
+import s from './FormsControls.module.scss'
 
 export const FormControl = ({input, meta, child, ...props}: any) => {
     const hasError = meta.touched && meta.error

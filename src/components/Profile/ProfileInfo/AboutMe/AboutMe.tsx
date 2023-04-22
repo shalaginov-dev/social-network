@@ -1,4 +1,4 @@
-import s from "../ProfileInfo.module.css";
+import s from "../ProfileInfo.module.scss";
 import {Contact} from "./Contact";
 import React from "react";
 import {MyProfile} from "../../../../state/types/profile-types";

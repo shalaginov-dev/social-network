@@ -1,4 +1,4 @@
-import s from "../ProfileInfo.module.css";
+import s from "../ProfileInfo.module.scss";
 import React, {ChangeEvent, useState} from "react";
 import {UpdatePhoto} from "../../../../state/actions/profile-actions";
 import {useAppDispatch} from "../../../../state/hooks";

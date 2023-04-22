@@ -1,5 +1,5 @@
 import React, {memo, useState} from "react";
-import s from './ProfileInfo.module.css'
+import s from './ProfileInfo.module.scss'
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 import {MyProfile} from "../../../state/types/profile-types";
 import {AboutMe} from "./AboutMe/AboutMe";

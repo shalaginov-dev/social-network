@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './App.css';
+import './style/app.scss';
 import {Route, Routes, Navigate} from 'react-router-dom'
 import NavbarContainer from "./components/Nav/NavbarContainer";
 import UsersContainer from './components/Users/UsersContainer';

@@ -2,7 +2,7 @@ import React, {memo} from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
 import {requiredField} from "../../utils/validators/validators";
-import s from "./LoginForm.module.css";
+import s from "./LoginForm.module.scss";
 
 export interface IFormData {
     email: string

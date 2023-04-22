@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Post.module.css"
+import s from "./Post.module.scss"
 import {Photos} from "../../../../state/types/profile-types";
 
 interface IPostProps {

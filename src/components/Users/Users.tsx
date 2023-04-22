@@ -1,4 +1,4 @@
-import s from "./Users.module.css";
+import s from "./Users.module.scss";
 import React, {memo} from "react";
 import {IUser} from "../../state/types/users-types";
 import {Pagination} from "../common/Pagination/Pagination";

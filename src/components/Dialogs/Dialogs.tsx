@@ -1,5 +1,5 @@
 import React, {memo} from "react";
-import s from './Dialogs.module.css'
+import s from './Dialogs.module.scss'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {IAddMessageFormData, AddMessageReduxForm} from "../Login/AddMessageForm";

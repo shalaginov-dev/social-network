@@ -1,6 +1,6 @@
 import React, {memo, useState} from 'react'
 import {NavLink} from 'react-router-dom'
-import s from "./Header.module.css"
+import s from "./Header.module.scss"
 import {LogOut} from "../../state/actions/auth-actions"
 import {useAppDispatch, useAppSelector} from "../../state/hooks";
 
@@ -16,7 +16,6 @@ export const Header = memo(({isAuth, photo}: HeaderProps) => {
         setPopupView(false)
         dispatch(LogOut())
     }
-    console.log(isAuth)
     return (
         <header className={s.header}>
             <div className={s.headerContainer}>
@@ -34,7 +33,7 @@ export const Header = memo(({isAuth, photo}: HeaderProps) => {
                 {
                     popupView &&
                     <div className={s.popupBlock}>
-                        <p onClick={handleLogoutClick}>logout</p>
+                        <p onClick={handleLogoutClick}>Logout</p>
                     </div>
                 }
             </div>

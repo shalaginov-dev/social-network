@@ -1,5 +1,5 @@
 import React, {ChangeEvent, KeyboardEvent, memo, useEffect, useState} from "react";
-import s from './ProfileStatus.module.css';
+import s from './ProfileStatus.module.scss';
 import {UpdateStatus} from "../../../../state/actions/profile-actions";
 import {useAppDispatch} from "../../../../state/hooks";
 
