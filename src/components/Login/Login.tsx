@@ -1,5 +1,4 @@
 import React, {memo} from "react";
-import {Navigate} from "react-router-dom";
 import s from './Login.module.scss'
 
 import {LogIn} from "../../state/actions/auth-actions";
@@ -17,11 +16,11 @@ export const Login = memo(({isAuth}: ILoginProps) => {
     }
 
     return (
-        isAuth
-            ? <Navigate replace to={'/profile'}/>
-            : <div className={s.loginBlock}>
+        <div className={s.loginBlock}>
+            <div className={s.loginWrapper}>
                 <h1>LOGIN</h1>
                 <LoginReduxForm onSubmit={onSubmit}/>
             </div>
+        </div>
     )
 })
