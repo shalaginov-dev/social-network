@@ -26,6 +26,7 @@ export const ProfileInfo = memo(({profile, status, isOwn}: IProfileInfoProps) =>
     return profile
             ? <div className={s.profileInfoBlock}>
                 <ProfilePhoto profile={profile} isOwn={isOwn}/>
+                <h3> {profile.fullName}</h3>
                 <ProfileStatus status={status}/>
                 {editMode
                     // @ts-ignore

@@ -12,7 +12,6 @@ interface IProfilePhotoProps {
 export const ProfilePhoto = ({profile, isOwn}: IProfilePhotoProps) => {
     const dispatch = useAppDispatch()
 
-
     const [changeMode, setChangeMode] = useState(false)
 
     const onPhotoChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -25,18 +24,15 @@ export const ProfilePhoto = ({profile, isOwn}: IProfilePhotoProps) => {
     return profile ?
         <div className={s.profilePhotoBlock}>
             <div className={s.imageContainer}>
-                <img onMouseOver={() => {
-                    onMouseFocus(true)
-                }} onMouseOut={() => {
-                    onMouseFocus(false)
-                }} src={profile.photos.large} alt="ava"/>
+                <img onMouseOver={() => {onMouseFocus(true)}}
+                     onMouseOut={() => {onMouseFocus(false)}}
+                     src={profile.photos.large}
+                     alt="ava"/>
             </div>
             {isOwn &&
                 <div className={changeMode ? s.selectImg : s.hideImg}
-                     onMouseOver={() => {
-                         onMouseFocus(true)
-                     }} onMouseOut={() => {
-                    onMouseFocus(false)
+                     onMouseOver={() => {onMouseFocus(true)}}
+                     onMouseOut={() => {onMouseFocus(false)
                 }}>
                     <input id={'fileElem'} type='file' onChange={onPhotoChange}/>
                     <label htmlFor='fileElem'> Edit photo </label>

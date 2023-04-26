@@ -15,22 +15,12 @@ export const Navbar = memo(({navigation, dialogs}: INavbarProps) => {
         <nav className={s.sidebar}>
             <div className={s.nav}>
                 {
-                    navigation.map(n => <div className={s.item} key={n.id}>
-                        <NavLink to={n.to}>{n.title}</NavLink>
-                    </div>)
+                    navigation.map(n =>
+                        <NavLink to={n.to} key={n.id}>
+                                {n.title}
+                        </NavLink>
+                    )
                 }
-            </div>
-            <div className={s.friends}>
-                <span className={s.friendsTitle}>Friends</span>
-                <div className={s.friendsBlock}>
-                    {
-                        dialogs.map(d => <div className={s.friendsItem} key={d.id}>
-                                <img src={d.img} alt="q"/>
-                                <span className={s.friendsName}>{d.name}</span>
-                            </div>
-                        )
-                    }
-                </div>
             </div>
         </nav>
     )
