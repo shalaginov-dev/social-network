@@ -20,20 +20,22 @@ export const Dialogs = memo(({dialogs, messages}: IDialogsProps) => {
         dispatch(AddMessage(formData.newDialogsMessage))
     }
 
-    return <div className={s.dialogs}>
-        <div className={s.dialogsItems}>
-            {
-                dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id} img={d.img}/>)
-            }
+    return (
+        <div className={s.dialogs}>
+            <div className={s.dialogsItems}>
+                {
+                    dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id} img={d.img}/>)
+                }
+            </div>
+            <div className={s.messages}>
+                {
+                    messages.map(m => <Message key={m.id} message={m.message}/>)
+                }
+            </div>
+            <div className={s.newMessage}>
+                <AddMessageReduxForm onSubmit={onSubmit}/>
+            </div>
         </div>
-        <div className={s.messages}>
-            {
-                messages.map(m => <Message key={m.id} message={m.message}/>)
-            }
-        </div>
-        <div className={s.newMessage}>
-            <AddMessageReduxForm onSubmit={onSubmit}/>
-        </div>
-    </div>
+    )
 })
 

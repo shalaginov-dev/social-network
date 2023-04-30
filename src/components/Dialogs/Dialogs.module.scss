@@ -1,6 +1,8 @@
 .dialogs {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
+    display: flex;
+    width: 75%;
+    background-color: #222222;
+    border-radius: 10px;
 }
 
 .dialogsItems {
