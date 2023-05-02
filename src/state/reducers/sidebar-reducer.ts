@@ -15,9 +15,9 @@ let initialState: IInitialSidebar = {
         {id: v1(), to: '/', title: 'Profile'},
         {id: v1(), to: '/dialogs', title: 'Messages'},
         {id: v1(), to: '/users', title: 'Users'},
-        {id: v1(), to: '/news', title: 'News'},
-        {id: v1(), to: '/music', title: 'Music'},
-        {id: v1(), to: '/settings', title: 'Settings'},
+        {id: v1(), to: '/', title: 'News'},
+        {id: v1(), to: '/', title: 'Music'},
+        {id: v1(), to: '/', title: 'Settings'},
     ]
 }
 

@@ -1,10 +1,11 @@
 .header {
+  position: relative;
   display: flex;
   justify-content: end;
   align-items: center;
   border-radius: 10px;
   background-color: #222222;
-  height: 30px;
+  height: 50px;
   margin-bottom: 10px;
 
   .loginBlock {
@@ -15,7 +16,7 @@
     padding: 0 10px;
     color: white;
     height: 100%;
-    width: 50px;
+    width: 65px;
     border-radius: 0 10px 10px 0 ;
     cursor: pointer;
 
@@ -25,13 +26,13 @@
 
     img {
       border-radius: 50%;
-      height: 22px;
+      height: 30px;
     }
 
     svg {
       position: absolute;
-      left: 29px;
-      top: 10px;
+      left: 40px;
+      top: 19px;
       height: 12px;
       opacity: 50%;
     }
@@ -40,16 +41,18 @@
   .popupBlock {
     display: flex;
     justify-content: center;
-    align-items: start;
-    width: 50px;
-    height: 60px;
+    align-items: center;
+    width: 60px;
+    height: 50px;
     background-color: rgba(150, 150, 150, 0.2);
     position: absolute;
-    top: 70px;
-    border-radius: 0 10px 1px 1px;
+    right: 70px;
+    border-radius: 10px 0 0 10px;
     z-index: 999;
 
-    p {
+    button {
+      border: 0;
+      background-color: rgba(150, 150, 150, 0);
       margin: 0 auto;
       padding: 3px 4px;
       cursor: pointer;

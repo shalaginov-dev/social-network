@@ -32,7 +32,7 @@ export const Header = memo(({isAuth, photo}: HeaderProps) => {
             {
                 popupView &&
                 <div className={s.popupBlock}>
-                    <p onClick={handleLogoutClick}>Logout</p>
+                    <button onClick={handleLogoutClick}>Logout</button>
                 </div>
             }
         </header>

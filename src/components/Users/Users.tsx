@@ -4,7 +4,7 @@ import {IUser} from "../../state/types/users-types";
 import {Pagination} from "../common/Pagination/Pagination";
 import {User} from "./User";
 
-interface IUsersProps {
+interface UsersProps {
     users: IUser[]
     pageSize: number
     totalUsersCount: number
@@ -13,14 +13,7 @@ interface IUsersProps {
     onPageChanged: (pageNumber: number) => void
 }
 
-export const Users = memo(({
-                               users,
-                               pageSize,
-                               totalUsersCount,
-                               currentPage,
-                               followingInProgress,
-                               onPageChanged
-                           }: IUsersProps) => {
+export const Users = memo(({users, pageSize, totalUsersCount, currentPage, followingInProgress, onPageChanged}: UsersProps) => {
 
     return (
         <div className={s.usersWrapper}>
