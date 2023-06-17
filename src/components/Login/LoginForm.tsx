@@ -2,7 +2,7 @@ import React, {memo} from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
 import {requiredField} from "../../utils/validators/validators";
-import s from "./LoginForm.module.scss";
+import s from "./Login.module.scss";
 
 export interface IFormData {
     email: string
@@ -14,7 +14,7 @@ export const LoginForm: React.FC<InjectedFormProps<IFormData>> = memo(({error, h
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className={s.email}>
                     <Field
                         component={Input}
                         placeholder='Email'
@@ -22,7 +22,7 @@ export const LoginForm: React.FC<InjectedFormProps<IFormData>> = memo(({error, h
                         validate={[requiredField]}
                     />
                 </div>
-                <div>
+                <div className={s.password}>
                     <Field
                         component={Input}
                         placeholder='Password'

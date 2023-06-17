@@ -16,10 +16,13 @@ export const Login = memo(({isAuth}: ILoginProps) => {
     }
 
     return (
-        <div className={s.loginBlock}>
-            <div className={s.loginWrapper}>
+        <div className={s.loginWrapper}>
+            <div className={s.loginBlock}>
                 <h1>LOGIN</h1>
                 <LoginReduxForm onSubmit={onSubmit}/>
+                <p style={{marginTop: '20px', opacity: '50%'}}>test account:</p>
+                <p>fatflycat@gmail.com</p>
+                <p> qwe123qwe</p>
             </div>
         </div>
     )
