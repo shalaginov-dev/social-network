@@ -1,48 +1,76 @@
 .dialogs {
-    display: flex;
-    width: 75%;
-    background-color: #222222;
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  background-color: #222222;
+  border-radius: 10px;
+  padding: 50px 50px 50px 50px;
+  @media (max-width: 1500px) {
+    width: 635px;
+  }
+
+  .dialogsUsers {
+    width: 170px;
+    padding: 10px;
+    color: white;
+    background-color: rgba(253, 253, 253, 0.1);
     border-radius: 10px;
-}
 
-.dialogsItems {
-    padding: 10px;
-    color: white;
-}
+    .dialog {
+      padding: 6px;
+      display: flex;
 
-.dialog a {
-    color: white;
-}
+      .dialogName {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+      }
 
-.dialog a.active {
-    color: orangered;
-}
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+      }
+    }
 
-.messages {
-    padding: 10px;
-}
+    .dialog:first-child {
+      background-color: rgba(246, 246, 246, 0.1);
+      border-radius: 17px;
+      position: relative;
+    }
+    .dialog:first-child::before {
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      top: 12px;
+      left: 140px;
+      height: 50%;
+      border: 0.5px white solid;
+      background-color: white;
+    }
 
-.messages .message {
-    color: white;
-}
+  }
 
-.dialog {
-    padding: 6px;
+  .messageBlock {
     display: flex;
-}
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgb(255, 255, 255, 0.1);
 
-.dialog .dialogName{
-    padding-left: 5px;
-    margin-top: 13px;
-}
+    .messages {
+      padding: 10px;
+    }
 
-.dialog img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50px 50px;
-}
+    .messages .message {
+      color: white;
+    }
 
-.newMessage {
-    padding-left: 18px;
-    display: flex;
+    .newMessage {
+      padding-left: 18px;
+      display: flex;
+    }
+  }
 }

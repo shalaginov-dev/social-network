@@ -1,8 +1,8 @@
 import s from "../ProfileInfo.module.scss";
 import React, {ChangeEvent, useState} from "react";
-import {UpdatePhoto} from "../../../../state/actions/profile-actions";
-import {useAppDispatch} from "../../../../state/hooks";
-import {MyProfile} from "../../../../state/types/profile-types";
+import {UpdatePhoto} from "../../../../redux/actions/profile-actions";
+import {useAppDispatch} from "../../../../redux/hooks";
+import {MyProfile} from "../../../../redux/types/profile-types";
 
 interface IProfilePhotoProps {
     profile: MyProfile | null

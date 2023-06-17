@@ -1,7 +1,28 @@
-.profile{
+.profile {
   display: flex;
-  width: 75%;
-  max-height: 45vh;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 50px 150px 50px;
+  width: 800px;
+  height: 915px;
   background-color: #222222;
   border-radius: 10px;
+  @media (max-width: 1500px) {
+    width: 635px;
+    padding: 30px 50px 50px 40px;
+    font-size: 80%;
+  }
+  hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #464646;
+    padding: 0;
+    width: 98%;
+    //margin-bottom: 50px;
+    @media (max-width: 1500px) {
+      margin-bottom: 23px;
+    }
+  }
 }

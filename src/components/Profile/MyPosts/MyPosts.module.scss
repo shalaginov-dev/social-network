@@ -1,13 +1,48 @@
 .postsBlock {
-    padding: 10px;
+  padding-top: 30px;
+  position: relative;
+  color: white;
+  width: 630px;
+  height: 300px;
+
+  form {
+    display: flex;
+
+    textarea {
+      height: 35px;
+      padding-top: 8px;
+      background: none;
+      border-radius: 2px;
+      margin-right: 5px;
+    }
+
+    button {
+      color: #ababab;
+      width: 50px;
+      border-radius: 2px;
+      border: 1px solid #ababab;
+      box-shadow: none;
+      background: none;
+      height: 34px;
+    }
+  }
+
+  h3 {
+    position: absolute;
+    font-size: 0.9em;
+    top: -10px;
     color: white;
-    h3{
-        color: white;
-    }
-    .posts {
-        color: white;
-        margin-top: 10px;
-    }
+  }
+
+  .posts {
+    color: white;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 1500px) {
+    height: 450px;
+    width: 500px;
+  }
 }
 
 

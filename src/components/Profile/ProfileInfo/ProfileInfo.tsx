@@ -1,12 +1,9 @@
-import React, {memo, useState} from "react";
+import React, {memo} from "react";
 import s from './ProfileInfo.module.scss'
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
-import {MyProfile} from "../../../state/types/profile-types";
-import {AboutMe} from "./AboutMe/AboutMe";
+import {MyProfile} from "../../../redux/types/profile-types";
 import {ProfilePhoto} from "./ProfilePhoto/ProfilePhoto";
-import {AboutMeEditForm, IAboutMeFormProps} from "./AboutMe/AboutMeForm";
-import {useAppDispatch} from "../../../state/hooks";
-import {UpdateProfile} from "../../../state/actions/profile-actions";
+import {AboutMe} from "./AboutMe/AboutMe";
 
 interface IProfileInfoProps {
     profile: MyProfile | null
@@ -15,28 +12,16 @@ interface IProfileInfoProps {
 }
 
 export const ProfileInfo = memo(({profile, status, isOwn}: IProfileInfoProps) => {
-        const dispatch = useAppDispatch()
-        const [editMode, setEditMode] = useState(false)
-
-        const onSubmit = (formData: IAboutMeFormProps) => {
-            dispatch(UpdateProfile(formData))
-            setEditMode(false)
-        }
-
-    return profile
+        return profile
             ? <div className={s.profileInfoBlock}>
                 <ProfilePhoto profile={profile} isOwn={isOwn}/>
-                <h3> {profile.fullName}</h3>
-                <ProfileStatus status={status}/>
-                {editMode
-                    // @ts-ignore
-                    ? <AboutMeEditForm initialValues={profile} onSubmit={onSubmit}/>
-                    : <AboutMe toggleEditMode={() => {
-                        setEditMode(true)
-                    }} profile={profile} isOwn={isOwn}/>
-                }
-
-            </div> : null
+                <div className={s.profileName}>
+                    <h3> {profile.fullName}</h3>
+                    <ProfileStatus status={status}/>
+                </div>
+                <AboutMe toggleEditMode={() => {}} profile={profile} isOwn={isOwn}/>
+            </div>
+            : null
     }
 )
 

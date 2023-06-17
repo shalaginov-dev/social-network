@@ -2,9 +2,9 @@ import React, {memo} from "react";
 import s from "./MyPosts.module.scss";
 import {Post} from "./Post/Post";
 import {IAddPostFormData, AddPostReduxForm} from "../../Login/AddPostForm";
-import {AddPost} from "../../../state/actions/profile-actions";
-import {useAppDispatch} from "../../../state/hooks";
-import {Photos, IPost, MyProfile} from "../../../state/types/profile-types";
+import {AddPost} from "../../../redux/actions/profile-actions";
+import {useAppDispatch} from "../../../redux/hooks";
+import {Photos, IPost, MyProfile} from "../../../redux/types/profile-types";
 
 export interface IMyPostProps {
     posts: IPost[]
@@ -21,7 +21,7 @@ export const MyPosts = memo(({posts, photos}: IMyPostProps) => {
     return (
         <div className={s.postsBlock}>
             <h3>
-                my posts
+                My posts
             </h3>
             <div>
                 <AddPostReduxForm onSubmit={onSubmit}/>

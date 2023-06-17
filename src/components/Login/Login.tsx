@@ -1,9 +1,9 @@
 import React, {memo} from "react";
 import s from './Login.module.scss'
 
-import {LogIn} from "../../state/actions/auth-actions";
+import {LogIn} from "../../redux/actions/auth-actions";
 import {IFormData, LoginReduxForm} from "./LoginForm";
-import {useAppDispatch} from "../../state/hooks";
+import {useAppDispatch} from "../../redux/hooks";
 
 interface ILoginProps {
     isAuth: boolean

@@ -1,11 +1,11 @@
 import React, {useEffect} from "react";
 import {Users} from "./Users";
-import {FetchUsers} from "../../state/actions/users-actions";
+import {FetchUsers} from "../../redux/actions/users-actions";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {Preloader} from "../common/Preloader/Preloader";
-import {usersPageSelector} from "../../state/selectors";
-import {useAppDispatch, useAppSelector} from "../../state/hooks";
+import {usersPageSelector} from "../../redux/selectors";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 
 export const UsersContainer = () => {
     const {

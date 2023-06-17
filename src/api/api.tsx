@@ -1,5 +1,5 @@
 import axios from "axios";
-import {Photos} from "../state/types/profile-types";
+import {Photos} from "../redux/types/profile-types";
 import {IAboutMeFormProps} from "../components/Profile/ProfileInfo/AboutMe/AboutMeForm";
 
 interface IResponse<I> {

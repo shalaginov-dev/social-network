@@ -1,6 +1,6 @@
 import s from "./Users.module.scss";
 import React, {memo} from "react";
-import {IUser} from "../../state/types/users-types";
+import {IUser} from "../../redux/types/users-types";
 import {Pagination} from "../common/Pagination/Pagination";
 import {User} from "./User";
 

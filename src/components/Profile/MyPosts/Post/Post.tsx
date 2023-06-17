@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Post.module.scss"
-import {Photos} from "../../../../state/types/profile-types";
+import {Photos} from "../../../../redux/types/profile-types";
 
 interface IPostProps {
     message: string

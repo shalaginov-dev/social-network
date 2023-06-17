@@ -1,0 +1,51 @@
+.myPhotoBlock {
+  position: relative;
+
+  h3 {
+    position: absolute;
+    font-size: 0.9em;
+    bottom: 142px;
+    right: 530px;
+    width: 100px;
+
+  }
+
+  .photoBlock {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 630px;
+    height: 150px;
+
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 2px;
+    }
+
+    img:not(:last-child) {
+      margin-right: 5px;
+    }
+
+    @media (max-width: 1500px) {
+      width: 450px;
+      img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  }
+
+  @media (max-width: 1500px) {
+    width: 500px;
+    height: 100px;
+    .photoBlock {
+      height: 100px;
+      width: 530px;
+    }
+      h3 {
+      right: 400px;
+        top: -20px;
+    }
+  }
+}

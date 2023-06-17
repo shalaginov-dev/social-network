@@ -2,11 +2,11 @@ import React, {memo, useEffect} from "react";
 import {compose} from "redux";
 import {Profile} from "./Profile";
 import {useParams} from "react-router-dom";
-import {FetchProfile, FetchStatus} from "../../state/actions/profile-actions";
+import {FetchProfile, FetchStatus} from "../../redux/actions/profile-actions";
 import {withRouter} from "../../hoc/withRouter";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {profilePage} from "../../state/selectors";
-import {useAppDispatch, useAppSelector} from "../../state/hooks";
+import {profilePage} from "../../redux/selectors";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {Preloader} from "../common/Preloader/Preloader";
 
 

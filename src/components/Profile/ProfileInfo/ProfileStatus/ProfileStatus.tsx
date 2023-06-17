@@ -1,7 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, memo, useEffect, useState} from "react";
 import s from './ProfileStatus.module.scss';
-import {UpdateStatus} from "../../../../state/actions/profile-actions";
-import {useAppDispatch} from "../../../../state/hooks";
+import {UpdateStatus} from "../../../../redux/actions/profile-actions";
+import {useAppDispatch} from "../../../../redux/hooks";
 
 interface IProfileStatusProps{
     status: string
@@ -46,7 +46,6 @@ export const ProfileStatus = memo(({status}: IProfileStatusProps) => {
                 onKeyPress={onKeyPressHandler}
             />
             : <div>
-            <b>Status: </b>
                 <span className={s.status} onDoubleClick={activateEditMode}>{tempTitle}</span>
             </div>
     )

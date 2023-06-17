@@ -1,9 +1,13 @@
 .usersWrapper {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 800px;
+  padding: 50px 100px 50px 50px;
   background-color: #222222;
   border-radius: 10px;
+  @media (max-width: 1500px) {
+    width: 635px;
+  }
 
   .paginationWrapper {
     padding-bottom: 10px;

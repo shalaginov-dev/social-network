@@ -1,7 +1,11 @@
 .sidebar {
   display: inline-block;
-  margin-right: 10px;
-  width: 25%;
+  margin-right: 15px;
+  width: 28%;
+  max-height: 100%;
+  @media (max-width: 1500px) {
+    width: 250px;
+  }
 
   .nav {
     display: flex;
@@ -9,13 +13,30 @@
     text-align: start;
 
     a {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      padding: 10px 10px 10px 25px;
       background-color: #222222;
-      margin-bottom: 5px;
-      padding: 15px;
+      margin-bottom: 15px;
+      font-size: 22px;
+      min-height: 60px;
       border-radius: 10px;
       cursor: pointer;
       color: white;
       text-decoration: none;
+      @media (max-width: 1500px) {
+        padding: 7px 7px 7px 15px;
+        min-height: 45px;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+      @media (max-width: 1200px) {
+        padding: 7px 7px 7px 15px;
+        min-height: 45px;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
 
       &:hover {
         font-weight: 600;
@@ -23,12 +44,130 @@
       }
     }
   }
-}
 
-.item a.activeLink {
-  text-align: center;
-  font-size: 23px;
-  color: orangered;
-  line-height: 50px;
-  font-weight: 600;
+  .navFooter {
+    display: flex;
+    flex-direction: column;
+    background-color: #222222;
+    border-radius: 10px;
+    height: 465px;
+    padding: 80px 20px 80px;
+    @media (max-width: 1500px) {
+      padding: 20px 10px 40px;
+      height: 585px;
+    }
+
+    .musicBlock {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 15px 0 40px 0;
+      @media (max-width: 1500px) {
+        margin: 15px 0 20px 0;
+      }
+
+      h5 {
+        margin-bottom: 5px;
+        color: #c7c7c7;
+      }
+
+      .player {
+        display: flex;
+
+        button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 8px 0;
+          background: none;
+          border: none;
+          border-radius: 50%;
+
+          svg :hover {
+            fill: #727272;
+          }
+        }
+      }
+    }
+
+    hr {
+      display: block;
+      height: 1px;
+      border: 0;
+      border-top: 1px solid #464646;
+      padding: 0;
+      width: 98%;
+      margin-bottom: 50px;
+      @media (max-width: 1500px) {
+        margin-bottom: 23px;
+      }
+    }
+
+    .friends {
+      padding: 0 5px;
+
+      .friendsTitle {
+        color: white;
+        display: block;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 18px;
+        margin: 0 0 15px 10px;
+        @media (max-width: 1500px) {
+          font-size: 10px;
+          margin: 0 0 8px 8px;
+        }
+      }
+
+      .friendsBlock {
+        display: flex;
+        justify-content: center;
+
+        .friendsItem {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: 20px;
+          width: 20px;
+          height: 20px;
+          @media (max-width: 1500px) {
+            //width: 10px;
+            margin: 18px;
+          }
+          @media (max-width: 1200px) {
+            width: 10px;
+            margin: 17px;
+          }
+
+          img {
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50px 50px;
+            @media (max-width: 1500px) {
+              width: 35px;
+              height: 35px;
+            }
+            @media (max-width: 1200px) {
+              width: 30px;
+              height: 30px;
+            }
+          }
+        }
+
+        .friendsName {
+          font-size: 12px;
+          color: white;
+          @media (max-width: 1500px) {
+            font-size: 10px;
+          }
+          @media (max-width: 1200px) {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
 }

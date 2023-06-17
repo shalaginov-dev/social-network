@@ -1,8 +1,8 @@
 import {compose} from "redux";
 import React from "react";
 import {Navbar} from "./Navbar";
-import {dialogsPage, sidebar} from "../../state/selectors";
-import {useAppSelector} from "../../state/hooks";
+import {dialogsPage, sidebar} from "../../redux/selectors";
+import {useAppSelector} from "../../redux/hooks";
 import {useLocation} from "react-router-dom";
 
 const NavbarContainer = () => {

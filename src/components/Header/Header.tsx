@@ -1,8 +1,8 @@
 import React, {memo, useState} from 'react'
 import {NavLink} from 'react-router-dom'
 import s from "./Header.module.scss"
-import {LogOut} from "../../state/actions/auth-actions"
-import {useAppDispatch, useAppSelector} from "../../state/hooks";
+import {LogOut} from "../../redux/actions/auth-actions"
+import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 
 interface HeaderProps {
     isAuth: boolean

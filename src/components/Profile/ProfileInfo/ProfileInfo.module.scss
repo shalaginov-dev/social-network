@@ -1,10 +1,29 @@
 .profileInfoBlock {
-  //display: flex;
+  display: flex;
+  border-radius: 10px;
+  height: 160px;
+  width: 100%;
+  padding: 20px;
+  @media (max-width: 1500px) {
+    height: 160px;
+  }
+
+  .profileName {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 260px;
+    margin-left: 20px;
+
+    h3 {
+      color: white;
+    }
+  }
 
   .profilePhotoBlock {
     position: relative;
-    padding: 10px;
     color: white;
+    margin: 0 10px 0 0;
 
     .imageContainer {
       display: flex;
@@ -44,10 +63,11 @@
   .infoBlock {
     display: flex;
     flex-direction: column;
+    justify-content: end;
     color: white;
-    margin-left: 20px;
-    margin-top: 10px;
-    b{
+    margin: 0 0 0 20px;
+
+    b {
       color: white;
     }
   }

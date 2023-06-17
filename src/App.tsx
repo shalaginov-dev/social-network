@@ -1,15 +1,15 @@
 import React, {useEffect} from 'react';
 import {Route, Routes, Navigate} from 'react-router-dom'
-import './style/app.scss';
+import './scss/app.scss';
 
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import {FetchAuthUserData} from "./state/actions/auth-actions";
+import {FetchAuthUserData} from "./redux/actions/auth-actions";
 import {Preloader} from "./components/common/Preloader/Preloader";
-import {auth} from "./state/selectors";
-import {useAppDispatch, useAppSelector} from "./state/hooks";
+import {auth} from "./redux/selectors";
+import {useAppDispatch, useAppSelector} from "./redux/hooks";
 import {SingleProfile} from "./components/Profile/SingleProfile";
 import {MainLayout} from "./layouts/MainLayout";
 

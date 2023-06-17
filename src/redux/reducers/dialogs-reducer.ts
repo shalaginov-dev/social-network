@@ -20,14 +20,19 @@ let initialState: IInitialDialogs = {
             name: 'Sveta',
             img: 'https://cdn4.vectorstock.com/i/1000x1000/94/38/avatar-flat-icon-on-black-background-black-style-vector-25959438.jpg'
         },
+        {
+            id: v1(),
+            name: 'Egor',
+            img: 'https://cdn4.vectorstock.com/i/1000x1000/94/38/avatar-flat-icon-on-black-background-black-style-vector-25959438.jpg'
+        },
     ],
     messages: [
         {id: v1(), message: 'Hi'},
         {id: v1(), message: 'How is your IT?'},
-        {id: v1(), message: 'Yo'},
-        {id: v1(), message: 'Yoo'},
-        {id: v1(), message: 'Yooo'},
-        {id: v1(), message: 'Yoooo'}
+        {id: v1(), message: 'Good'},
+        {id: v1(), message: 'What about you?'},
+        {id: v1(), message: 'Not bad'},
+        {id: v1(), message: 'Nice!'}
     ],
 }
 
